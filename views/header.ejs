@@ -26,16 +26,16 @@
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
       </form>
-      <a href="#" class="w3-bar-item w3-button">Home</a>
-      <a href="#" class="w3-bar-item w3-button">Order</a>
-      <a href="#" class="w3-bar-item w3-button">Product</a>
-      <a href="#" class="w3-bar-item w3-button">Customer</a>
-      <a href="#" class="w3-bar-item w3-button">Employees</a>
-      <button type="button" class="btn btn-success">Login</button>
+      <a href="home" class="w3-bar-item w3-button">Home</a>
+      <a href="order" class="w3-bar-item w3-button">Order</a>
+      <a href="product" class="w3-bar-item w3-button">Product</a>
+      <a href="customer" class="w3-bar-item w3-button">Customer</a>
+      <a href="employeeInformation" class="w3-bar-item w3-button">Employees</a>
+      <button type="button" class="btn btn-success" id="logBtn">Login</button>
     </div>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">Navbar</a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-nav">
+      <a class="navbar-brand" href="home">Antonite</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -77,3 +77,5 @@
         document.getElementById("rightMenu").style.display = "none";
       }
     </script>
+
+<% include LoginModal.ejs %>

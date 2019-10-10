@@ -5,7 +5,6 @@ body {
   margin-top: -50px;
   margin-left: -40px;
   margin-right: -40px;
-  
 }
 
 a {
@@ -18,28 +17,65 @@ h1{
 
 .bigmenu {
   width: 100%;
+  margin-top: 10px;
   border: 0px solid #eaeaea;
 }
 
 .Lmenu {
+  position: relative;
   background-color: #fff;
-  border: 1px solid #707070;
   border-radius: 20px;
-  width: 25%;
-  padding: 20px 0px 0px 20px;
+  border: 1px solid #707070;
+  padding: 20px 200px 430px 40px;
   vertical-align: top;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 100px;
+  width: 250px;
 }
 
 .Rmenu {
+  border: 5px solid red;
   padding: 0px 0px 0px 10px;
   vertical-align: top;
 }
 
-.header {
+div#inline
+{
+    display:inline;
+}
+
+.HLmenu {
+  position: absolute;
+  width: 250px;
+  margin-left: 10px;
+}
+
+.HLmenu2 {
+  margin-top: 180px;
+}
+
+p.HLmenu{
   font-family: "Segoe UI";
   font-weight: 500;
-  font-size: 1.5em;
+  font-size: 1.3em;
+  width: 100%;
 }
-p {
-  margin: 0%;
+.style_CH{
+  margin-left: 20px;
+}
+
+.bigPic{
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+div.listPD{
+  margin-top: 10px;
+  margin-left: 300px;
+}
+
+.margin-pd{
+  margin-right: 20px;
+  margin-bottom: 20px;
 }
