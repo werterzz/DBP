@@ -1,0 +1,111 @@
+<% include header.ejs %>
+    <!-- Modal -->
+    <div id="modal" data-backdrop="true" class="modal fade bd-example-modal-lg" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Log in</h5>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                   <div class="form-group">
+                    <div class="row my-2">
+                      <label for="username" class="col-12 col-sm-3 text-sm-right my-auto">Username :</label>
+                      <input id="username" formControlName="username" name="username" type="text" class="form-control col-12 col-sm-6 col-md-3" [(ngModel)]="username">
+                      <!-- <div *ngIf="angForm.controls['username'].invalid && (angForm.controls['username'].dirty || angForm.controls['username'].touched)"
+                      class="offset-12 col-sm-6 col-md-3 my-auto">
+                        <div *ngIf="angForm.controls['username'].errors.required" class="my-auto" style="color: crimson"><small><strong>X</strong> Please enter your username.</small></div>
+                      </div> -->
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <div class="row my-2">
+                      <label for="password" class="col-12 col-sm-3 text-sm-right my-auto">Password :</label>
+                      <input id="password" formControlName="password" name="password" type="password" class="form-control col-12 col-sm-6 col-md-3" [(ngModel)]="password" placeholder="password">
+                      <!-- <div *ngIf="angForm.controls['password'].invalid && (angForm.controls['password'].dirty || angForm.controls['password'].touched)"
+                      class="offset-12 col-sm-6 col-md-3 my-auto">
+                        <div *ngIf="angForm.controls['password'].errors.required" class="my-auto" style="color: crimson"><small><strong>X</strong> Please enter your password.</small></div>
+                      </div> -->
+                    </div>
+                  </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" style = "background-color: #adc5d3" data-dismiss="modal">Log in</button>
+                  </div>
+            </div>
+        </div>
+      </div>
+    <table class="bigmenu">
+      <tr><td class="Lmenu">
+        <table>
+          <tr>
+            <td>
+              <p class="header"> Product Scale </p>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <label class="form-check-label" for="defaultCheck1">
+                   1 : 10
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
+                <label class="form-check-label" for="defaultCheck2">
+                  1 : 12
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck3">
+                <label class="form-check-label" for="defaultCheck3">
+                  1 : 14
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck4">
+                <label class="form-check-label" for="defaultCheck4">
+                  1 : 24
+                </label>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p class="header"> Product Vender </p>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <label class="form-check-label" for="defaultCheck1">
+                  A
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
+                <label class="form-check-label" for="defaultCheck2">
+                  B
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck3">
+                <label class="form-check-label" for="defaultCheck3">
+                  C
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck4">
+                <label class="form-check-label" for="defaultCheck4">
+                  D
+                </label>
+              </div>
+            </td>
+          </tr>
+        </table>
+          <td class="Rmenu"> <img src="images/Image_1.svg" alt="pic" width="100%"><br>
+            <img src="images/Image_1.svg" alt="pic" width="24%">
+            <img src="images/Image_1.svg" alt="pic" width="24%">
+            <img src="images/Image_1.svg" alt="pic" width="24%">
+            <img src="images/Image_1.svg" alt="pic" width="24%">
+          
+          </td></tr>
+    </table>
+
+    <% include footer.ejs %>

@@ -10,4 +10,9 @@ router.get('/employeeInformation', function(req, res, next) {
   res.render('employeeInformation', { title: 'Express' });
 });
 
+
+router.get('/home', function(req, res, next) {
+  res.render('Gindex', { title: 'Express' });
+});
+
 module.exports = router;
