@@ -8,8 +8,10 @@
   var delEmpBtn = document.getElementById("delEmpBtn");
 
   // Get the <span> element that closes the modal
+
   var spanEAdd = document.getElementsByClassName("close")[1];
   var spanEDel = document.getElementsByClassName("close")[2];
+
 
   // When the user clicks the button, open the modal 
   btn.onclick = function() {
@@ -24,6 +26,10 @@
   spanEAdd.onclick = function() {
     modal.style.display = "none";
   }
+
+  span2.onclick = function() {
+    delEmpMod.style.display = "none";
+  }  
   
   spanEDel.onclick = function() {
     delEmpMod.style.display = "none";
@@ -36,9 +42,25 @@
       modal.style.display = "none";
     }
     if (event.target == delEmpMod) {
+
       delEmpMod.style.display = "none";
     }
     if (event.target == loginMod) {
       loginMod.style.display = "none";
     }
   }
+
+
+
+var canDel = document.getElementById("canDel");
+
+canDel.onclick = function(event) {
+    delEmpMod.style.display = "none";
+}
+
+var updateEmp = document.getElementById("updateEmp");
+
+updateEmp.onclick = function(event) {
+    modal.style.display = "block";
+}
+
