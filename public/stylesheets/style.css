@@ -1,7 +1,5 @@
 body {
   margin: 0;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-color: #EAE9E5;
 }
 
 .navbar-brand {
@@ -66,7 +64,7 @@ h6 {
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  z-index: 2; /* Sit on top */
   padding-top: 100px; /* Location of the box */
   left: 0;
   top: 0;
@@ -99,4 +97,10 @@ h6 {
   color: #000;
   text-decoration: none;
   cursor: pointer;
+}
+
+.sticky-nav {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0px;
 }

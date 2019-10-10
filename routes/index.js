@@ -37,6 +37,10 @@ router.get('/employeeInformation', function(req, res, next) {
   });
 });
 
+
+router.get('/home', function(req, res, next) {
+  res.render('Gindex', { title: 'Express' });
+});
 router.get('/hello', function(req, res, next) {
   res.render('hello', { title: 'Express' });
 });
