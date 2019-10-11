@@ -18,8 +18,13 @@ router.get('/employeeInformation', function(req, res, next) {
   res.render('employeeInformation', { title: 'Express' });
 });
 
+router.get('/order', function(req, res, next) {
+  res.render('order', { title: 'Express' });
+});
+
 router.get('/hello', function(req, res, next) {
   res.render('hello', { title: 'Express' });
 });
+
 
 module.exports = router;
