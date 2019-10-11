@@ -38,12 +38,20 @@ router.get('/employeeInformation', function(req, res, next) {
 });
 
 
+router.get('/order', function(req, res, next) {
+  res.render('order', { title: 'Express' });
+});
+
+
+
 router.get('/home', function(req, res, next) {
   res.render('Gindex', { title: 'Express' });
 });
+
 router.get('/hello', function(req, res, next) {
   res.render('hello', { title: 'Express' });
 });
+
 
 router.post('/post/employee', function(req, res, next) {
   res.redirect("/employeeInformation");
@@ -52,5 +60,6 @@ router.post('/post/employee', function(req, res, next) {
 router.post('/del/employee', function(req, res, next) {
   res.redirect("/employeeInformation");
 });
+
 
 module.exports = router;
