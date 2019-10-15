@@ -13,16 +13,7 @@ var $ = jQuery = require('jquery')(window);
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  MongoClient.connect(url, function(err, db) {
-    if (err) throw err;
-    var dbo = db.db("classicModels");
-    dbo.collection("employees").find({}).toArray(function(err, result) {
-      if (err) throw err;
-      console.log(result);res.render("index", {employee:result, title:"hello"}, );
-      db.close();
-    });
-  });
-  
+  res.render('Gindex', { title: 'Express' });
 });
 
 router.get('/employeeInformation', function(req, res, next) {
@@ -44,9 +35,7 @@ router.get('/order', function(req, res, next) {
 
 
 
-router.get('/home', function(req, res, next) {
-  res.render('Gindex', { title: 'Express' });
-});
+
 
 router.get('/hello', function(req, res, next) {
   res.render('hello', { title: 'Express' });
@@ -61,5 +50,8 @@ router.post('/del/employee', function(req, res, next) {
   res.redirect("/employeeInformation");
 });
 
+router.get('/stockproduct', function(req, res, next) {
+  res.render('stockProduct', { title: 'Express' });
+});
 
 module.exports = router;

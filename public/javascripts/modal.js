@@ -27,9 +27,7 @@
     modal.style.display = "none";
   }
 
-  span2.onclick = function() {
-    delEmpMod.style.display = "none";
-  }  
+
   
   spanEDel.onclick = function() {
     delEmpMod.style.display = "none";
