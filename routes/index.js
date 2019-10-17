@@ -1,4 +1,5 @@
 var express = require('express');
+const bcrypt = require('bcrypt')
 var router = express.Router();
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017/";
@@ -12,24 +13,24 @@ global.document = document;
 var $ = jQuery = require('jquery')(window);
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', function (req, res, next) {
   res.render('Gindex', { title: 'Express' });
 });
 
-router.get('/employeeInformation', function(req, res, next) {
-  MongoClient.connect(url, function(err, db) {
+router.get('/employeeInformation', function (req, res, next) {
+  MongoClient.connect(url, function (err, db) {
     if (err) throw err;
     var dbo = db.db("classicModels");
-    dbo.collection("employees").find({}).toArray(function(err, result) {
+    dbo.collection("employees").find({}).toArray(function (err, result) {
       if (err) throw err;
-      console.log(result);res.render("employeeInformation", {employees:result, title:"hello"}, );
+      console.log(result); res.render("employeeInformation", { employees: result, title: "hello" });
       db.close();
     });
   });
 });
 
 
-router.get('/order', function(req, res, next) {
+router.get('/order', function (req, res, next) {
   res.render('order', { title: 'Express' });
 });
 
@@ -37,21 +38,73 @@ router.get('/order', function(req, res, next) {
 
 
 
-router.get('/hello', function(req, res, next) {
+router.get('/hello', function (req, res, next) {
   res.render('hello', { title: 'Express' });
 });
 
 
-router.post('/post/employee', function(req, res, next) {
+router.post('/post/employee', function (req, res, next) {
   res.redirect("/employeeInformation");
 });
 
-router.post('/del/employee', function(req, res, next) {
+router.post('/del/employee', function (req, res, next) {
   res.redirect("/employeeInformation");
 });
 
-router.get('/stockproduct', function(req, res, next) {
+router.post('/login', function (req, res, next) {
+  MongoClient.connect(url, function (err, db) {
+    if (err) throw err;
+    var dbo = db.db("classicModels");
+    var query = { employeeNumber: req.body.username }
+
+    dbo.collection("employees").find(query).toArray(async function (err, result) {
+      if (err) throw err;
+      console.log(result);
+      try {
+        if (await bcrypt.compare(req.body.password, result[0].password)) {
+          res.send('Success')
+        } else {
+          res.send('Not Allowed')
+        }
+      } catch {
+        res.status(500).send()
+      }
+      db.close();
+    });
+
+
+  });
+});
+
+router.get('/stockproduct', function (req, res, next) {
   res.render('stockProduct', { title: 'Express' });
 });
+
+router.post('/addpassword',(req, res) => {
+  
+  MongoClient.connect(url, function (err, db) {
+    if (err) throw err;
+    var dbo = db.db("classicModels");
+    dbo.collection("employees").find({}).toArray(function (err, result) {
+      if (err) throw err;
+      console.log(result);
+
+      result.forEach( async element => {
+        var hashedPassword = await bcrypt.hash("password"+element.employeeNumber, 10)
+          let query = {employeeNumber : element.employeeNumber}
+          let newvalue = {$set : {password : hashedPassword}};
+          dbo.collection("employees").updateOne(query, newvalue, (err, res) => {
+            if (err) throw err;
+            console.log("1 document updated");
+          });
+      });
+
+
+      res.json(result);
+      // db.close();
+    });
+  });
+  // res.json(users)
+})
 
 module.exports = router;
