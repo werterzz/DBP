@@ -1,0 +1,15 @@
+POST http://localhost:3000/addpassword
+Content-Type: application/json
+
+{
+  "name" : "hello"
+}
+
+###
+
+GET  http://localhost:3000/test
+Content-Type: application/json
+
+{
+  "name" : "hello"
+}
