@@ -1,5 +1,6 @@
 <!-- The Modal -->
 <div id="loginMod" class="modal">
+  <form id="myLogin" >
     <!-- Modal content -->
     <div class="modal-content">
       <span class="close">&times;</span>
@@ -9,7 +10,7 @@
             <div class="row my-2">
               <label for="username" class="col-12 col-sm-3 text-sm-right my-auto">Username :</label>
               <input id="username" formControlName="username" name="username" type="text"
-                class="form-control col-12 col-sm-6 col-md-3" [(ngModel)]="username">
+                class="form-control col-12 col-sm-6 col-md-3" [(ngModel)]="username" placeholder="username" value="game">
               <!-- <div *ngIf="angForm.controls['username'].invalid && (angForm.controls['username'].dirty || angForm.controls['username'].touched)"
                         class="offset-12 col-sm-6 col-md-3 my-auto">
                           <div *ngIf="angForm.controls['username'].errors.required" class="my-auto" style="color: crimson"><small><strong>X</strong> Please enter your username.</small></div>
@@ -20,7 +21,7 @@
             <div class="row my-2">
               <label for="password" class="col-12 col-sm-3 text-sm-right my-auto">Password :</label>
               <input id="password" formControlName="password" name="password" type="password"
-                class="form-control col-12 col-sm-6 col-md-3" [(ngModel)]="password" placeholder="password">
+                class="form-control col-12 col-sm-6 col-md-3" [(ngModel)]="password" placeholder="password" value="1234">
               <!-- <div *ngIf="angForm.controls['password'].invalid && (angForm.controls['password'].dirty || angForm.controls['password'].touched)"
                         class="offset-12 col-sm-6 col-md-3 my-auto">
                           <div *ngIf="angForm.controls['password'].errors.required" class="my-auto" style="color: crimson"><small><strong>X</strong> Please enter your password.</small></div>
@@ -29,10 +30,11 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" style="background-color: #adc5d3" data-dismiss="modal">Log
+          <button type="submit" class="btn btn-default" style="background-color: #adc5d3" data-dismiss="modal">Log
             in</button>
         </div>
     </div>
+  </form>
 </div>
 
 <div id="loginMod" data-backdrop="true" class="modal fade bd-example-modal-lg" tabindex="-1">
@@ -42,3 +44,5 @@
       </div>
     </div>
   </div>
+
+ 
