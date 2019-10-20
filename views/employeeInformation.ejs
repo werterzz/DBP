@@ -7,7 +7,7 @@
         <img src="/images/dogtest.jpg" alt="" class="avatar" />
         <div class="empDetail">
           <h6><%= emp.employeeNumber %></h6>
-          <h6><%= emp.firstname %> <%= emp.lastname %></h6>
+          <h6><%= emp.firstName %> <%= emp.lastName %></h6>
           <h6><%= emp.email %></h6>
           <h6><%= emp.jobTitle %></h6>
           <h6><%= emp.officeCode %></h6>
@@ -23,6 +23,16 @@
               <div class="col-sm">
                 <button type="button" id="delEmpBtn" class="btn btn-danger">
                   Delete
+                </button>
+              </div>
+              <div class="col-sm">
+                <button type="button" id="ProEmpBtn" class="btn btn-warning">
+                  <a href='/employeeInformation/promote/<%= emp.employeeNumber %>'>Promote</a>
+                </button>
+              </div>
+              <div class="col-sm">
+                <button type="button" id="DemEmpBtn" class="btn btn-secondary">
+                  <a href='/employeeInformation/demote/<%= emp.employeeNumber %>'>Demote</a>
                 </button>
               </div>
             </div>

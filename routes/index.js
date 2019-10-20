@@ -8,6 +8,7 @@ var url = "mongodb://localhost:27017/";
 
 const User = require('../models/User');
 const Offices = require('../models/Offices');
+const Employees = require('../models/Employees');
 const { ensureAuthenticated, forwardAuthenticated } = require('../config/auth');
 
 var jsdom = require("jsdom");
@@ -22,19 +23,28 @@ var $ = jQuery = require('jquery')(window);
 router.get('/', function (req, res, next) {
   // console.log(req.user)
 
-    res.render('Gindex', { title: 'Express', user: req.user });
+  res.render('Gindex', { title: 'Express', user: req.user });
 });
 
 router.get('/employeeInformation', function (req, res, next) {
-  MongoClient.connect(url, function (err, db) {
-    if (err) throw err;
-    var dbo = db.db("classicModels");
-    dbo.collection("employees").find({}).toArray(function (err, result) {
-      if (err) throw err;
-      console.log(result); res.render("employeeInformation", { employees: result, title: "hello", user: req.user });
-      db.close();
-    });
+  // MongoClient.connect(url, function (err, db) {
+  //   if (err) throw err;
+  //   var dbo = db.db("classicModels");
+  //   dbo.collection("employees").find({}).toArray(function (err, result) {
+  //     if (err) throw err;
+  //     console.log(result); res.render("employeeInformation", { employees: result, title: "hello", user: req.user });
+  //     db.close();
+  //   });
+  // });
+
+  Employees.find().then((employee) => {
+    // res.json(employee);
+    res.render('employeeInformation', { user: req.user, employees: employee, title: "hello" });
   });
+
+
+
+
 });
 
 
@@ -134,6 +144,16 @@ router.get('/logout', (req, res) => {
   req.logout();
   // req.flash('success_msg', 'You are logged out');
   res.redirect('/');
+});
+
+
+router.get('/employeeInformation/promote/:id', (req, res) => {
+  Employees.find({employeeNumber: req.params.id}).then((emp) => {
+    if(req.user.jobTitle === 'VP Sales' && emp.jobTitle === 'Sales Manager')
+    
+    res.json(emp);
+  });
+  // res.send(req.params.id);
 });
 
 module.exports = router;
