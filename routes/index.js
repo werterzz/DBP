@@ -20,6 +20,7 @@ global.document = document;
 var $ = jQuery = require('jquery')(window);
 
 /* GET home page. */
+
 router.get('/', function (req, res, next) {
   // console.log(req.user)
 
@@ -144,14 +145,24 @@ router.get('/logout', (req, res) => {
   req.logout();
   // req.flash('success_msg', 'You are logged out');
   res.redirect('/');
+
 });
 
 
 router.get('/employeeInformation/promote/:id', (req, res) => {
   Employees.find({employeeNumber: req.params.id}).then((emp) => {
-    if(req.user.jobTitle === 'VP Sales' && emp.jobTitle === 'Sales Manager')
+    if(req.user.jobTitle === 'VP Sales' && emp.jobTitle.includes('Sales Manager'))
+    {
+      emp.jobTitle = 'VP Sales';
+      emp.save();
+    }
+    if(req.user.jobTitle.includes('Sales Manager') && emp.jobTitle === 'Sales Rep')
+    {
+      emp.jobTitle = 'Sales Manager';
+      emp.save();
+    }
     
-    res.json(emp);
+    res.redirect("/employeeInformation");
   });
   // res.send(req.params.id);
 });
