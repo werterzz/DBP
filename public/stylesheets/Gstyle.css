@@ -1,81 +1,54 @@
-body {
-  padding: 50px;
-  font: 16px "Segoe UI", Arial, sans-serif;
-  background-color: #EAE9E5;
-  margin-top: -50px;
-  margin-left: -40px;
-  margin-right: -40px;
-}
-
-a {
-  color: #00B7FF;
-}
-
-h1{
-  color: pink;
-}
-
-.bigmenu {
-  width: 100%;
-  margin-top: 10px;
-  border: 0px solid #eaeaea;
+h1 {
+    color: pink;
 }
 
 .Lmenu {
-  position: relative;
-  background-color: #fff;
-  border-radius: 20px;
-  border: 1px solid #707070;
-  padding: 20px 200px 430px 40px;
-  vertical-align: top;
-  position: -webkit-sticky;
-  position: sticky;
-  top: 100px;
-  width: 250px;
+    width: 25%;
+    height: 980px;
+    margin-left: 10px;
+    padding: 30px 0px 0px 20px;
+    background-color: #fff;
+    border-radius: 20px;
+    border: 1px solid #707070;
+    vertical-align: top;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 80px;
+    z-index: 0;
+    float: left;
 }
 
-.Rmenu {
-  border: 5px solid red;
-  padding: 0px 0px 0px 10px;
-  vertical-align: top;
-}
-
-div#inline
-{
-    display:inline;
+.shPro {
+    width: 72%;
+    margin: 1% 1% 1% 1%;
+    float: right;
+    vertical-align: top;
 }
 
 .HLmenu {
-  position: absolute;
-  width: 250px;
-  margin-left: 10px;
+    font-family: "Segoe UI";
+    font-weight: 500;
+    font-size: 150%;
+    width: 230px;
+    margin-left: 10px;
 }
 
-.HLmenu2 {
-  margin-top: 180px;
+.style_CH {
+    margin-left: 20px;
 }
 
-p.HLmenu{
-  font-family: "Segoe UI";
-  font-weight: 500;
-  font-size: 1.3em;
-  width: 100%;
-}
-.style_CH{
-  margin-left: 20px;
+.bigPic {
+    top: 0px;
+    z-index: 0;
 }
 
-.bigPic{
-  margin-top: 10px;
-  margin-left: 20px;
+div.listPD {
+    text-align: center;
+    margin-left: 27%;
+    margin-right: 1%;
 }
 
-div.listPD{
-  margin-top: 10px;
-  margin-left: 300px;
-}
-
-.margin-pd{
-  margin-right: 20px;
-  margin-bottom: 20px;
+.margin-pd {
+    margin: 0% 0.5% 1% 0.5%;
+    width: 18.5%;
 }
