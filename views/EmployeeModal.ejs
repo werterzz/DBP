@@ -3,29 +3,37 @@
     <!-- Modal content -->
     <div class="modal-content">
       <span class="close">&times;</span>
-  
-      <form action="/post/employee" method="POST">
+      <!-- <%- messages() %>
+      
+      <% if(locals.errors) { %>
+      <ul class="">
+        <% Object.values(errors).forEach(function(error){ %>
+        <li><%= error.msg %></li>
+        <% }) %>
+      </ul>
+      <% } %> -->
+      <form action="/employee/add" method="POST">
         Name:
-        <input type="text" name="firstname" value="Mickey" />
+        <input type="text" name="name" value="Mickey" />
         <br />
         Extension:
-        <input type="text" name="lastname" value="Mouse" />
+        <input type="text" name="Extension" value="Mouse" />
   
         <br />
         Office Code:
-        <input type="text" name="firstname" value="Mickey" />
+        <input type="text" name="Officecode" value="Mickey" />
         <br />
         Report:
-        <input type="text" name="firstname" value="Mickey" />
+        <input type="text" name="Report" value="Mickey" />
         <br />
         Phone number:
-        <input type="text" name="firstname" value="Mickey" />
+        <input type="text" name="phone" value="Mickey" />
         <br />
         Email:
-        <input type="text" name="firstname" value="Mickey" />
+        <input type="text" name="email" value="Mickey" />
         <br />
         Job Type:
-        <input type="text" name="firstname" value="Mickey" />
+        <input type="text" name="job" value="Mickey" />
         <br />
         <br />
         <input type="submit" value="Submit" />

@@ -45,20 +45,19 @@ router.get('/order', function (req, res, next) {
 
 
 
-
-
 router.get('/hello', function (req, res, next) {
   res.render('hello', { title: 'Express', user: req.user });
 });
 
 
-router.post('/post/employee', function (req, res, next) {
-  res.redirect("/employeeInformation");
-});
+// router.post('/employeeInformation/add', function (req, res, next) {
+//   res.redirect("/employeeInformation");
+// });
 
-router.post('/del/employee', function (req, res, next) {
-  res.redirect("/employeeInformation");
-});
+
+// router.post('/del/employee', function (req, res, next) {
+//   res.redirect("/employeeInformation");
+// });
 
 router.post('/login', function (req, res, next) {
   MongoClient.connect(url, function (err, db) {

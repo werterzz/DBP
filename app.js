@@ -8,6 +8,13 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var methodOverride = require('method-override')
 
+var customerRouter = require('./routes/customer');
+var employeeRouter = require('./routes/employee');
+var productRouter = require('./routes/product');
+
+
+
+
 
 const mongoose = require('mongoose');
 const passport = require('passport');
@@ -35,6 +42,7 @@ mongoose
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -45,6 +53,19 @@ app.use(express.urlencoded({ extended: true }));
 // app.use(express.urlencoded({ extended: false }));
 // app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+
+/*app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true
+}))
+
+app.use(require('connect-flash')());
+app.use(function (req, res, next) {
+  res.locals.messages = require('express-messages')(req, res);
+  next();
+});*/
 
 
 // Express session
@@ -59,8 +80,12 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/customer', customerRouter);
+app.use('/employee', employeeRouter);
+app.use('/product', productRouter);
 
 
 
