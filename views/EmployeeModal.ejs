@@ -3,15 +3,9 @@
     <!-- Modal content -->
     <div class="modal-content">
       <span class="close">&times;</span>
-      <!-- <%- messages() %>
+
       
-      <% if(locals.errors) { %>
-      <ul class="">
-        <% Object.values(errors).forEach(function(error){ %>
-        <li><%= error.msg %></li>
-        <% }) %>
-      </ul>
-      <% } %> -->
+
       <form action="/employee/add" method="POST">
         Name:
         <input type="text" name="name" value="Mickey" />
