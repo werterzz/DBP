@@ -3,23 +3,32 @@
     <!-- Modal content -->
     <div class="modal-content">
       <span class="close">&times;</span>
+      <%- messages() %>
+      
+      <% if(locals.errors) { %>
+      <ul class="">
+        <% Object.values(errors).forEach(function(error){ %>
+        <li><%= error.msg %></li>
+        <% }) %>
+      </ul>
+      <% } %>
       <h1>Insert</h1>
-      <form action="/action_page.php" id="usrform">
+      <form action="/customer/submit" id="usrform" method="POST">
         ID:
-        <input type="number" name="id" value="Mickey" />
+        <input type="number" name="id" value="" />
         <br />
         Name:
-        <input type="text" name="name" value="Mouse" />
+        <input type="text" name="name" value="" />
   
         <br />
         Contact first name:
-        <input type="text" name="conFname" value="Mickey" />
+        <input type="text" name="conFname" value="" />
         <br />
         Contact last name:
-        <input type="text" name="conLname" value="Mickey" />
+        <input type="text" name="conLname" value="" />
         <br />
         Phone number:
-        <input type="text" name="phone" value="Mickey" />
+        <input type="text" name="phone" value="" />
         <br />
         Address Line 1:
         <textarea rows="4" cols="50" name="addr1" form="usrform"></textarea>
@@ -28,25 +37,25 @@
         <textarea rows="4" cols="50" name="addr2" form="usrform"></textarea>
         <br />
         City:
-        <input type="text" name="city" value="Mickey" />
+        <input type="text" name="city" value="" />
         <br />
         State:
-        <input type="text" name="state" value="Mickey" />
+        <input type="text" name="state" value="" />
         <br />
         Postal code:
-        <input type="number" name="postal" value="Mickey" />
+        <input type="number" name="postal" value="" />
         <br />
         Country:
-        <input type="text" name="country" value="Mickey" />
+        <input type="text" name="country" value="" />
         <br />
         Employee Number:
-        <input type="number" name="EmpNum" value="Mickey" />
+        <input type="number" name="EmpNum" value="" />
         <br />
         Credit limit:
-        <input type="number" name="creditLim" value="Mickey" />
+        <input type="number" name="creditLim" value="" />
         <br />
         <br />
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Submit"/>
       </form>
     </div>
 </div>
