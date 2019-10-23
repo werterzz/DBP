@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const { check, validationResult } = require('express-validator');
-const db = require('monk')("localhost:27017/classicModels")
+// const db = require('monk')("localhost:27017/classicModels")
 
 router.get('/', function(req, res, next) {
     res.render("customerModal");
@@ -39,7 +39,7 @@ router.post('/submit',[
           state:req.body.state,
           postalCode:req.body.postal,
           salesRepEmployeeNumber:req.body.EmpNum,
-          creditLimit:req.body.creditLim,
+          creditLimit:req.body.creditLim
       },function(err,customer){
           if(err){
               res.send(err);
