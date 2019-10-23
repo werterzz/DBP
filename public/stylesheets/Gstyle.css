@@ -52,3 +52,8 @@ div.listPD {
     margin: 0% 0.5% 1% 0.5%;
     width: 18.5%;
 }
+
+.cardInform {
+    /* border: 1px solid red; */
+    width: 100%;
+}
