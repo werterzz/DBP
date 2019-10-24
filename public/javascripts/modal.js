@@ -1,5 +1,6 @@
   // Get the modal
   var modal = document.getElementById("myModal");
+  var modal2 = document.getElementById("myModal2");
   var delEmpMod = document.getElementById("delEmpMod");
 
 
@@ -54,7 +55,11 @@
       delEmpMod.style.display = "none";
   }
 
-  var updateEmp = document.getElementById("updateEmp");
+
+updateEmp.onclick = function(event) {
+    modal2.style.display = "block";
+}
+
 
   updateEmp.onclick = function(event) {
       modal.style.display = "block";

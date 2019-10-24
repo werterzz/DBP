@@ -45,22 +45,26 @@
                                         <button type="button" id="DemEmpBtn" class="btn btn-secondary">
                   <a href='/employeeInformation/demote/<%= emp.employeeNumber %>'>Demote</a>
                 </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <img src="/images/card.svg" alt="" class="card" />
-                    </div>
-                </div>
-                <% }) %>
 
-
-
+              </div>
+            </div>
+          </div>
         </div>
+        <img src="/images/card.svg" alt="" class="card" />
+      </div>
     </div>
-    <a href="#">
-        <img class="addMenu" id="myBtn" src="/images/addMenu.svg" alt="" />
-    </a>
+    <% include EmployeeModalupdate.ejs %>
+    <% include EmployeeDeleteModal.ejs %>
+    <% }) %>
+
+
+
+
+
+<h1 style="margin-top: 5000px;">helllo</h1>
+
+<% include EmployeeModal.ejs %> 
+
 
     <% include EmployeeModal.ejs %>
         <% include EmployeeDeleteModal.ejs %>

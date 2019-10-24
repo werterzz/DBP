@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const { check, validationResult } = require('express-validator');
-const db = require('monk')("localhost:27017/classicModels")
+// const db = require('monk')("localhost:27017/classicModels")
 
 router.get('/', function(req, res, next) {
     res.render("customerModal", { title: "Add Customer" });
@@ -22,6 +22,7 @@ router.post('/submit', [
 ], function(req, res, next) {
     const result = validationResult(req);
     var errors = result.errors;
+
     if (!result.isEmpty()) {
         res.render('customer', { errors: errors, title: "Customer" });
     } else {
@@ -50,6 +51,7 @@ router.post('/submit', [
             }
         })
     }
+
 });
 
 module.exports = router;
