@@ -6,16 +6,17 @@ var url = "mongodb://localhost:27017/";
 const Employees = require('../models/Employees');
 
 router.get('/', function(req, res, next) {
-    res.render("EmployeeModal", {title: "hello"});
-  });
+    res.render("EmployeeModal", { title: "Employee" });
+});
 
 router.get('/', function(req, res, next) {
     res.render("EmployeeDeleteModal");
-  });
+});
 
 router.get('/employee', function(req, res, next) {
     res.render("employee");
-  });
+});
+
 
   // router.post('/del', function (req, res, next) {
   //   console.log("lol document deleted");
@@ -75,8 +76,16 @@ router.get('/employee', function(req, res, next) {
   
   
 
-  router.post('/add', function (req, res, next) {
+
+//   collection.deleteOne({ _id: new mongo.ObjectId(id) }, function (err, results) {
+//   });
+
+//   res.json({ success: id })
+// });
+
+router.post('/add', function(req, res, next) {
     console.log("document inserted");
+
     // MongoClient.connect(url, function (err, db) {
     //   if (err) throw err;
     //   var dbo = db.db("classicModels");
@@ -115,4 +124,5 @@ router.get('/employee', function(req, res, next) {
 
   });
 
- module.exports = router;
+
+module.exports = router;
