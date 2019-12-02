@@ -1,0 +1,72 @@
+change _id
+
+db.employees.find().forEach(function(doc){
+    old_id = doc._id 
+    doc._id=doc.employeeNumber
+    db.employees.insert(doc)
+    db.employees.remove({_id: old_id})
+});
+
+
+Change offices._id
+
+db.offices.find().forEach(function(doc){
+    old_id = doc._id 
+    doc._id=doc.officeCode
+    db.offices.insert(doc)
+    db.offices.remove({_id: old_id})
+});
+
+
+
+find with foreign key
+
+var dbRef = db.test.findOne({"name":"game"}).employees
+db[dbRef.$ref].findOne({"_id":(dbRef.$id)})
+
+
+
+findAndUpdateOffice in employees
+
+db.employees.find().forEach(function(emp){
+    temp = emp.officeCode
+    data = {
+         offices : {
+            $ref : "offices",
+            $id : temp
+        }       
+    }
+
+    db.employees.update({officeCode:temp},{$set: {officeCode: 
+            data
+        }
+     })
+})
+
+
+
+
+
+
+db.test.aggregate(
+  {$unwind: "$employees"},
+  {$lookup: {
+    from:"employees",
+    localField: "employees",
+    foreignField: "_id",
+    as: "bar"
+
+   }},
+   {$match: {
+
+   }}
+)
+
+
+
+    data = {
+        offices : {
+            $ref : offices
+            $id : temp
+        }
+    }
