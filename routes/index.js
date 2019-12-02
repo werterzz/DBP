@@ -44,8 +44,9 @@ router.get('/employeeInformation', function(req, res, next) {
     //     res.render('employeeInformation', { user: req.user, employees: employee, title: "Employee" });
     // });
 
-    Employees.find({}).populate('office').exec().then((data,err) => {
+    Employees.find({}).populate('office').exec().then((data, err) => {
         if (err) res.send(err)
+            // res.send(data[0].office)
         res.render('employeeInformation', { user: req.user, employees: data, title: "Employee" })
     })
 
@@ -175,15 +176,15 @@ router.get('/employeeInformation/promote/:id', (req, res) => {
 });
 
 router.get('/testme', (req, res) => {
-    Employees.find({}).populate('office').exec().then((data,err) => {
-        if (err) res.send(err)
-        console.log(data)
-        res.send(data[0])
-    })
-    // Employees.findOne({employeeNumber:"1165"}).then((emp) => {
-    //     res.send(emp)
-    // })
-    
+    Employees.find({}).populate('office').exec().then((data, err) => {
+            if (err) res.send(err)
+            console.log(data)
+            res.send(data[0].office.addressLine1)
+        })
+        // Employees.findOne({employeeNumber:"1165"}).then((emp) => {
+        //     res.send(emp)
+        // })
+
 })
 
 

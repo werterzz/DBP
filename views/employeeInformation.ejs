@@ -20,7 +20,8 @@
                                 <%= emp.jobTitle %>
                             </h6>
                             <h6>
-                                <%= emp.office.addressLine1 %> <%= emp.office.addressLine2 %>
+                                <%= emp.office.addressLine1 %>
+                                    <%= emp.office.addressLine2 %>
                             </h6>
                         </div>
                         <div class="empButton mb-4">
@@ -46,26 +47,26 @@
                   <a href='/employeeInformation/demote/<%= emp.employeeNumber %>'>Demote</a>
                 </button>
 
-              </div>
-            </div>
-          </div>
-        </div>
-        <img src="/images/card.svg" alt="" class="card" />
-      </div>
-    </div>
-    <% include EmployeeModalupdate.ejs %>
-    <% include EmployeeDeleteModal.ejs %>
-    <% }) %>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <img src="/images/card.svg" alt="" class="card" />
+                    </div>
+                </div>
+                <% include EmployeeModalupdate.ejs %>
+                    <% include EmployeeDeleteModal.ejs %>
+                        <% }) %>
 
 
 
 
 
-<h1 style="margin-top: 5000px;">helllo</h1>
+                            <h1 style="margin-top: 5000px;">helllo</h1>
 
-<% include EmployeeModal.ejs %> 
+                            <% include EmployeeModal.ejs %>
 
 
 
-            <script src="/javascripts/modal.js"></script>
-            <% include footer.ejs %>
+                                <script src="/javascripts/modal.js"></script>
+                                <% include footer.ejs %>
