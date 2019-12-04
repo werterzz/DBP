@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/customer/submit', function(req, res, next) {
-    res.render("customerModal");
+    res.render("customerModal", { title: "Customer" });
 });
 
 router.post('/submit', [

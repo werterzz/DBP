@@ -3,9 +3,13 @@ body {
     background-color: #EAE9E5;
 }
 
-.HamMenuList {
-    padding: 15px 0px 15px 0px !important;
-    text-align: center !important;
+section.rmenu {
+    position: fixed;
+    display: none;
+    padding-top: 15px !important;
+    padding-bottom: 15px !important;
+    width: 25em;
+    z-index: 10002;
 }
 
 .navbar-brand {

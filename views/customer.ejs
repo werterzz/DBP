@@ -28,34 +28,30 @@
                             <div class="container">
                                 <div class="row">
                                     <div class="col-sm">
-                                        <button type="button" class="btn btn-success" id="">
-                  Update
-                </button>
+                                        <button type="button" class="btn btn-success" id="UpdateBtn">
+                                        Update
+                                        </button>
                                     </div>
                                     <div class="col-sm">
-                                        <button type="button" id="delEmpBtn" class="btn btn-danger">
-                  Delete
-                </button>
+                                        <button type="button" class="btn btn-danger" id="DelBtn">
+                                        Delete
+                                        </button>
                                     </div>
-
-
                                 </div>
                             </div>
                         </div>
                         <img src="/images/card.svg" alt="" class="card" />
                     </div>
                 </div>
-                <% }) %>
-
-
-
+                <% include customerModalupdate.ejs %>
+                    <% include customerDel.ejs %>
+                        <% }) %>
         </div>
     </div>
     <a href="#">
-        <img class="addMenu" id="myBtn" src="/images/addMenu.svg" alt="" />
+        <img class="addMenu" id="AddBtn" src="/images/addMenu.svg" alt="" />
     </a>
 
     <% include customerModal.ejs %>
-
         <script src="/javascripts/modal.js"></script>
         <% include footer.ejs %>

@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
     <link rel="stylesheet" href="/stylesheets/style.css" />
     <link rel="stylesheet" href="/stylesheets/stylePond.css">
+    <link rel="stylesheet" href="/stylesheets/Gstyle.css" />
+    <link rel="stylesheet" href="/stylesheets/rightMenu.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
@@ -21,71 +23,66 @@
 
 
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-
-
-
-    <link rel="stylesheet" href="/stylesheets/Gstyle.css" />
-
-
 </head>
 
 <body>
-    <div class="w3-sidebar w3-bar-block w3-card w3-animate-right" style="display:none;right:0;width: 15%;margin-top: 70px;z-index: 2;" align="center" id="rightMenu">
-        <button onclick="closeRightMenu()" class="w3-bar-item w3-button w3-large">
-        Close &times;
-      </button>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-        <a href="/" class="w3-bar-item w3-button HamMenuList">Home</a>
-        <a href="order" class="w3-bar-item w3-button HamMenuList">Order</a>
-        <a href="product" class="w3-bar-item w3-button HamMenuList">Product</a>
-        <a href="customer" class="w3-bar-item w3-button HamMenuList">Customer</a>
-        <a href="employeeInformation" class="w3-bar-item w3-button HamMenuList">Employees</a>
-        <button type="button" class="btn btn-outline-secondary" style="padding: 5% 20% 5% 20%;" id="logBtn">Login</button>
-        <button type="button" class="btn btn-danger" id="logBtn"><a href="/logout">Logout</a></button>
-    </div>
+    <section id="menu" style="display: none;">
+        <section>
+            <form class="search" method="get" action="#">
+                <input type="text" name="query" placeholder="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </section>
+        <section>
+            <ul class="links">
+                <li>
+                    <a href="/">
+                        <h3 class="rightMenu">Home</h3>
+                    </a>
+                </li>
+                <li>
+                    <a href="order">
+                        <h3 class="rightMenu">Order</h3>
+                    </a>
+                </li>
+                <li>
+                    <a href="product">
+                        <h3 class="rightMenu">Product</h3>
+                    </a>
+                </li>
+                <li>
+                    <a href="customer">
+                        <h3 class="rightMenu">Customer</h3>
+                    </a>
+                </li>
+                <li>
+                    <a href="employeeInformation">
+                        <h3 class="rightMenu">Employees</h3>
+                    </a>
+                </li>
+            </ul>
+        </section>
+        <section>
+            <ul class="actions stacked">
+                <li><button type="button" class="btn btn-outline-secondary" style="padding: 5% 20% 5% 20%;" id="logBtn">Login</button>
+                    <button type="button" class="btn btn-danger" id="logBtn"><a href="/logout">Logout</a></button></li>
+            </ul>
+        </section>
+    </section>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-nav">
         <a class="navbar-brand" href="/">Antonite</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
         <ul class="nav navbar-nav navbar-right ml-auto">
             <li class="nav-item mr-5">
                 <h3>
-                    <%= (typeof user !== "undefined") ? user.firstName : 'name' %>
+                    <%= (typeof user !== "undefined") ? user.firstName : 'Guest' %>
                 </h3>
             </li>
             <li class="nav-item mt-3">
-                <img src="/images/menu.svg" alt="" onclick="openRightMenu()" width="50%">
+                <button class="btn btn-outline-secondary hamBtn" type="button" id="menuBtn">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
             </li>
         </ul>
-
-
     </nav>
-
-
-
-    <script>
-        function openLeftMenu() {
-            document.getElementById("leftMenu").style.display = "block";
-        }
-
-        function closeLeftMenu() {
-            document.getElementById("leftMenu").style.display = "none";
-        }
-
-        function openRightMenu() {
-            document.getElementById("rightMenu").style.display = "block";
-        }
-
-        function closeRightMenu() {
-            document.getElementById("rightMenu").style.display = "none";
-        }
-    </script>
-
-
-
     <% include LoginModal.ejs %>

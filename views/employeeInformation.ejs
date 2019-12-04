@@ -28,12 +28,12 @@
                             <div class="container">
                                 <div class="row">
                                     <div class="col-sm">
-                                        <button type="button" class="btn btn-success" id="updateEmp">
+                                        <button type="button" class="btn btn-success" id="UpdateBtn">
                   Update
                 </button>
                                     </div>
                                     <div class="col-sm">
-                                        <button type="button" id="delEmpBtn" class="btn btn-danger">
+                                        <button type="button" class="btn btn-danger" id="DelBtn">
                   Delete
                 </button>
                                     </div>
@@ -57,16 +57,11 @@
                 <% include EmployeeModalupdate.ejs %>
                     <% include EmployeeDeleteModal.ejs %>
                         <% }) %>
-
-
-
-
-
-                            <h1 style="margin-top: 5000px;">helllo</h1>
-
-                            <% include EmployeeModal.ejs %>
-
-
-
-                                <script src="/javascripts/modal.js"></script>
-                                <% include footer.ejs %>
+        </div>
+    </div>
+    <a href="#">
+        <img class="addMenu" id="AddBtn" src="/images/addMenu.svg" alt="" />
+    </a>
+    <% include EmployeeModal.ejs %>
+        <script src="/javascripts/modal.js"></script>
+        <% include footer.ejs %>
