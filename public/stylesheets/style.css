@@ -106,17 +106,20 @@ h6 {
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
+    width: 80% !important;
 }
 
 
 /* The Close Button */
 
 .close {
+    height: 23px;
+    width: 23px;
     color: #aaaaaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
+    margin-right: 10px !important;
 }
 
 .close:hover,

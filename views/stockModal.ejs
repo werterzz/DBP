@@ -1,0 +1,117 @@
+<div id="AddModal" class="modal" tabindex="-1" role="dialog">
+    <div class="" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title headerModal">Insert</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+            </div>
+            <div class="modal-body">
+                <div class="row my-2">
+                    <label for="unitCode" class="col-12 col-sm-3 text-sm-right my-auto">Product Code :</label>
+                    <input id="unitCode" [(ngModel)]="unitCode" formControlName="unitCode" name="unitCode" type="text" class="form-control col-12 col-sm-6 col-md-6">
+                </div>
+                <div class="row my-2">
+                    <label for="unitCode" class="col-12 col-sm-3 text-sm-right my-auto">Product Name :</label>
+                    <input id="unitCode" [(ngModel)]="unitCode" formControlName="unitCode" name="unitCode" type="text" class="form-control col-12 col-sm-6 col-md-6">
+                </div>
+                <div class="row my-2">
+                    <label for="unitCode" class="col-12 col-sm-3 text-sm-right my-auto">Product Line :</label>
+                    <input id="unitCode" [(ngModel)]="unitCode" formControlName="unitCode" name="unitCode" type="text" class="form-control col-12 col-sm-6 col-md-6">
+                </div>
+                <div class="row my-2">
+                    <label for="unitCode" class="col-12 col-sm-3 text-sm-right my-auto">Product Scale :</label>
+                    <input id="unitCode" [(ngModel)]="unitCode" formControlName="unitCode" name="unitCode" type="text" class="form-control col-12 col-sm-6 col-md-6">
+                </div>
+                <div class="row my-2">
+                    <label for="unitCode" class="col-12 col-sm-3 text-sm-right my-auto">Product Vendor :</label>
+                    <input id="unitCode" [(ngModel)]="unitCode" formControlName="unitCode" name="unitCode" type="text" class="form-control col-12 col-sm-6 col-md-6">
+                </div>
+                <div class="row my-2">
+                    <label for="unitCode" class="col-12 col-sm-3 text-sm-right my-auto">Product Description :</label>
+                    <input id="unitCode" [(ngModel)]="unitCode" formControlName="unitCode" name="unitCode" type="text" class="form-control col-12 col-sm-6 col-md-6">
+                </div>
+                <div class="row my-2">
+                    <label for="unitCode" class="col-12 col-sm-3 text-sm-right my-auto">Quantity Product :</label>
+                    <input id="unitCode" [(ngModel)]="unitCode" formControlName="unitCode" name="unitCode" type="text" class="form-control col-12 col-sm-6 col-md-6">
+                </div>
+                <div class="row my-2">
+                    <label for="unitCode" class="col-12 col-sm-3 text-sm-right my-auto">Price :</label>
+                    <input id="unitCode" [(ngModel)]="unitCode" formControlName="unitCode" name="unitCode" type="text" class="form-control col-12 col-sm-6 col-md-6">
+                </div>
+                <div class="row my-2">
+                    <label for="unitCode" class="col-12 col-sm-3 text-sm-right my-auto">MSRP :</label>
+                    <input id="unitCode" [(ngModel)]="unitCode" formControlName="unitCode" name="unitCode" type="text" class="form-control col-12 col-sm-6 col-md-6">
+                </div>
+                <div class="row my-2">
+                    <label for="unitCode" class="col-12 col-sm-3 text-sm-right my-auto">Text Description :</label>
+                    <input id="unitCode" [(ngModel)]="unitCode" formControlName="unitCode" name="unitCode" type="text" class="form-control col-12 col-sm-6 col-md-6">
+                </div>
+                <div class="row my-2">
+                    <label for="unitCode" class="col-12 col-sm-3 text-sm-right my-auto">HTML Description :</label>
+                    <input id="unitCode" [(ngModel)]="unitCode" formControlName="unitCode" name="unitCode" type="text" class="form-control col-12 col-sm-6 col-md-6">
+                </div>
+                <div class="row my-2">
+                    <label for="unitCode" class="col-12 col-sm-3 text-sm-right my-auto">Image :</label>
+                    <input id="unitCode" [(ngModel)]="unitCode" formControlName="unitCode" name="unitCode" type="text" class="form-control col-12 col-sm-6 col-md-6">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success">Save</button>
+                <button type="button" class="btn btn-secondary">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <div class="col-12 px-0 table-height" style="overflow:auto">  
+    <table class="col-12 px-0 table-bg" mat-table [dataSource]="dataSource" matSort>
+      <ng-container matColumnDef="Edit">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+        <td mat-cell *matCellDef="let shift">
+            <div class="row m-0">
+                <div class="d-flex p-0">
+                  <button class="btn btn-outline-dark btn-size p-0 mx-1 my-1 my-sm-0 mx-md-0" (click) = "edit()">
+                    <i class="fa fa-pencil"></i></button>
+                </div>
+                <div class="d-flex p-0">
+                  <button class="btn btn-outline-dark btn-size p-0 mx-1 mx-md-0 my-1 my-sm-0" (click)="remove(productCode)">
+                    <i class="fa fa-trash"></i></button>
+                </div>
+              </div>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="productCode">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Product Code</th>
+        <td mat-cell *matCellDef="let shift">{{shift.product_code}}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="productName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Product Name</th>
+        <td mat-cell *matCellDef="let shift">{{shift.product_name}}</td>
+      </ng-container>
+      <ng-container matColumnDef="productLine">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Product Line</th>
+        <td mat-cell *matCellDef="let shift">{{shift.product_line}}</td>
+      </ng-container>
+      <ng-container matColumnDef="scale">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Scale</th>
+        <td mat-cell *matCellDef="let shift">{{shift.scale}</td>
+      </ng-container>
+      <ng-container matColumnDef="productVendor">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Product Vendor</th>
+        <td mat-cell *matCellDef="let shift">{{shift.product_vendor}}</td>
+      </ng-container>
+      <ng-container matColumnDef="qty">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Qty</th>
+        <td mat-cell *matCellDef="let shift">{{shift.qty}}</td>
+      </ng-container>
+      <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Price</th>
+        <td mat-cell *matCellDef="let shift">{{shift.price}}</td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumes; sticky: true"></tr>
+      <tr mat-row *matRowDef="let myRowData; columns: displayedColumes" (click) ="sentData(myRowData)"></tr>
+    </table>
+  </div> -->
