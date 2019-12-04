@@ -8,6 +8,13 @@ router.get('/', function(req, res, next) {
   res.render("stockProduct", { title: "Stock" });
 });
 
+router.post('/update/:id', function (req, res, next) {
+    Employees.updateOne({}, function(err, ree) {
+        res.redirect("/product");
+    });
+
+  });
+
 router.post('/add', function(req, res, next) {
   console.log("document inserted");
   let emp = new Products({        

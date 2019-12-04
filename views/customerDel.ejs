@@ -1,14 +1,21 @@
-<!-- The Modal -->
-<div id="DelModal" class="modal">
-    <!-- Modal content -->
-    <div class="modal-content">
-        <span class="close">&times;</span>
-
-        <form action="/customer/del/<%= cus.customerNumber %>" method="POST">
-            <h1>Delete</h1>
-            <h4>Are you sure to delete this customer account?</h4>
-            <button type="button" class="btn btn-success" id="canDel">No</button>
-            <input type="submit" value="yes" />
-        </form>
+<div id="DelModal" class="modal" tabindex="-1" role="dialog">
+    <div class="" role="document">
+        <div class="modal-content" style="width: 100%;">
+            <div class="modal-header">
+                <h5 class="modal-title headerModal">Delete</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure to delete this customer account?</p>
+            </div>
+            <div class="modal-footer">
+                <form action="/customer/del/<%= cus.customerNumber %>" method="POST">
+                </form>
+                <button type="button" class="btn btn-success" id="canDel">No</button>
+                <button type="button" class="btn btn-secondary">Yes</button>
+            </div>
+        </div>
     </div>
 </div>

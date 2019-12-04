@@ -9,9 +9,9 @@
   var UpdateBtn = document.getElementById("UpdateBtn");
 
   // Get the <span> element that closes the modal
-  var spanAdd = document.getElementsByClassName("close")[3];
-  var spanDel = document.getElementsByClassName("close")[2];
-  var spanUpdate = document.getElementsByClassName("close")[1];
+  var spanAdd = document.getElementsByClassName("close")[1];
+  var spanDel = document.getElementsByClassName("close")[3];
+  var spanUpdate = document.getElementsByClassName("close")[2];
 
   // When the user clicks the button, open the modal 
   AddBtn.onclick = function() {
@@ -50,16 +50,10 @@
       if (event.target == UpdateModal) {
           UpdateModal.style.display = "none";
       }
-      if (event.target == loginMod) {
-          loginMod.style.display = "none";
-      }
-      if (event.target == menuMod) {
-          menuMod.style.display = "none";
-      }
   }
 
   var canDel = document.getElementById("canDel");
 
-  canDel.onclick = function(event) {
-      delEmpMod.style.display = "none";
+  canDel.onclick = function() {
+      DelModal.style.display = "none";
   }
