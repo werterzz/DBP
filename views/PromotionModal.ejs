@@ -1,0 +1,31 @@
+<!-- The Modal -->
+<div id="promotionModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close">&times;</span>
+
+      
+
+      <form action="/promotion/add" method="POST">
+        promotionCode:
+        <input type="text" name="_id" value="" />
+        <br />
+        empiryDate:
+        <input type="date" name="expiryDate" value="" />
+        <br />
+        discount:
+        <input type="number" name="discount" value="" />
+  
+        <br />
+        amount:
+        <input type="number" name="amount" value="" />
+        <br />
+        <select name="type">
+            <option value="discount">discount</option>
+            <option value="buy1get1">buy1get1</option>
+        </select>
+        <br />
+        <input type="submit" value="Submit" />
+      </form>
+    </div>
+</div>

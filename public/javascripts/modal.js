@@ -1,12 +1,16 @@
   // Get the modal
+  console.log("hello")
+
   var modal = document.getElementById("myModal");
   var modal2 = document.getElementById("myModal2");
   var delEmpMod = document.getElementById("delEmpMod");
+  var addPromotionModal = document.getElementById("promotionModal");
 
 
   // Get the button that opens the modal
   var btn = document.getElementById("myBtn");
   var delEmpBtn = document.getElementById("delEmpBtn");
+  var addPromotionBtn = document.getElementById("addPromotionButton");
 
   // Get the <span> element that closes the modal
 
@@ -18,6 +22,11 @@
   btn.onclick = function() {
       modal.style.display = "block";
   }
+
+    addPromotionBtn.onclick = function() {
+        console.log('PromotionButton')
+    addPromotionModal.style.display = "block";
+}
 
   delEmpBtn.onclick = function() {
       delEmpMod.style.display = "block";
@@ -64,3 +73,4 @@ updateEmp.onclick = function(event) {
   updateEmp.onclick = function(event) {
       modal.style.display = "block";
   }
+

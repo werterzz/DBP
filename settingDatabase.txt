@@ -1,4 +1,4 @@
-change _id
+change employees _id
 
 db.employees.find().forEach(function(doc){
     old_id = doc._id 
@@ -70,3 +70,73 @@ db.test.aggregate(
             $id : temp
         }
     }
+
+
+set password
+
+db.employees.find({}).forEach(function(emp){
+    db.employees.update({_id : emp._id},{$set : {password : emp._id}})
+})
+
+remove weird documents
+
+db.employees.remove({officeCode : {$exists : false}})
+
+
+
+
+
+insert promotion document
+
+db.promotions.insertMany([{
+    _id : "XXX",
+    expiryDate : new Date(ISODate().getTime() + 1000 * 3600 * 24 * 30),
+    discount : 20,
+    amount : 100,
+    type : "discount"
+}, {
+    _id : "YYY",
+    expiryDate : new Date(ISODate().getTime() + 1000 * 3600 * 24 * 30),
+    discount : 0,
+    amount : 100,
+    type : "buy1get1"
+}])
+
+
+
+embed orderDetail to order
+
+db.orderdetails.find().forEach(function(data) {
+    db.orders.update({"orderNumber.orderNumber": parseFloat(data.orderNumber)}, {$push : {
+        orderNumberhh : {
+                orderLineNumber : parseFloat(data.orderLineNumber),
+                orderNumber : parseFloat(data.orderNumber),
+                priceEach : parseFloat(data.priceEach),
+                productCode : data.productCode, 
+                quantityOrdered : parseFloat(data.quantityOrdered)
+        }
+    }})
+})
+
+
+convert string to int ex. priceEach in orders
+
+db.orders.find()
+
+
+
+
+easy way to update document ex update string to number in order
+
+db.orders.find().forEach(function(data){
+    data.orderNumber.quantityOrdered = parseInt(data.orderNumber.quantityOrdered)
+    db.orders.save(data)
+})
+
+
+
+
+
+db.orderdetails.find().forEach(function(data){
+    data.quantityOrdered = parseFloat(data.quantityOrdered)
+    db.orderdetails.save(data)
