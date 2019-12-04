@@ -17,6 +17,32 @@ db.offices.find().forEach(function(doc){
     db.offices.remove({_id: old_id})
 });
 
+Change orders._id
+
+db.orders.find().forEach(function(doc){
+    old_id = doc._id 
+    doc._id=doc.orderNumber
+    db.orders.insert(doc)
+    db.orders.remove({_id: old_id})
+});
+
+Change customers._id
+
+db.customers.find().forEach(function(doc){
+    old_id = doc._id 
+    doc._id=doc.customerNumber
+    db.customers.insert(doc)
+    db.customers.remove({_id: old_id})
+});
+
+Change products._id
+
+db.products.find().forEach(function(doc){
+    old_id = doc._id 
+    doc._id=doc.productCode
+    db.products.insert(doc)
+    db.products.remove({_id: old_id})
+});
 
 
 find with foreign key

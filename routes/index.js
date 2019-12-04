@@ -9,6 +9,8 @@ var url = "mongodb://localhost:27017/";
 const User = require('../models/User');
 const Offices = require('../models/Offices');
 const Employees = require('../models/Employees');
+const Orders = require('../models/Order');
+const OrderDetail = require('../models/OrderDetail');
 const Customer = require('../models/Customer');
 const Promotions = require('../models/Promotions')
 const { ensureAuthenticated, forwardAuthenticated } = require('../config/auth');
@@ -63,9 +65,21 @@ router.get('/customer', (req, res, next) => {
 });
 
 
-router.get('/order', function(req, res, next) {
-    res.render('order', { title: "Order", user: req.user });
+router.get('/order', function (req, res, next) {
+    Orders.find().populate('customer').exec().then((order) => {
+        Orders.find().populate('product').exec().then((order_product) => {
+        res.render('order', { user: req.user, orders : order, order_p : order_product , title: "Order" })
+    })
+})
+//   Order.find().then((order) => {
+//     OrderDetail.find().then((orderDetail) => { console.log("bello")
+//       Customer.find().then((customer) => {
+//         res.render('order', { user: req.user , orders : order , orderDetails : orderDetail , customers : customer , title: "hello" });
+//       });
+//     });
+//   });
 });
+
 
 
 
