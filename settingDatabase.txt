@@ -83,10 +83,6 @@ db.employees.find().forEach(function(emp){
 })
 
 
-
-
-
-
 db.test.aggregate(
   {$unwind: "$employees"},
   {$lookup: {
@@ -105,7 +101,17 @@ db.test.aggregate(
 
     data = {
         offices : {
-            $ref : offices
+            $ref : offices,
             $id : temp
         }
     }
+
+//embed product
+db.productlines.find().forEach(function(doc){
+	db.customers.updateMany(
+        {productLine : doc.productLine},
+        {$set : {
+            
+        }
+	})
+})

@@ -32,91 +32,7 @@
       </thead>
       <tbody style="background-color: #ccccc8">
         <tr>
-          <td>DL2591</td>
-          <td>Teddy Bear</td>
-          <td>Doll</td>
-          <td>1 : 14</td>
-          <td>C</td>
-          <td>30</td>
-          <td>699 </td>
-          <td>
-            <div class="row m-0">
-              <div class="d-flex">
-                <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#addInsertProduct">
-                <i class="fa fa-pen"></i></button>
-              </div>
-              <div class="d-flex">
-                <button class="btn btn-outline-dark">
-                <i class="fa fa-trash"></i></button>
-              </div>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>DL2591</td>
-          <td>Teddy Bear</td>
-          <td>Doll</td>
-          <td>1 : 14</td>
-          <td>C</td>
-          <td>30</td>
-          <td>699</td>
-          <td>
-            <div class="row m-0">
-              <div class="d-flex">
-                <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#addInsertProduct">
-                <i class="fa fa-pen"></i></button>
-              </div>
-              <div class="d-flex">
-                <button class="btn btn-outline-dark">
-                <i class="fa fa-trash"></i></button>
-              </div>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>DL2591</td>
-          <td>Teddy Bear</td>
-          <td>Doll</td>
-          <td>1 : 14</td>
-          <td>C</td>
-          <td>30</td>
-          <td>699</td>
-          <td>
-            <div class="row m-0">
-              <div class="d-flex">
-                <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#addInsertProduct">
-                <i class="fa fa-pen"></i></button>
-              </div>
-              <div class="d-flex">
-                <button class="btn btn-outline-dark">
-                <i class="fa fa-trash"></i></button>
-              </div>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>DL2591</td>
-          <td>Teddy Bear</td>
-          <td>Doll</td>
-          <td>1 : 14</td>
-          <td>C</td>
-          <td>30</td>
-          <td>699</td>
-          <td>
-            <div class="row m-0">
-              <div class="d-flex">
-                <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#addInsertProduct">
-                <i class="fa fa-pen"></i></button>
-              </div>
-              <div class="d-flex">
-                <button class="btn btn-outline-dark">
-                <i class="fa fa-trash"></i></button>
-              </div>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>DL2591</td>
+          <td>lol</td>
           <td>Teddy Bear</td>
           <td>Doll</td>
           <td>1 : 14</td>
@@ -139,7 +55,8 @@
       </tbody>
     </table>
 
-    <!--addInsertModal-->
+    <!-- addInsertModal -->
+  <form action="/product/update/" method="POST">
     <div class="modal" id="addInsertProduct">
       <div class="modal-dialog modal-xl modal-dialog-scrollable">
         <div class="modal-content">
@@ -222,6 +139,7 @@
         </div>
       </div>
     </div>
+  </form>
   <!-- <div class="col-12 px-0 table-height" style="overflow:auto">  
     <table class="col-12 px-0 table-bg" mat-table [dataSource]="dataSource" matSort>
       <ng-container matColumnDef="Edit">
@@ -275,8 +193,9 @@
 </div>
 
 <a href="#">
-    <img class="addMenu" id="myBtn" src="/images/addMenu.svg" alt="" />
+    <img class="addMenu" id="AddBtn" src="/images/addMenu.svg" alt="" />
   </a>
 <script src="/javascripts/stockProduct.js"></script>
-
-<% include footer.ejs %>
+<% include stockProductModal.ejs %>
+        <script src="/javascripts/modal.js"></script>
+        <% include footer.ejs %>
