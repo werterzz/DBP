@@ -54,8 +54,6 @@ router.get('/employeeInformation', function(req, res, next) {
             res.render('employeeInformation', { user: req.user, employees: data, title: "Employee" })
         })
     }
-
-
 });
 
 router.get('/customer', (req, res, next) => {
