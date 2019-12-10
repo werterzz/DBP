@@ -7,6 +7,14 @@ db.employees.find().forEach(function(doc){
     db.employees.remove({_id: old_id})
 });
 
+Change payment._id
+
+db.payments.find().forEach(function(doc){
+    old_id = doc._id 
+    doc._id=doc.checkNumber
+    db.payments.insert(doc)
+    db.payments.remove({_id: old_id})
+});
 
 Change offices._id
 

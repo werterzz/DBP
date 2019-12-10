@@ -1,0 +1,59 @@
+<% include ../header.ejs %>
+<p></p>
+<script src ="http://kit.fontawesome.com/a076d05399.js"></script>
+<script src="order.js"></script>
+
+<head> 
+    <title><%= title %></title>
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/order.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<div class="p-4 col-12">
+  <h4 class=" font-weight-bold page-header">Order</h4>
+  <hr>
+  <table class="table table-bordered table-sm">
+    <thead style="background-color: #757574 ; color : white">
+      <tr>
+        <th style="width: 10%">Order Number</th>
+        <th style="width: 10%">Custumer ID</th>
+        <th style="width: 10%">Status</th>
+        <th style="width: 10%">Required</th>
+        <th style="width: 52%">Comments</th>
+        <th style="width: 2%"></th>
+        <th style="width: 6%"></th>
+      </tr>
+    </thead>
+    <tbody style="background-color: #ccccc8 ; color : black">
+      <% orders.forEach(function(or){ %>
+        <tr>
+          <td><%= or.orderNumber %></td>
+          <td><%= or.customerNumber %></td>
+          <td><%= or.status %></td>
+          <td><%= or.requiredDate %></td>
+          <td><%= or.comments %></td>
+          <td>
+            <form action="/orderDetails" method = "get">
+              <button class="btn btn-outline-dark"><i class="fa fa-file"></i></button>
+            </form>
+          </td>
+          <td>
+            <% include orderUpdate.ejs %>
+            <% include deleteOrder.ejs %>
+          </td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>
+<% include orderAdd.ejs %>
+<% include ../footer.ejs %>

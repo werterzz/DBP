@@ -10,6 +10,7 @@ const User = require('../models/User');
 const Offices = require('../models/Offices');
 const Employees = require('../models/Employees');
 const Orders = require('../models/Order');
+const Payments = require('../models/Payment');
 // const Products = require('../models/Products')
 const OrderDetail = require('../models/OrderDetail');
 const Customer = require('../models/Customer');
@@ -63,11 +64,16 @@ router.get('/customer', (req, res, next) => {
     });
 });
 
+router.get('/payment', (req, res, next) => {
+    Payments.find().then((payment) => {
+        res.render('./payment/payment', { payments: payment, title: "Payment" });
+    });
+});
 
 router.get('/order', function (req, res, next) {
     Orders.find().populate('customer').exec().then((order) => {
         Orders.find().populate('product').exec().then((order_product) => {
-        res.render('order', { user: req.user, orders : order, order_p : order_product , title: "Order" })
+        res.render('./order/order', { user: req.user, orders : order, order_p : order_product , title: "Order" })
     })
     // Products.find().then((product) => {
     //     res.render('product' , {products : product})
@@ -83,7 +89,7 @@ router.get('/order', function (req, res, next) {
 });
 
 router.get('/orderDetails', (req, res, next) => {
-        res.render('orderDetails', {title: "Order Details" });
+        res.render('./orderDetails/orderDetails', {title: "Order Details" });
 });
 
 router.get('/hello', function(req, res, next) {

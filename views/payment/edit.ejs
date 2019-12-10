@@ -1,0 +1,41 @@
+<button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#paymentUpdateModal<%= pm.checkNumber %>"><i class="fa fa-pen"></i></button>
+<div class="modal" id="paymentUpdateModal<%= pm.checkNumber %>" data-backdrop="false">
+    <div class="modal-dialog modal-xl modal-dialog-scrollable">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="blackFont">Update Payment</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form action="/payment/update/<%= pm.checkNumber %>" method="POST">
+                    <div class="row my-2">
+                        <label for="chequeNumber" class="col-12 col-sm-3 text-sm-right my-auto">Cheque Number :</label>
+                        <input id="chequeNumber" name="chequeNumber" type="text" value="<%= pm.checkNumber %>"
+                        class="form-control col-12 col-sm-6 col-md-6" disabled>
+                    </div>
+                    <div class="row my-2">
+                        <label for="customerNumber" class="col-12 col-sm-3 text-sm-right my-auto">Customer Number :</label>
+                        <input id="customerNumber" name="customerNumber" type="text" value="<%= pm.customerNumber %>"
+                        class="form-control col-12 col-sm-6 col-md-6">
+                    </div>
+                    <div class="row my-2">
+                        <label for="amount" class="col-12 col-sm-3 text-sm-right my-auto">Amount :</label>
+                        <input id="amount" name="amount" type="text" value="<%= pm.amount %>"
+                        class="form-control col-12 col-sm-6 col-md-6">
+                    </div>
+                    <div class="row my-2">
+                        <label for="paymentDate" class="col-12 col-sm-3 text-sm-right my-auto">Payment Date :</label>
+                        <input id="paymentDate" name="paymentDate" type="date" value="<%= pm.paymentDate %>"
+                        class="form-control col-12 col-sm-6 col-md-6">
+                    </div>
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="buttonAdd button5" data-dismiss="modal">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
