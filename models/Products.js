@@ -1,5 +1,15 @@
 const mongoose = require('mongoose');
 
+const StocksSchema = new mongoose.Schema({
+    date: {
+        type: Date,
+        required: true
+    },
+    product: {
+        type: Object       
+    }
+});
+
 const ProductsSchema = new mongoose.Schema({
     MSRP: {
         type: String,
@@ -38,15 +48,6 @@ const ProductsSchema = new mongoose.Schema({
     },
 },{ toJSON: { virtuals: true }, toObject: { virtuals: true }});
 
-const StocksSchema = new mongoose.Schema({
-    date: {
-        type: Date,
-        required: true
-    },
-    product: {
-        type: Object       
-    }
-});
 
 ProductsSchema.virtual('stock', {
     ref: 'Stocks', // The model to use

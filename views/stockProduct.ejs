@@ -1,6 +1,7 @@
 <% include header.ejs %>
-    <% include stockModal.ejs %>
+    <% include stockProductModal.ejs %>
         <div class="p-4 col-12">
+            <% products.forEach(function(emp){ %>
             <h4 class=" font-weight-bold page-header">Stock Product</h4>
             <hr>
             <table class="table table-bordered table-sm">
@@ -18,13 +19,13 @@
                 </thead>
                 <tbody style="background-color: #ccccc8">
                     <tr>
-                        <td>DL2591</td>
-                        <td>Teddy Bear</td>
+                        <td><%= emp.productCode %></td>
+                        <td><%= emp.productName %></td>
                         <td>Doll</td>
-                        <td>1 : 14</td>
-                        <td>C</td>
-                        <td>30</td>
-                        <td>699 </td>
+                        <td><%= emp.productScale %></td>
+                        <td><%= emp.productVendor %></td>
+                        <td><%= emp.quantityInStock %></td>
+                        <td><%= emp.buyPrice %></td>
                         <td>
                             <div class="row m-0">
                                 <div class="d-flex">
@@ -38,12 +39,12 @@
                             </div>
                         </td>
                     </tr>
-
+                    <% include stockModalupdate.ejs %>
+                    <% include stockDel.ejs %>
+                        <% }) %>
                 </tbody>
             </table>
-
-            <% include stockModalupdate.ejs %>
-                <% include stockDel.ejs %>
+        </div>
                     <a href="#">
                         <img class="addMenu" id="AddBtn" src="/images/addMenu.svg" alt="" />
                     </a>

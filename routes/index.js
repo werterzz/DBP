@@ -51,6 +51,7 @@ router.get('/employeeInformation', function(req, res, next) {
     })
 
 
+
 });
 
 router.get('/customer', (req, res, next) => {

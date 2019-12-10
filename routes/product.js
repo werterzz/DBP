@@ -5,11 +5,27 @@ var url = "mongodb://localhost:27017/";
 const Products = require('../models/Products');
 
 router.get('/', function(req, res, next) {
-  res.render("stockProduct", { title: "Stock" });
+  Products.find({}).populate('stock').exec().then((data, err) => {
+    if (err) res.send(err)
+        console.log(data)
+    res.render('stockProduct', { user: req.user, products: data, title: "Product" })
+  })
+
 });
 
+
+
 router.post('/update/:id', function (req, res, next) {
-    Employees.updateOne({}, function(err, ree) {
+    Products.updateOne({
+      MSRP: req.body.msrp,
+      buyPrice: req.body.buyprice,
+      productCode: req.body.productcode,
+      productDescription: req.body.description,
+      productLine: req.body.description,
+      productName: req.body.employeenumber,
+      productScale: req.body.productscale,
+      productVendor: req.body.productvendor,
+      quantityInStock: req.body.quantityinStock}, function(err, ree) {
         res.redirect("/product");
     });
 
