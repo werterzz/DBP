@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/del/:id', (req, res) => {
-  Products.deleteOne({ productCode: req.params.id }, function (err) {
+  Products.deleteOne({ _id: req.params.id }, function (err) {
   if (err) console.log(err)
   // deleted at most one tank document
   res.redirect("/product");
