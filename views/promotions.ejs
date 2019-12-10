@@ -1,0 +1,29 @@
+<% include header.ejs %>  
+<div>
+        <% include PromotionModal.ejs %>
+        <% include buyPromotionModal.ejs %>
+    <button type="button" id="addPromotionButton">Add Promotion Code</button>
+    <button type="button" id="buyPromotionButton">buy product</button>
+    <table class="table color" style="width:100%">
+      <tr>
+        <th scope="col">promotionCode</th>
+        <th scope="col">expiryDate</th>
+        <th scope="col">discount</th>
+        <th scope="col">amount</th>
+        <th scope="col">type</th>
+    </tr>
+
+    <% promotions.forEach(function(pro){ %>
+        <tr>
+            <th scope="col"><%= pro._id %></th>
+            <th scope="col"><%= pro.expiryDate %></th>
+            <th scope="col"><%= pro.discount%></th>
+            <th scope="col"><%= pro.amount %></th>
+            <th scope="col"><%= pro.type %></th>
+        </tr>
+    <% }) %>
+
+    </table>
+  </div>
+  <script src="/javascripts/addPromotionModal.js"></script>
+<% include footer.ejs %>
