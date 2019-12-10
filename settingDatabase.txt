@@ -1,10 +1,10 @@
 //change _id
 
-db.employees.find().forEach(function(doc){
+db.customers.find().forEach(function(doc){
     old_id = doc._id 
-    doc._id=doc.employeeNumber
-    db.employees.insert(doc)
-    db.employees.remove({_id: old_id})
+    doc._id=doc.customerNumber
+    db.customers.insert(doc)
+    db.customers.remove({_id: old_id})
 });
 
 db.offices.find().forEach(function(doc){
@@ -109,9 +109,18 @@ db.test.aggregate(
 
 //embed product
 db.productlines.find().forEach(function(doc){
-	db.customers.updateMany(
-        {productLine : doc.productLine},
-        {$set : {
+        db.products.update({productLine:doc.productLine},{$set: 
+        {productLine: 
+            {
+                _id : doc._id,
+                htmlDescription : doc.htmlDescription,
+                image : doc.image,
+                productLine : doc.productLine,
+                textDescription : doc.textDescription
+            }
+        }
+     })
+})
             
 
 
