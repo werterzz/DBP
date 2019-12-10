@@ -8,7 +8,7 @@
             </button>
             </div>
             <div class="modal-body">
-                <%- messages() %>
+                <!-- <%- messages() %>
 
                     <% if(locals.errors) { %>
                         <ul class="">
@@ -18,14 +18,15 @@
                                 </li>
                                 <% }) %>
                         </ul>
-                        <% } %>
+                        <% } %> -->
 
-                            <form action="/customer/submit" id="usrform" method="POST">
+                            <form action="/customer/add" id="usrform" method="POST">
                                 ID:
                                 <input type="number" name="id" value="" />
                                 <br /> Name:
                                 <input type="text" name="name" value="" />
-
+                                <!-- <br /> CustomerNumber:
+                                <input type="text" name="cusnum" value="" /> -->
                                 <br /> Contact first name:
                                 <input type="text" name="conFname" value="" />
                                 <br /> Contact last name:
@@ -50,12 +51,11 @@
                                 <input type="number" name="creditLim" value="" />
                                 <br />
                                 <br />
-                                <input type="submit" value="Submit" />
-                            </form>
+                                
+                            
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-success">Save</button>
-                <button type="button" class="btn btn-secondary">Cancel</button>
+                    <input type="submit" class="btn btn-success"value="Submit" /></form>
             </div>
         </div>
     </div>
