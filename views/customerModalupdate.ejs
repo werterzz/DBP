@@ -1,0 +1,47 @@
+<div id="UpdateModal" class="modal" tabindex="-1" role="dialog">
+    <div class="" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title headerModal">Update</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                <form action="/customer/update/" method="POST">
+                    customerName:
+                    <input type="text" name="customerName" value="Mickey" />
+                    <br /> Contact first name:
+                    <input type="text" name="contactFirstName" value="Mickey" />
+                    <br /> Contact last name:
+                    <input type="text" name="contactLastName" value="Mouse" />
+                    <br /> Phone number:
+                    <input type="text" name="phoneNumber" value="Mickey" />
+                    <br /> Address Line1:
+                    <input type="textarea" name="addressLine1" value="Mickey" />
+                    <br /> Address Line2:
+                    <input type="textarea" name="addressLine2" value="Mickey" />
+                    <br /> City:
+                    <input type="text" name="city" value="Mickey" />
+                    <br /> State:
+                    <input type="text" name="state" value="Mickey" />
+                    <br /> Postal code:
+                    <input type="text" name="postalCode" value="Mickey" />
+                    <br /> Country:
+                    <input type="text" name="country" value="Mickey" />
+                    <br /> Employee Number:
+                    <input type="text" name="salesRepEmployeeNumber" value="Mickey" />
+                    <br /> Credit limit:
+                    <input type="text" name="creditLimit" value="Mickey" />
+                    <br />
+                    <br />
+                    <input type="submit" value="Submit" />
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-secondary">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

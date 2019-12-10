@@ -1,0 +1,38 @@
+<div id="UpdateModal" class="modal" tabindex="-1" role="dialog">
+    <div class="" role="document">
+        <div class="modal-content" style="width: 1000px !important;">
+            <div class="modal-header">
+                <h5 class="modal-title headerModal">Update</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+            </div>
+            <div class="modal-body">
+                <form action="/product/add<%= emp.productcode %>" method="POST">
+                  <br /> productName:
+                  <input type="text" name="employeenumber" value="Mickey" />
+                  <br /> productScale:
+                  <input type="text" name="productscale" value="Mickey" />
+                  <br /> productVendor:
+                  <input type="text" name="productvendor" value="Mickey" />
+                  <br /> quantityInStock:            
+                  <input type="text" name="quantityinStock" value="Mickey" />
+                  <br /> MSRP:
+                  <input type="text" name="msrp" value="Mickey" />
+                  <br /> buyPrice:
+                  <input type="text" name="buyprice" value="Mickey" />
+                  <br /> productCode:
+                  <input type="text" name="productcode" value="Mouse" />
+                  <br /> productDescription:
+                  <input type="text" name="description" value="Mickey" />
+
+              </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-secondary">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+

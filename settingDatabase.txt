@@ -1,4 +1,4 @@
-change employees _id
+//change _id
 
 db.employees.find().forEach(function(doc){
     old_id = doc._id 
@@ -7,9 +7,6 @@ db.employees.find().forEach(function(doc){
     db.employees.remove({_id: old_id})
 });
 
-
-Change offices._id
-
 db.offices.find().forEach(function(doc){
     old_id = doc._id 
     doc._id=doc.officeCode
@@ -17,7 +14,49 @@ db.offices.find().forEach(function(doc){
     db.offices.remove({_id: old_id})
 });
 
+db.customers.find().forEach(function(doc){
+    old_id = doc._id 
+    doc._id=doc.customerNumber
+    db.customers.insert(doc)
+    db.customers.remove({_id: old_id})
+});
 
+db.orderdetails.find().forEach(function(doc){
+    old_id = doc._id 
+    doc._id=doc.orderLineNumber
+    db.orderdetails.insert(doc)
+    db.orderdetails.remove({_id: old_id})
+});
+
+db.orders.find().forEach(function(doc){
+    old_id = doc._id 
+    doc._id=doc.orderNumber
+    db.orders.insert(doc)
+    db.orders.remove({_id: old_id})
+});
+
+db.payments.find().forEach(function(doc){
+    old_id = doc._id 
+    doc._id=doc.checkNumber
+    db.payments.insert(doc)
+    db.payments.remove({_id: old_id})
+});
+
+db.productlines.find().forEach(function(doc){
+    old_id = doc._id 
+    doc._id=doc.productLine
+    db.productlines.insert(doc)
+    db.productlines.remove({_id: old_id})
+});
+
+db.products.find().forEach(function(doc){
+    old_id = doc._id 
+    doc._id=doc.productCode
+    db.products.insert(doc)
+    db.products.remove({_id: old_id})
+});
+
+//end change _id
 
 find with foreign key
 
@@ -44,10 +83,6 @@ db.employees.find().forEach(function(emp){
 })
 
 
-
-
-
-
 db.test.aggregate(
   {$unwind: "$employees"},
   {$lookup: {
@@ -66,10 +101,18 @@ db.test.aggregate(
 
     data = {
         offices : {
-            $ref : offices
+            $ref : offices,
             $id : temp
         }
     }
+
+
+//embed product
+db.productlines.find().forEach(function(doc){
+	db.customers.updateMany(
+        {productLine : doc.productLine},
+        {$set : {
+            
 
 
 set password
@@ -114,24 +157,11 @@ embed orderDetail to order
                 priceEach : parseFloat(data.priceEach),
                 productCode : data.productCode, 
                 quantityOrdered : parseFloat(data.quantityOrdered)
+
         }
-    }})
+	})
 })
 
-
-convert string to int ex. priceEach in orders
-
-db.orders.find()
-
-
-
-
-easy way to update document ex update string to number in order
-
-db.orders.find().forEach(function(data){
-    data.orderNumber.quantityOrdered = parseInt(data.orderNumber.quantityOrdered)
-    db.orders.save(data)
-})
 
 
 
@@ -176,4 +206,5 @@ db.orders.find().forEach(function(data){
     data.orderNumber = []
     db.orders.save(data)
 })
+
 
