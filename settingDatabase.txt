@@ -106,9 +106,9 @@ db.promotions.insertMany([{
 
 embed orderDetail to order
 
-db.orderdetails.find().forEach(function(data) {
-    db.orders.update({"orderNumber.orderNumber": parseFloat(data.orderNumber)}, {$push : {
-        orderNumberhh : {
+ db.orderdetails.find().forEach(function(data) {
+    db.orders.update({_id: parseFloat(data.orderNumber)}, {$push : {
+        orderNumber : {
                 orderLineNumber : parseFloat(data.orderLineNumber),
                 orderNumber : parseFloat(data.orderNumber),
                 priceEach : parseFloat(data.priceEach),
@@ -140,3 +140,40 @@ db.orders.find().forEach(function(data){
 db.orderdetails.find().forEach(function(data){
     data.quantityOrdered = parseFloat(data.quantityOrdered)
     db.orderdetails.save(data)
+
+
+var count = 0
+db.orders.find({status : {$ne: "Cancelled"}}).forEach(function(data){
+    var sum = 0
+    
+    data.orderNumber.forEach(function(data2){
+       sum = sum + parseFloat(data2.priceEach * data2.quantityOrdered)
+       
+    })
+    db.payments.find().forEach(function(data2){
+        if(parseFloat(data2.amount) == sum) count = count + 1
+        
+    })
+})
+print(count)
+print(data2.amount +" "+ sum)
+db.payments.find().forEach(function(data){
+    data.amount = parseFloat(data.amount)
+    db.payments.save(data)
+})
+
+
+
+
+db.orders.find().forEach(function(doc){
+    old_id = doc._id 
+    doc._id=parseInt(doc.orderNumber)
+    db.orders.insert(doc)
+    db.orders.remove({_id: old_id})
+});
+
+db.orders.find().forEach(function(data){
+    data.orderNumber = []
+    db.orders.save(data)
+})
+
