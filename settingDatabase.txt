@@ -1,10 +1,10 @@
 //change _id
 
-db.customers.find().forEach(function(doc){
+db.products.find().forEach(function(doc){
     old_id = doc._id 
-    doc._id=doc.customerNumber
-    db.customers.insert(doc)
-    db.customers.remove({_id: old_id})
+    doc._id=doc.productCode
+    db.products.insert(doc)
+    db.products.remove({_id: old_id})
 });
 
 db.offices.find().forEach(function(doc){
