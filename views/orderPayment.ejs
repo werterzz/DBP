@@ -2,10 +2,10 @@
 <!-- <button type="button" class="buttonAdd button5" data-toggle="modal" data-target="#myModal">
         Add
       </button> -->
-<button type="button" data-toggle="modal" data-target="#myModal"><i class="fa fa-credit-card"></i></button>
+<button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#orderPaymentModal"><i class="fa fa-credit-card"></i></button>
 <!-- The Modal -->
-<div class="modal" id="myModal">
-    <div class="modal-dialog">
+<div class="modal" id="orderPaymentModal" data-backdrop="false">
+    <div class="modal-dialog modal-xl modal-dialog-scrollable">
         <div class="modal-content">
 
             <!-- Modal Header -->
@@ -15,27 +15,27 @@
             </div>
 
             <!-- Modal body -->
-            <div class="blackFont">
-                Customer Number:
-                <input type="text" name="firstname" value="Mickey" />
-                <br />
-                <p></p>
-                <div class="input-group mb-3">
-                    Payment Date:
-                    <input type="text" name="firstname" value="Mickey">
-                    <div class="input-group-append">
-                        <button class="blackFont" type="button"><i class="fa fa-calendar"></i></button>
-                    </div>
+            <div class="modal-body">
+                <div class="row my-2">
+                    <label for="customerNumber" class="col-12 col-sm-3 text-sm-right my-auto">Customer Number :</label>
+                    <input id="customerNumber" name="customerNumber" type="text"
+                    class="form-control col-12 col-sm-6 col-md-6">
                 </div>
-                <br />
-                Amount:
-                <input type="text" name="firstname" value="Mickey" />
-                <br />
-                <p></p>
-                Total:
-                <input type="text" name="firstname" value="Mickey" />
-                <br />
-                <p></p>
+                <div class="row my-2">
+                    <label for="customerNumber" class="col-12 col-sm-3 text-sm-right my-auto">Payment Date :</label>
+                    <input id="customerNumber" name="customerNumber" type="date"
+                    class="form-control col-12 col-sm-6 col-md-6">
+                </div>
+                <div class="row my-2">
+                    <label for="customerNumber" class="col-12 col-sm-3 text-sm-right my-auto">Amount :</label>
+                    <input id="customerNumber" name="customerNumber" type="text"
+                    class="form-control col-12 col-sm-6 col-md-6">
+                </div>
+                <div class="row my-2">
+                    <label for="customerNumber" class="col-12 col-sm-3 text-sm-right my-auto">Total :</label>
+                    <input id="customerNumber" name="customerNumber" type="text"
+                    class="form-control col-12 col-sm-6 col-md-6">
+                </div>
                 <!-- Modal footer -->
                 <div class="modal-footer">
                     <button type="button" class="buttonAdd button5" data-dismiss="modal">Submit</button>

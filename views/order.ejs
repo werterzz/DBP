@@ -1,6 +1,7 @@
 <% include header.ejs %>
 <p></p>
 <script src ="http://kit.fontawesome.com/a076d05399.js"></script>
+<script src="order.js"></script>
 
 <head> 
     <title><%= title %></title>
@@ -13,6 +14,7 @@
     />
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
     <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/order.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
@@ -22,35 +24,36 @@
   <table class="table table-bordered table-sm">
     <thead style="background-color: #757574 ; color : white">
       <tr>
-        <th scope="col">Order Number</th>
-        <th scope="col">Product Code</th>
-        <th scope="col">Custumer ID</th>
-        <th scope="col">QTY</th>
-        <th scope="col">Price</th>
-        <th scope="col">Status</th>
-        <th scope="col">Required</th>
-        <th scope="col">Data</th>
-        <th scope="col"></th>
+        <th style="width: 10%">Order Number</th>
+        <th style="width: 10%">Custumer ID</th>
+        <th style="width: 10%">Status</th>
+        <th style="width: 10%">Required</th>
+        <th style="width: 49%">Comments</th>
+        <th style="width: 3%"></th>
+        <th style="width: 8%"></th>
       </tr>
     </thead>
     <tbody style="background-color: #ccccc8 ; color : black">
       <% orders.forEach(function(or){ %>
         <tr>
           <td><%= or.orderNumber %></td>
-          <td><%= or.productCode %></td>
           <td><%= or.customerNumber %></td>
-          <td><%= or.quantityOrdered %></td>
-          <td><%= or.priceEach %></td>
           <td><%= or.status %></td>
           <td><%= or.requiredDate %></td>
-          <td></td>
+          <td><%= or.comments %></td>
           <td>
-          <% include orderUpdate.ejs %>
-            <button type="button"><i class="fa fa-trash"></i></button>
-          <% include orderPayment.ejs %>
-        </td>
+            <form action="/orderDetails" method = "get">
+              <button class="btn btn-outline-dark"><i class="fa fa-file"></i></button>
+            </form>
+          </td>
+          <td>
+            <% include orderUpdate.ejs %>
+            <% include orderPayment.ejs %>
+            <% include deleteOrder.ejs %>
+          </td>
       </tr>
-    <% }) %>
+      <% }) %>
+    </tbody>
   </table>
 </div>
 <% include orderAdd.ejs %>

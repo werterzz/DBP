@@ -85,6 +85,9 @@ const ProductsSchema = new mongoose.Schema({
 });
 
 const OrdersSchema = new mongoose.Schema({
+  _id: {
+    type: String
+  },
   orderNumber: {
     type: String
   },

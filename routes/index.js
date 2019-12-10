@@ -10,6 +10,7 @@ const User = require('../models/User');
 const Offices = require('../models/Offices');
 const Employees = require('../models/Employees');
 const Orders = require('../models/Order');
+// const Products = require('../models/Products')
 const OrderDetail = require('../models/OrderDetail');
 const Customer = require('../models/Customer');
 const Promotions = require('../models/Promotions')
@@ -68,6 +69,9 @@ router.get('/order', function (req, res, next) {
         Orders.find().populate('product').exec().then((order_product) => {
         res.render('order', { user: req.user, orders : order, order_p : order_product , title: "Order" })
     })
+    // Products.find().then((product) => {
+    //     res.render('product' , {products : product})
+    // })
 })
 //   Order.find().then((order) => {
 //     OrderDetail.find().then((orderDetail) => { console.log("bello")
@@ -78,8 +82,9 @@ router.get('/order', function (req, res, next) {
 //   });
 });
 
-
-
+router.get('/orderDetails', (req, res, next) => {
+        res.render('orderDetails', {title: "Order Details" });
+});
 
 router.get('/hello', function(req, res, next) {
     res.render('hello', { title: "Hello", user: req.user });
