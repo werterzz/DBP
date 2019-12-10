@@ -10,6 +10,7 @@ const User = require('../models/User');
 const Offices = require('../models/Offices');
 const Employees = require('../models/Employees');
 const Customer = require('../models/Customer');
+const Promotions = require('../models/Promotions')
 const { ensureAuthenticated, forwardAuthenticated } = require('../config/auth');
 
 var jsdom = require("jsdom");
@@ -28,30 +29,8 @@ router.get('/', function(req, res, next) {
     res.render('Gindex', { title: "Home", user: req.user });
 });
 
-router.get('/employeeInformation', function(req, res, next) {
-    // MongoClient.connect(url, function (err, db) {
-    //   if (err) throw err;
-    //   var dbo = db.db("classicModels");
-    //   dbo.collection("employees").find({}).toArray(function (err, result) {
-    //     if (err) throw err;
-    //     console.log(result); res.render("employeeInformation", { employees: result, title: "hello", user: req.user });
-    //     db.close();
-    //   });
-    // });
-
-    // Employees.find().then((employee) => {
-    //     // res.json(employee);
-    //     res.render('employeeInformation', { user: req.user, employees: employee, title: "Employee" });
-    // });
-
-    Employees.find({}).populate('office').exec().then((data, err) => {
-        if (err) res.send(err)
-            // res.send(data[0].office)
-        res.render('employeeInformation', { user: req.user, employees: data, title: "Employee" })
-    })
 
 
-});
 
 router.get('/customer', (req, res, next) => {
     Customer.find().then((customer) => {
@@ -64,7 +43,32 @@ router.get('/order', function(req, res, next) {
     res.render('order', { title: "Order", user: req.user });
 });
 
+router.get('/employeeInformation', function(req, res, next) {
+    if (req.user == null) res.send('please login')
+    if(req.user.jobTitle === 'VP Sales') {
+    Employees.find({jobTitle : { $regex: '.*' + 'Sale Manager' + '.*' }, jobTitle : { $regex: '.*' + 'Sales Manager' + '.*' }}).populate('office').exec().then((data,err) => {
+        if (err) res.send(err)
+        // console.log(data)
+        res.render('employeeInformation', { user: req.user, employees: data, title: "Employee" })
+    })
+    }
+    else if (req.user.jobTitle.includes('Sale Manager') || req.user.jobTitle.includes('Sales Manager')){
+        Employees.find({jobTitle : { $regex: '.*' + 'Sales Rep' + '.*' }}).populate('office').exec().then((data,err) => {
+            if (err) res.send(err)
+            // console.log(data)
+            res.render('employeeInformation', { user: req.user, employees: data, title: "Employee" })
+        })
+    }
+    else {
+        Employees.find({}).populate('office').exec().then((data,err) => {
+            if (err) res.send(err)
+            // console.log(data)
+            res.render('employeeInformation', { user: req.user, employees: data, title: "Employee" })
+        })
+    }
 
+
+});
 
 router.get('/hello', function(req, res, next) {
     res.render('hello', { title: "Hello", user: req.user });
@@ -160,14 +164,39 @@ router.get('/logout', (req, res) => {
 
 
 router.get('/employeeInformation/promote/:id', (req, res) => {
+    console.log(req.params.id)
     Employees.find({ employeeNumber: req.params.id }).then((emp) => {
-        if (req.user.jobTitle === 'VP Sales' && emp.jobTitle.includes('Sales Manager')) {
-            emp.jobTitle = 'VP Sales';
-            emp.save();
+        console.log(emp)
+        if (req.user.jobTitle === 'VP Sales' && emp[0].jobTitle.includes('Sales Manager')) {
+            emp[0].jobTitle = 'VP Sales';
+            emp[0].save();
         }
-        if (req.user.jobTitle.includes('Sales Manager') && emp.jobTitle === 'Sales Rep') {
-            emp.jobTitle = 'Sales Manager';
-            emp.save();
+        if (req.user.jobTitle.includes('Sales Manager') && emp[0].jobTitle === 'Sales Rep') {
+            console.log('in');
+            emp[0].jobTitle = 'Sales Manager';
+            emp[0].save();
+        }
+
+        res.redirect("/employeeInformation");
+    });
+    // res.send(req.params.id);
+});
+
+router.get('/employeeInformation/demote/:id', (req, res) => {
+    console.log(req.params.id)
+    Employees.find({ employeeNumber: req.params.id }).then((emp) => {
+        console.log(emp)
+        if (req.user.jobTitle === 'VP Sales' && emp[0].jobTitle.includes('Sales Manager')) {
+            emp[0].jobTitle = 'Sales Rep';
+            emp[0].save();
+        }
+        if (req.user.jobTitle.includes('President') && emp[0].jobTitle === 'Sales Manager') {
+            emp[0].jobTitle = 'Sales Rep';
+            emp[0].save();
+        }
+        if (req.user.jobTitle.includes('President') && emp[0].jobTitle === 'VP Sales') {
+            emp[0].jobTitle = 'Sales Manager';
+            emp[0].save();
         }
 
         res.redirect("/employeeInformation");
@@ -185,6 +214,12 @@ router.get('/testme', (req, res) => {
         //     res.send(emp)
         // })
 
+})
+
+router.get('/promotions', (req, res) => {
+    Promotions.find().then(data => {
+        res.render('promotions', { title: "Product", user: req.user, promotions : data })
+    })
 })
 
 
