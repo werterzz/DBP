@@ -106,12 +106,105 @@ db.test.aggregate(
         }
     }
 
+
 //embed product
 db.productlines.find().forEach(function(doc){
 	db.customers.updateMany(
         {productLine : doc.productLine},
         {$set : {
             
+
+
+set password
+
+db.employees.find({}).forEach(function(emp){
+    db.employees.update({_id : emp._id},{$set : {password : emp._id}})
+})
+
+remove weird documents
+
+db.employees.remove({officeCode : {$exists : false}})
+
+
+
+
+
+insert promotion document
+
+db.promotions.insertMany([{
+    _id : "XXX",
+    expiryDate : new Date(ISODate().getTime() + 1000 * 3600 * 24 * 30),
+    discount : 20,
+    amount : 100,
+    type : "discount"
+}, {
+    _id : "YYY",
+    expiryDate : new Date(ISODate().getTime() + 1000 * 3600 * 24 * 30),
+    discount : 0,
+    amount : 100,
+    type : "buy1get1"
+}])
+
+
+
+embed orderDetail to order
+
+ db.orderdetails.find().forEach(function(data) {
+    db.orders.update({_id: parseFloat(data.orderNumber)}, {$push : {
+        orderNumber : {
+                orderLineNumber : parseFloat(data.orderLineNumber),
+                orderNumber : parseFloat(data.orderNumber),
+                priceEach : parseFloat(data.priceEach),
+                productCode : data.productCode, 
+                quantityOrdered : parseFloat(data.quantityOrdered)
+
         }
 	})
 })
+
+
+
+
+
+
+db.orderdetails.find().forEach(function(data){
+    data.quantityOrdered = parseFloat(data.quantityOrdered)
+    db.orderdetails.save(data)
+
+
+var count = 0
+db.orders.find({status : {$ne: "Cancelled"}}).forEach(function(data){
+    var sum = 0
+    
+    data.orderNumber.forEach(function(data2){
+       sum = sum + parseFloat(data2.priceEach * data2.quantityOrdered)
+       
+    })
+    db.payments.find().forEach(function(data2){
+        if(parseFloat(data2.amount) == sum) count = count + 1
+        
+    })
+})
+print(count)
+print(data2.amount +" "+ sum)
+db.payments.find().forEach(function(data){
+    data.amount = parseFloat(data.amount)
+    db.payments.save(data)
+})
+
+
+
+
+db.orders.find().forEach(function(doc){
+    old_id = doc._id 
+    doc._id=parseInt(doc.orderNumber)
+    db.orders.insert(doc)
+    db.orders.remove({_id: old_id})
+});
+
+db.orders.find().forEach(function(data){
+    data.orderNumber = []
+    db.orders.save(data)
+})
+
+
