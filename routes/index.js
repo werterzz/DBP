@@ -29,25 +29,26 @@ router.get('/', function(req, res, next) {
     res.render('Gindex', { title: "Home", user: req.user });
 });
 
+
+
+
+router.get('/customer', (req, res, next) => {
+    Customer.find().then((customer) => {
+        res.render('customer', { customers: customer, title: "Customer" });
+    });
+});
+
+
+router.get('/order', function(req, res, next) {
+    res.render('order', { title: "Order", user: req.user });
+});
+
 router.get('/employeeInformation', function(req, res, next) {
-    // MongoClient.connect(url, function (err, db) {
-    //   if (err) throw err;
-    //   var dbo = db.db("classicModels");
-    //   dbo.collection("employees").find({}).toArray(function (err, result) {
-    //     if (err) throw err;
-    //     console.log(result); res.render("employeeInformation", { employees: result, title: "hello", user: req.user });
-    //     db.close();
-    //   });
-    // });
-
-    // Employees.find().then((employee) => {
-    //     // res.json(employee);
-    //     res.render('employeeInformation', { user: req.user, employees: employee, title: "Employee" });
-    // });
-
-    Employees.find({}).populate('office').exec().then((data, err) => {
+    if (req.user == null) res.send('please login')
+    if(req.user.jobTitle === 'VP Sales') {
+    Employees.find({jobTitle : { $regex: '.*' + 'Sale Manager' + '.*' }, jobTitle : { $regex: '.*' + 'Sales Manager' + '.*' }}).populate('office').exec().then((data,err) => {
         if (err) res.send(err)
-            // res.send(data[0].office)
+        // console.log(data)
         res.render('employeeInformation', { user: req.user, employees: data, title: "Employee" })
     })
     }
@@ -67,21 +68,7 @@ router.get('/employeeInformation', function(req, res, next) {
     }
 
 
-
 });
-
-router.get('/customer', (req, res, next) => {
-    Customer.find().then((customer) => {
-        res.render('customer', { customers: customer, title: "Customer" });
-    });
-});
-
-
-router.get('/order', function(req, res, next) {
-    res.render('order', { title: "Order", user: req.user });
-});
-
-
 
 router.get('/hello', function(req, res, next) {
     res.render('hello', { title: "Hello", user: req.user });
