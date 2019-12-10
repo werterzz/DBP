@@ -11,10 +11,11 @@
                 <p>Are you sure to delete this customer account?</p>
             </div>
             <div class="modal-footer">
-                <form action="/customer/del/" method="POST">
+                <form action="/product/del/<%= emp._id %>" method="POST">
+                    <button type="button" class="btn btn-success" id="canDel">No</button>
+                    <button type="submit" class="btn btn-secondary">Yes</button>
                 </form>
-                <button type="button" class="btn btn-success" id="canDel">No</button>
-                <button type="button" class="btn btn-secondary">Yes</button>
+                
             </div>
         </div>
     </div>

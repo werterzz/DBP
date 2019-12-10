@@ -18,7 +18,7 @@ const ProductsSchema = new mongoose.Schema({
     buyPrice: {
         type: String
     },
-    productCode: {
+    _id: {
         type: String
     },
     product: {

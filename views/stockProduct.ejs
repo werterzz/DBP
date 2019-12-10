@@ -7,7 +7,7 @@
             <table class="table table-bordered table-sm">
                 <thead style="background-color: #757574 ; color : white">
                     <tr>
-                        <th>Product Code</th>
+                        <th>ID</th>
                         <th>Product Name</th>
                         <th>Product Line</th>
                         <th>Scale</th>
@@ -17,10 +17,11 @@
                         <th>Option</th>
                     </tr>
                 </thead>
+                <% products.forEach(function(emp){ %>
                 <tbody style="background-color: #ccccc8">
                 <% products.forEach(function(emp){ %>
                     <tr>
-                        <td><%= emp.productCode %></td>
+                        <td><%= emp._id %></td>
                         <td><%= emp.productName %></td>
                         <td>Doll</td>
                         <td><%= emp.productScale %></td>
@@ -39,16 +40,13 @@
                                 </div>
                             </div>
                         </td>
-                    </tr>
+                    </tr>                    
+                    </tbody>
                     <% include stockModalupdate.ejs %>
                     <% include stockDel.ejs %>
-                        <% }) %>
-                </tbody>
+                    <% }) %>
             </table>
 
-
-            <% include stockModalupdate.ejs %>
-                <% include stockDel.ejs %>
                     <button type="button" class="buttonAdd button5 addMenu" id="AddBtn">
                         Add
                     </button>
