@@ -45,18 +45,6 @@ router.get('/employee', function(req, res, next) {
 
 
   router.post('/update/:id', function (req, res, next) {
-  //   console.log("document inserted");
-    // MongoClient.connect(url, function(err, db) {
-    //   if (err) throw err;
-    //   var dbo = db.db("classicModels");
-    //   var myquery = {_id: req.params.id};
-    //   dbo.collection("employees").updateOne(myquery, function(err, res) {
-    //     if (err) throw err;
-    //     console.log("1 document updated");
-    //     res.redirect("/employeeInformation");
-    //     db.close();
-    //   });
-    // });
     Employees.updateOne({email: req.body.email,
       employeeNumber: req.body.employeenumber,
       extension: req.body.Extension,
@@ -71,7 +59,6 @@ router.get('/employee', function(req, res, next) {
       // Updated at most one doc, `res.modifiedCount` contains the number
       // of docs that MongoDB updated
     });
-
   });
   
   
