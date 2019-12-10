@@ -1,7 +1,7 @@
 <% include header.ejs %>
     <% include stockProductModal.ejs %>
         <div class="p-4 col-12">
-            <% products.forEach(function(emp){ %>
+
             <h4 class=" font-weight-bold page-header">Stock Product</h4>
             <hr>
             <table class="table table-bordered table-sm">
@@ -18,30 +18,43 @@
                     </tr>
                 </thead>
                 <tbody style="background-color: #ccccc8">
-                    <tr>
-                        <td><%= emp.productCode %></td>
-                        <td><%= emp.productName %></td>
-                        <td>Doll</td>
-                        <td><%= emp.productScale %></td>
-                        <td><%= emp.productVendor %></td>
-                        <td><%= emp.quantityInStock %></td>
-                        <td><%= emp.buyPrice %></td>
-                        <td>
-                            <div class="row m-0">
-                                <div class="d-flex">
-                                    <button type="button" class="btn btn-outline-dark" id="UpdateBtn">
+                    <% products.forEach(function(emp){ %>
+                        <tr>
+                            <td>
+                                <%= emp.productCode %>
+                            </td>
+                            <td>
+                                <%= emp.productName %>
+                            </td>
+                            <td>Doll</td>
+                            <td>
+                                <%= emp.productScale %>
+                            </td>
+                            <td>
+                                <%= emp.productVendor %>
+                            </td>
+                            <td>
+                                <%= emp.quantityInStock %>
+                            </td>
+                            <td>
+                                <%= emp.buyPrice %>
+                            </td>
+                            <td>
+                                <div class="row m-0">
+                                    <div class="d-flex">
+                                        <button type="button" class="btn btn-outline-dark" id="UpdateBtn">
                 <i class="fa fa-pen"></i></button>
-                                </div>
-                                <div class="d-flex">
-                                    <button class="btn btn-outline-dark" id="DelBtn">
+                                    </div>
+                                    <div class="d-flex">
+                                        <button class="btn btn-outline-dark" id="DelBtn">
                 <i class="fa fa-trash"></i></button>
+                                    </div>
                                 </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <% include stockModalupdate.ejs %>
-                    <% include stockDel.ejs %>
-                        <% }) %>
+                            </td>
+                        </tr>
+                        <% include stockModalupdate.ejs %>
+                            <% include stockDel.ejs %>
+                                <% }) %>
                 </tbody>
             </table>
 

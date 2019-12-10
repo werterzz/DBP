@@ -85,10 +85,17 @@
         </div>
     </div>
     <!-- List of Product -->
-    <div class="listPD">
-        <% for (var i=0 ; i < 20 ; i++) {%>
-            <img src="images/Pcard.png" alt="pic" class="margin-pd">
 
+    <div class="listPD" style="border: 1px solid red;">
+        <% for (var i=0 ; i < 20 ; i++) {%>
+            <div class="containerX">
+                <img src="images/Pcard.png" alt="pic">
+                <div class="text-block">
+                    <h4></h4>
+                    <%=i%>
+                        </h4>
+                </div>
+            </div>
             <% } %>
     </div>
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
