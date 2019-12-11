@@ -42,9 +42,9 @@
           <td><%= or.requiredDate %></td>
           <td><%= or.comments %></td>
           <td>
-            <form action="/orderDetails" method = "get">
-              <button class="btn btn-outline-dark"><i class="fa fa-file"></i></button>
-            </form>
+              
+              <a href="/orderDetails/<%= or._id %>"><button class="btn btn-outline-dark"><i class="fa fa-file"></i></button></a>
+            
           </td>
           <td>
             <% include orderUpdate.ejs %>

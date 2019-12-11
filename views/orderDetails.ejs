@@ -105,18 +105,22 @@
                 </tr>
             </thead>
             <tbody style="background-color: #ccccc8 ; color : black">
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+
+              <% orderdetails.forEach(function(data){ %>  
+                    <tr>
+                        <td><%= data._id %></td>
+                        <td><%= data.quantityOrdered %></td>
+                        <td><%= data.priceEach %></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>                  
+              <% }) %>
+
             </tbody>
         </table>
     </div>

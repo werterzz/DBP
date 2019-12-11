@@ -72,6 +72,14 @@ const OrdersSchema = new mongoose.Schema({
   },
   customerNumber: {
     type: String
+  },
+  orderdetails: {
+    type: [{
+      _id: {type: String},
+      orderLineNumber: {type: Number},
+      priceEach: {type: Number},
+      quantityOrdered: {type: Number}
+    }]
   }
 },{ toJSON: { virtuals: true }, toObject: { virtuals: true }});
 

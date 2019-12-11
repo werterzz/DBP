@@ -1,82 +1,31 @@
-//change _id
 
-db.products.find().forEach(function(doc){
-    old_id = doc._id 
-    doc._id=doc.productCode
-    db.products.insert(doc)
-    db.products.remove({_id: old_id})
-});
+// Change customers._id
 
-db.offices.find().forEach(function(doc){
-    old_id = doc._id 
-    doc._id=doc.officeCode
-    db.offices.insert(doc)
-    db.offices.remove({_id: old_id})
-});
-
-Change orders._id
-
-db.orders.find().forEach(function(doc){
-    old_id = doc._id 
-    doc._id=doc.orderNumber
-    db.orders.insert(doc)
-    db.orders.remove({_id: old_id})
-});
-
-Change customers._id
-
+arrayOld = []
+arrayNew = []
 db.customers.find().forEach(function(doc){
     old_id = doc._id 
     doc._id=doc.customerNumber
+    arrayOld.push(old_id)
+    arrayNew.push(doc._id)
+});
+arrayNew.forEach(function(data){
+    db.customers.find({customerNumber : data}).forEach(function(doc){
+    old_id = doc._id 
+    doc._id=doc.customerNumber
     db.customers.insert(doc)
-    db.customers.remove({_id: old_id})
+    print(doc._id)
+    }) 
+})
+arrayOld.forEach(function(data){
+    db.customers.remove({_id: data})
+    print(data)
 });
 
-Change products._id
-
-db.products.find().forEach(function(doc){
-    old_id = doc._id 
-    doc._id=doc.productCode
-    db.products.insert(doc)
-    db.products.remove({_id: old_id})
-db.orderdetails.find().forEach(function(doc){
-    old_id = doc._id 
-    doc._id=doc.orderLineNumber
-    db.orderdetails.insert(doc)
-    db.orderdetails.remove({_id: old_id})
-});
-
-db.orders.find().forEach(function(doc){
-    old_id = doc._id 
-    doc._id=doc.orderNumber
-    db.orders.insert(doc)
-    db.orders.remove({_id: old_id})
-});
-
-db.payments.find().forEach(function(doc){
-    old_id = doc._id 
-    doc._id=doc.checkNumber
-    db.payments.insert(doc)
-    db.payments.remove({_id: old_id})
-});
-
-db.productlines.find().forEach(function(doc){
-    old_id = doc._id 
-    doc._id=doc.productLine
-    db.productlines.insert(doc)
-    db.productlines.remove({_id: old_id})
-});
-
-db.products.find().forEach(function(doc){
-    old_id = doc._id 
-    doc._id=doc.productCode
-    db.products.insert(doc)
-    db.products.remove({_id: old_id})
-});
 
 //end change _id
 
-find with foreign key
+// find with foreign key
 
 var dbRef = db.test.findOne({"name":"game"}).employees
 db[dbRef.$ref].findOne({"_id":(dbRef.$id)})

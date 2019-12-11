@@ -96,8 +96,12 @@ router.get('/order', function (req, res, next) {
 //   });
 });
 
-router.get('/orderDetails', (req, res, next) => {
-        res.render('orderDetails', {title: "Order Details" });
+router.get('/orderDetails/:id', (req, res) => {
+    Orders.find({"_id": req.params.id}).then((data)=>{
+        console.log(data[0].orderdetails)
+        res.render('orderDetails', {title: "Order Details" , orderdetails: data[0].orderdetails});
+    })
+        
 });
 
 router.get('/hello', function(req, res, next) {
