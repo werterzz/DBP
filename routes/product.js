@@ -7,7 +7,7 @@ const Products = require('../models/Products');
 router.get('/', function(req, res, next) {
     Products.find({}).populate('stock').exec().then((data, err) => {
         if (err) res.send(err)
-            // console.log(data)
+
         res.render('stockProduct', { user: req.user, products: data, title: "Product" })
     })
 });
@@ -21,7 +21,7 @@ router.post('/del/:id', (req, res) => {
 });
 
 router.post('/update/:id', function(req, res, next) {
-    Products.updateOne({
+    Products.updateOne({ _id: req.params.id }, {
         MSRP: req.body.msrp,
         buyPrice: req.body.buyprice,
         productCode: req.body.productcode,
