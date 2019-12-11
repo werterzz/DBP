@@ -1,0 +1,41 @@
+<button type="button" class="btn btn-outline-dark btn-sm ml-auto mr-1" data-toggle="modal" data-target="#paymentInsert">Insert Cheque Number</button>
+<div class="modal" id="paymentInsert" data-backdrop="false">
+    <div class="modal-dialog modal-xl modal-dialog-scrollable">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="blackFont">Insert Payment</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form action="/payment/add" method="POST">
+                    <div class="row my-2">
+                        <label for="chequeNumber" class="col-12 col-sm-3 text-sm-right my-auto">Cheque Number :</label>
+                        <input id="chequeNumber" name="chequeNumber" type="text"
+                        class="form-control col-12 col-sm-6 col-md-6">
+                    </div>
+                    <div class="row my-2">
+                        <label for="customerNumber" class="col-12 col-sm-3 text-sm-right my-auto">Customer Number :</label>
+                        <input id="customerNumber" name="customerNumber" type="text"
+                        class="form-control col-12 col-sm-6 col-md-6">
+                    </div>
+                    <div class="row my-2">
+                        <label for="amount" class="col-12 col-sm-3 text-sm-right my-auto">Amount :</label>
+                        <input id="amount" name="amount" type="text"
+                        class="form-control col-12 col-sm-6 col-md-6">
+                    </div>
+                    <div class="row my-2">
+                        <label for="paymentDate" class="col-12 col-sm-3 text-sm-right my-auto">Payment Date :</label>
+                        <input id="paymentDate" name="paymentDate" type="date"
+                        class="form-control col-12 col-sm-6 col-md-6">
+                    </div>
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <input type="submit" value="Submit">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

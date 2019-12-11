@@ -1,4 +1,4 @@
-<% include header.ejs %>
+<% include ../header.ejs %>
 <p></p>
 <script src ="http://kit.fontawesome.com/a076d05399.js"></script>
 <script src="order.js"></script>
@@ -19,42 +19,36 @@
 </head>
 
 <div class="p-4 col-12">
-  <h4 class=" font-weight-bold page-header">Order</h4>
+  <h4 class=" font-weight-bold page-header">Payment</h4>
   <hr>
+  <div class ="form-group col-12 col-md-12 px-0 d-flex">
+    <% include add.ejs %>   
+  </div>
+ 
   <table class="table table-bordered table-sm">
     <thead style="background-color: #757574 ; color : white">
       <tr>
-        <th style="width: 10%">Order Number</th>
-        <th style="width: 10%">Custumer ID</th>
-        <th style="width: 10%">Status</th>
-        <th style="width: 10%">Required</th>
-        <th style="width: 49%">Comments</th>
-        <th style="width: 3%"></th>
-        <th style="width: 8%"></th>
+        <th>Customer Number</th>
+        <th>Cheque Number</th>
+        <th>Payment Date</th>
+        <th>Amount</th>
+        <th style="width: 6%"></th>
       </tr>
     </thead>
     <tbody style="background-color: #ccccc8 ; color : black">
-      <% orders.forEach(function(or){ %>
+        <% payments.forEach(function(pm){ %>
         <tr>
-          <td><%= or._id %></td>
-          <td><%= or.customerNumber %></td>
-          <td><%= or.status %></td>
-          <td><%= or.requiredDate %></td>
-          <td><%= or.comments %></td>
+          <td><%= pm.customerNumber %></td>
+          <td><%= pm.checkNumber %></td>
+          <td><%= pm.paymentDate %></td>
+          <td><%= pm.amount %></td>
           <td>
-            <form action="/orderDetails" method = "get">
-              <button class="btn btn-outline-dark"><i class="fa fa-file"></i></button>
-            </form>
-          </td>
-          <td>
-            <% include orderUpdate.ejs %>
-            <% include orderPayment.ejs %>
-            <% include deleteOrder.ejs %>
+            <% include edit.ejs %>
+            <% include delete.ejs %>
           </td>
       </tr>
       <% }) %>
     </tbody>
   </table>
 </div>
-<% include orderAdd.ejs %>
-<% include footer.ejs %>
+<% include ../footer.ejs %>

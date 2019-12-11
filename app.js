@@ -13,6 +13,7 @@ var employeeRouter = require('./routes/employee');
 var productRouter = require('./routes/product');
 var promotionRouter = require('./routes/promotion');
 var orderRouter = require('./routes/order');
+var paymentRouter = require('./routes/payment');
 
 
 
@@ -90,6 +91,7 @@ app.use('/employee', employeeRouter);
 app.use('/product', productRouter);
 app.use('/promotion', promotionRouter);
 app.use('/order', orderRouter);
+app.use('/payment', paymentRouter);
 
 
 
