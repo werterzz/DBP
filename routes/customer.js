@@ -34,7 +34,8 @@ router.post('/update/:id', function(req, res, next) {
         country: req.body.country,
         postalCode: req.body.postalCode,
         salesRepEmployeeNumber: req.body.salesRepEmployeeNumber,
-        creditLimit: req.body.creditLimit
+        creditLimit: req.body.creditLimit,
+        point: req.body.point
     }, function(err, ree) {
         if (err) console.log(err)
         res.redirect("/customer");
@@ -59,7 +60,8 @@ router.post('/add', function(req, res, next) {
         country: req.body.country,
         postalCode: req.body.postal,
         salesRepEmployeeNumber: req.body.EmpNum,
-        creditLimit: req.body.creditLim
+        creditLimit: req.body.creditLim,
+        point: req.body.point
     })
     cus.save(function(err) {
         if (err) console.log(err);

@@ -1,4 +1,4 @@
-<% include header.ejs %>
+<% include ../header.ejs %>
 <p></p>
 <script src ="http://kit.fontawesome.com/a076d05399.js"></script>
 
@@ -28,10 +28,6 @@
           <label for="orderNumber" class="col-12 col-sm-3 text-sm-right my-auto">Order Number :</label>
           <input id="orderNumber" name="orderNumber" type="text"
           class="form-control col-12 col-sm-6 col-md-3" disabled>
-          <!-- <div *ngIf="angForm.controls['itemCode'].invalid && (angForm.controls['itemCode'].dirty || angForm.controls['itemCode'].touched)"
-          class="offset-12 col-sm-6 col-md-3 my-auto">
-            <div *ngIf="angForm.controls['itemCode'].errors.required" class="my-auto" style="color: crimson"><small><strong>X</strong> Please enter your item code.</small></div>
-          </div> -->
         </div>
       </div>
     
@@ -40,10 +36,6 @@
           <label for="customerId" class="col-12 col-sm-3 text-sm-right my-auto">Customer ID :</label>
           <input id="customerId" name="customerId" type="text"
           class="form-control col-12 col-sm-6 col-md-3" disabled>
-          <!-- <div *ngIf="angForm.controls['line'].invalid && (angForm.controls['line'].dirty || angForm.controls['line'].touched)"
-          class="offset-12 col-sm-6 col-md-3 my-auto">
-            <div *ngIf="angForm.controls['line'].errors.required" class="my-auto" style="color: crimson"><small><strong>X</strong> Please enter your line.</small></div>
-          </div> -->
         </div>
       </div>
     
@@ -52,10 +44,6 @@
           <label for="status" class="col-12 col-sm-3 text-sm-right my-auto">Status :</label>
           <input id="status" name="status" type="text"
           class="form-control col-12 col-sm-6 col-md-3" disabled>
-          <!-- <div *ngIf="angForm.controls['itemSub'].invalid && (angForm.controls['itemSub'].dirty || angForm.controls['itemSub'].touched)"
-          class="offset-12 col-sm-6 col-md-3 my-auto">
-            <div *ngIf="angForm.controls['itemSub'].errors.required" class="my-auto" style="color: crimson"><small><strong>X</strong> Please enter your item sub.</small></div>
-          </div> -->
         </div>
       </div>
 
@@ -64,10 +52,6 @@
           <label for="requiredDate" class="col-12 col-sm-3 text-sm-right my-auto">Required Date :</label>
           <input id="requiredDate" name="requiredDate" type="text"
           class="form-control col-12 col-sm-6 col-md-3" disabled>
-          <!-- <div *ngIf="angForm.controls['qty'].invalid && (angForm.controls['qty'].dirty || angForm.controls['qty'].touched)"
-          class="offset-12 col-sm-6 col-md-3 my-auto">
-            <div *ngIf="angForm.controls['qty'].errors.required" class="my-auto" style="color: crimson"><small><strong>X</strong> Please enter your qty.</small></div>
-          </div> -->
         </div>
       </div>
     
@@ -76,18 +60,10 @@
           <label for="data" class="col-12 col-sm-3 text-sm-right my-auto">Data :</label>
           <input id="data" name="data" type="text"
           class="form-control col-12 col-sm-6 col-md-3" disabled>
-          <!-- <div *ngIf="angForm.controls['wareHouse'].invalid && (angForm.controls['wareHouse'].dirty || angForm.controls['wareHouse'].touched)"
-          class="offset-12 col-sm-6 col-md-3 my-auto">
-            <div *ngIf="angForm.controls['wareHouse'].errors.required" class="my-auto" style="color: crimson"><small><strong>X</strong> Please enter your warehourse.</small></div>
-          </div> -->
         </div>
       </div>
     </form>
     <hr>
-    <div class ="form-group col-12 col-md-12 px-0 d-flex">
-        <button id="save_button" type="button" class="btn btn-outline-primary btn-sm ml-auto mr-1">Edit</button>
-        <button id="save_button" type="button" class="btn btn-outline-primary btn-sm my-auto mr-1">Payment</button>
-    </div>
     <div class="col-12 px-0 table-height">
         <table class=" col-12 px-0 table table-bordered table-sm">
             <thead style="background-color: #757574 ; color : white">
@@ -100,8 +76,9 @@
                     <th scope="col">Order Date</th>
                     <th scope="col">Shipped Date</th>
                     <th scope="col">Payment Date</th>
-                    <th scope="col">Check Number</th>
+                    <th scope="col">Cheque Number</th>
                     <th scope="col">Amount</th>
+                    <th style="width: 5%"><% include orderPayment.ejs %></th>
                 </tr>
             </thead>
             <tbody style="background-color: #ccccc8 ; color : black">
@@ -116,10 +93,14 @@
                     <td></td>
                     <td></td>
                     <td></td>
+                    <td>
+                      <% include editOrderDetails.ejs %>
+                      <% include deleteOrderDetails.ejs %>
+                    </td>
                 </tr>
             </tbody>
         </table>
     </div>
 </div>
 
-<% include footer.ejs %>
+<% include ../footer.ejs %>
