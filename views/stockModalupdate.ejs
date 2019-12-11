@@ -1,6 +1,6 @@
-<div id="UpdateModal<%= emp._id %>" class="modal" tabindex="-1" role="dialog">
-    <div class="" role="document">
-        <div class="modal-content" style="width: 1000px !important;">
+<div id="UpdateModal<%=cus._id%>" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="false">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title headerModal">Update</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -8,7 +8,6 @@
         </button>
             </div>
             <div class="modal-body">
-
                 <form action="/product/update/<%= emp._id %>" method="POST">
                     <br /> productName:
                     <input type="text" name="productname" value="Mickey" />
@@ -32,13 +31,10 @@
                     <input type="text" name="buyprice" value="Mickey" />
                     <br /> productDescription:
                     <input type="text" name="description" value="Mickey" />
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary" value="Submit">Save changes</button>
-                    </div>
-
-                </form>
             </div>
-
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" value="Submit">Save changes</button></form>
+            </div>
         </div>
     </div>
 </div>
