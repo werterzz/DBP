@@ -1,54 +1,58 @@
 <% include ../header.ejs %>
-<p></p>
-<script src ="http://kit.fontawesome.com/a076d05399.js"></script>
-<script src="order.js"></script>
+    <p></p>
 
-<head> 
-    <title><%= title %></title>
+    <head>
+        <title>
+            <%= title %>
+        </title>
 
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
-    <link rel="stylesheet" href="/stylesheets/style.css" />
-    <link rel="stylesheet" href="/stylesheets/order.css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+        <link rel="stylesheet" href="/stylesheets/style.css" />
+        <link rel="stylesheet" href="/stylesheets/orders.css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
 
-<div class="p-4 col-12">
-  <h4 class=" font-weight-bold page-header">Payment</h4>
-  <hr>
-  <div class ="form-group col-12 col-md-12 px-0 d-flex">
-    <% include add.ejs %>   
-  </div>
- 
-  <table class="table table-bordered table-sm">
-    <thead style="background-color: #757574 ; color : white">
-      <tr>
-        <th>Customer Number</th>
-        <th>Cheque Number</th>
-        <th>Payment Date</th>
-        <th>Amount</th>
-        <th style="width: 6%"></th>
-      </tr>
-    </thead>
-    <tbody style="background-color: #ccccc8 ; color : black">
-        <% payments.forEach(function(pm){ %>
-        <tr>
-          <td><%= pm.customerNumber %></td>
-          <td><%= pm.checkNumber %></td>
-          <td><%= pm.paymentDate %></td>
-          <td><%= pm.amount %></td>
-          <td>
-            <% include edit.ejs %>
-            <% include delete.ejs %>
-          </td>
-      </tr>
-      <% }) %>
-    </tbody>
-  </table>
-</div>
-<% include ../footer.ejs %>
+    <div class="p-4 col-12">
+        <h4 class=" font-weight-bold page-header">Payment</h4>
+        <hr>
+        <div class="form-group col-12 col-md-12 px-0 d-flex">
+            <% include add.ejs %>
+        </div>
+
+        <table class="table table-bordered table-sm">
+            <thead style="background-color: #757574 ; color : white">
+                <tr>
+                    <th>Customer Number</th>
+                    <th>Cheque Number</th>
+                    <th>Payment Date</th>
+                    <th>Amount</th>
+                    <th style="width: 6%"></th>
+                </tr>
+            </thead>
+            <tbody style="background-color: #ccccc8 ; color : black">
+                <% payments.forEach(function(pm){ %>
+                    <%pm.payments.forEach(function(p){ %>
+                        <tr>
+                            <td>
+                                <%= pm._id %>
+                            </td>
+                            <td>
+                                <%= p._id %>
+                            </td>
+                            <td>
+                                <%= p.paymentDate.toLocaleString('en-us', {month: '2-digit', day:'2-digit', year:'numeric'}); %>
+                            </td>
+                            <td>
+                                <%= p.amount %>
+                            </td>
+                            <td>
+                                <% include edit.ejs %>
+                                    <% include delete.ejs %>
+                            </td>
+                        </tr>
+                        <% })}) %>
+            </tbody>
+        </table>
+    </div>
+    <% include ../footer.ejs %>
