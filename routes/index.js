@@ -6,27 +6,28 @@ var router = express.Router();
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017/";
 
+
 const User = require('../models/User');
 const Offices = require('../models/Offices');
 const Employees = require('../models/Employees');
 const Customer = require('../models/Customer');
-const Promotions = require('../models/Promotions')
+const Promotions = require('../models/Promotions');
+const Products = require('../models/Products');
 const { ensureAuthenticated, forwardAuthenticated } = require('../config/auth');
-
 var jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 const { window } = new JSDOM();
 const { document } = (new JSDOM('')).window;
 global.document = document;
-
 var $ = jQuery = require('jquery')(window);
 
+
 /* GET home page. */
-
-router.get('/', function(req, res, next) {
+router.get('/', function (req, res, next) {
     // console.log(req.user)
-
-    res.render('Gindex', { title: "Home", user: req.user });
+    Products.find().then((products) => {        
+        res.render('Gindex', { products: products, title: "Products" });
+    });
 });
 
 
@@ -39,28 +40,28 @@ router.get('/customer', (req, res, next) => {
 });
 
 
-router.get('/order', function(req, res, next) {
+router.get('/order', function (req, res, next) {
     res.render('order', { title: "Order", user: req.user });
 });
 
-router.get('/employeeInformation', function(req, res, next) {
+router.get('/employeeInformation', function (req, res, next) {
     if (req.user == null) res.send('please login')
-    if(req.user.jobTitle === 'VP Sales') {
-    Employees.find({jobTitle : { $regex: '.*' + 'Sale Manager' + '.*' }, jobTitle : { $regex: '.*' + 'Sales Manager' + '.*' }}).populate('office').exec().then((data,err) => {
-        if (err) res.send(err)
-        // console.log(data)
-        res.render('employeeInformation', { user: req.user, employees: data, title: "Employee" })
-    })
+    if (req.user.jobTitle === 'VP Sales') {
+        Employees.find({ jobTitle: { $regex: '.*' + 'Sale Manager' + '.*' }, jobTitle: { $regex: '.*' + 'Sales Manager' + '.*' } }).populate('office').exec().then((data, err) => {
+            if (err) res.send(err)
+            // console.log(data)
+            res.render('employeeInformation', { user: req.user, employees: data, title: "Employee" })
+        })
     }
-    else if (req.user.jobTitle.includes('Sale Manager') || req.user.jobTitle.includes('Sales Manager')){
-        Employees.find({jobTitle : { $regex: '.*' + 'Sales Rep' + '.*' }}).populate('office').exec().then((data,err) => {
+    else if (req.user.jobTitle.includes('Sale Manager') || req.user.jobTitle.includes('Sales Manager')) {
+        Employees.find({ jobTitle: { $regex: '.*' + 'Sales Rep' + '.*' } }).populate('office').exec().then((data, err) => {
             if (err) res.send(err)
             // console.log(data)
             res.render('employeeInformation', { user: req.user, employees: data, title: "Employee" })
         })
     }
     else {
-        Employees.find({}).populate('office').exec().then((data,err) => {
+        Employees.find({}).populate('office').exec().then((data, err) => {
             if (err) res.send(err)
             // console.log(data)
             res.render('employeeInformation', { user: req.user, employees: data, title: "Employee" })
@@ -70,7 +71,7 @@ router.get('/employeeInformation', function(req, res, next) {
 
 });
 
-router.get('/hello', function(req, res, next) {
+router.get('/hello', function (req, res, next) {
     res.render('hello', { title: "Hello", user: req.user });
 });
 
@@ -84,13 +85,13 @@ router.get('/hello', function(req, res, next) {
 //   res.redirect("/employeeInformation");
 // });
 
-router.post('/login', function(req, res, next) {
-    MongoClient.connect(url, function(err, db) {
+router.post('/login', function (req, res, next) {
+    MongoClient.connect(url, function (err, db) {
         if (err) throw err;
         var dbo = db.db("classicModels");
         var query = { employeeNumber: req.body.username }
 
-        dbo.collection("employees").find(query).toArray(async function(err, result) {
+        dbo.collection("employees").find(query).toArray(async function (err, result) {
             if (err) throw err;
             console.log(result);
             try {
@@ -109,7 +110,7 @@ router.post('/login', function(req, res, next) {
     });
 });
 
-router.get('/stockproduct', function(req, res, next) {
+router.get('/stockproduct', function (req, res, next) {
     res.render('stockProduct', { title: "Product", user: req.user });
 });
 
@@ -119,10 +120,10 @@ router.get('/test', (req, res) => {
 
 router.post('/addpassword', (req, res) => {
 
-    MongoClient.connect(url, function(err, db) {
+    MongoClient.connect(url, function (err, db) {
         if (err) throw err;
         var dbo = db.db("classicModels");
-        dbo.collection("employees").find({}).toArray(function(err, result) {
+        dbo.collection("employees").find({}).toArray(function (err, result) {
             if (err) throw err;
             console.log(result);
 
@@ -206,19 +207,19 @@ router.get('/employeeInformation/demote/:id', (req, res) => {
 
 router.get('/testme', (req, res) => {
     Employees.find({}).populate('office').exec().then((data, err) => {
-            if (err) res.send(err)
-            console.log(data)
-            res.send(data[0].office.addressLine1)
-        })
-        // Employees.findOne({employeeNumber:"1165"}).then((emp) => {
-        //     res.send(emp)
-        // })
+        if (err) res.send(err)
+        console.log(data)
+        res.send(data[0].office.addressLine1)
+    })
+    // Employees.findOne({employeeNumber:"1165"}).then((emp) => {
+    //     res.send(emp)
+    // })
 
 })
 
 router.get('/promotions', (req, res) => {
     Promotions.find().then(data => {
-        res.render('promotions', { title: "Product", user: req.user, promotions : data })
+        res.render('promotions', { title: "Product", user: req.user, promotions: data })
     })
 })
 
