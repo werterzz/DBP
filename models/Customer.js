@@ -42,6 +42,9 @@ const customerSchema = new mongoose.Schema({
     },
     state: {
         type: String
+    },
+    point: {
+        type: Number
     }
 });
 
