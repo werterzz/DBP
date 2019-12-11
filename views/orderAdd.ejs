@@ -1,10 +1,11 @@
 <!-- Button to Open the Modal -->
-<button type="button" class="buttonAdd button5 addMenu" id="AddBtn">
+
+<button type="button" class="buttonAdd button5" data-toggle="modal" data-target="#addOrderModal">
     Add
 </button>
 <!-- The Modal -->
-<div class="modal" id="AddModal">
-    <div class="">
+<div class="modal" id="addOrderModal" data-backdrop="false">
+    <div class="modal-dialog modal-xl modal-dialog-scrollable">
         <div class="modal-content">
 
             <!-- Modal Header -->
@@ -14,81 +15,77 @@
             </div>
 
             <!-- Modal body -->
-            <div class="blackFont">
-                Order ID:
-                <input type="text" name="firstname" value="Mickey" />
-                <br />
-                <p></p>
-                Customer Phone:
-                <input type="text" name="lastname" value="Mouse" />
-                <br />
-                <p></p>
-                <div class="input-group mb-3">
-                    Product code:
-                    <input type="text" name="firstname" value="Mickey">
-                    <div class="input-group-append">
-                        <button class="blackFont" type="button"><i class="fa fa-ellipsis-h"></i></button>
+            <div class="modal-body">
+                <form action="/order/add" method="POST">
+                <div class="row my-2">
+                    <label for="orderNumber" class="col-12 col-sm-3 text-sm-right my-auto">Order Number :</label>
+                    <input id="orderNumber" name="orderNumber" type="text"
+                    class="form-control col-12 col-sm-6 col-md-6">
+                </div>
+                <div class="row my-2">
+                    <label for="customerNumber" class="col-12 col-sm-3 text-sm-right my-auto">Customer Number :</label>
+                    <input id="customerNumber" name="customerNumber" type="text"
+                    class="form-control col-12 col-sm-6 col-md-6">
+                </div>
+                <div class="row my-2">
+                    <div class="input-group">
+                        <label for="productCode" class="col-12 col-sm-3 text-sm-right my-auto">Product Code :</label>
+                        <input id="productCode" name="productCode" type="text"
+                        class="form-control col-12 col-sm-6 col-md-6" disabled>
+                        <div class="input-group-append">
+                            <% include productCodeModals.ejs %>
+                        </div>
                     </div>
                 </div>
-                <br /> Quantity ordered:
-                <input type="text" name="firstname" value="Mickey" />
-                <br />
-                <p></p>
-                <div class="input-group mb-3">
-                    Data:
-                    <input type="text" name="firstname" value="Mickey">
-                    <div class="input-group-append">
-                        <button class="blackFont" type="button"><i class="fa fa-calendar"></i></button>
-                    </div>
+                <div class="row my-2">
+                    <label for="status" class="col-12 col-sm-3 text-sm-right my-auto">Status :</label>
+                    <select id="status" name="status" type="date"
+                    class="form-control col-12 col-sm-6 col-md-6">
+                    <option>Choose 1 status</option>
+                    <option>Cancelled</option>
+                    <option>Disputed</option>
+                    <option>In Process</option>
+                    <option>On Hold</option>
+                    <option>Resloved</option>
+                    <option>Shipped</option>
+                    </select>
                 </div>
-                <br /> Shipped Date:
-                <input type="text" name="firstname" value="Mickey" />
-                <br />
-                <p></p>
-                <div class="input-group mb-3">
-                    Required Date:
-                    <input type="text" name="firstname" value="Mickey">
-                    <div class="input-group-append">
-                        <button class="blackFont" type="button"><i class="fa fa-calendar"></i></button>
-                    </div>
+                <div class="row my-2">
+                    <label for="qty" class="col-12 col-sm-3 text-sm-right my-auto">Quantity Ordered :</label>
+                    <input id="qty" name="qty" type="number"
+                    class="form-control col-12 col-sm-6 col-md-6">
                 </div>
-                <br /> Commentse:
-                <input type="text" name="firstname" value="Mickey" />
-                <br />
-                <p></p>
-                <h>Receive point: Total point:</h>
-                <p></p>
+                <div class="row my-2">
+                    <label for="orderDate" class="col-12 col-sm-3 text-sm-right my-auto">Order Date :</label>
+                    <input id="orderDate" name="orderDate" type="date"
+                    class="form-control col-12 col-sm-6 col-md-6">
+                </div>
+                <div class="row my-2">
+                    <label for="shippedDate" class="col-12 col-sm-3 text-sm-right my-auto">Shipped Date :</label>
+                    <input id="shippedDate" name="shippedDate" type="date"
+                    class="form-control col-12 col-sm-6 col-md-6">
+                </div>
+                <div class="row my-2">
+                    <label for="requiredDate" class="col-12 col-sm-3 text-sm-right my-auto">Required Date :</label>
+                    <input id="requiredDate" name="requiredDate" type="date"
+                    class="form-control col-12 col-sm-6 col-md-6">
+                </div>
+                <div class="row my-2">
+                    <label for="receivePoint" class="col-12 col-sm-3 text-sm-right my-auto">Receive Point :</label>
+                    <input id="receivePoint" name="receivePoint" type="text" value="Total Point"
+                    class="form-control col-12 col-sm-6 col-md-6">
+                </div>
+                <div class="row my-2">
+                    <label for="comments" class="col-12 col-sm-3 text-sm-right my-auto">Comments :</label>
+                    <textarea id="comments" name="comments" type="text"
+                    class="form-control col-12 col-sm-6 col-md-6" rows="3"></textarea>
+                </div>
                 <!-- Modal footer -->
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-success" data-dismiss="modal">Submit</button>
+                    <input type="submit" value="Submit">
                 </div>
-
+            </form>
             </div>
         </div>
     </div>
-
 </div>
-
-<!-- 
-
-<div class="container">
-    <h2>Small Modal</h2>
-    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Small Modal</button>
-
-    <div class="modal fade" id="myModal" role="dialog">
-        <div class="modal-dialog modal-sm">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Modal Header</h4>
-                </div>
-                <div class="modal-body">
-                    <p>This is a small modal.</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
