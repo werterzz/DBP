@@ -14,4 +14,17 @@ db.products.find().forEach(function(doc){
         }])
 })
 
-   
+db.products.find().forEach(function(doc){
+        db.stock.insertMany([{
+                _id: 2,
+                date: 2,
+                product:{
+                        for(int i=0;i<=7;i++){
+                                i:{
+                                        productId: doc.productName,
+                                        qutity: 10
+                                }
+                        }
+                }
+        }])
+})

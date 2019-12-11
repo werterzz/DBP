@@ -8,29 +8,32 @@
                 <thead style="background-color: #757574 ; color : white">
                     <tr>
                         <th>ID</th>
+                        
                         <th>Date</th>
                         <th>ProductID</th>
                         <th>QTY</th>
-                        
+                        <th>Option</th>
                     </tr>
                 </thead>
                 <% stocks.forEach(function(abc){ %>
+                    <% abc.products.forEach(function(ab){ %>
                 <tbody style="background-color: #ccccc8">
-                
                     <tr>
                         <td><%= abc._id %></td>
-                        <td><%= abc.date %></td>
                         
+                        <td><%= abc.recordDate %></td>
+                        <td><%= ab._id%></td>
+                        <td><%= ab.amount%></td>
                         
                         <td>
                             <div class="row m-0">
                                 <div class="d-flex">
-                                    <button type="button" class="btn btn-outline-dark" id="UpdateBtn">
-                <i class="fa fa-pen"></i></button>
+                                    <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#UpdateModal<%=abc._id%>">
+                                        <i class="fa fa-pen"></i></button>
                                 </div>
                                 <div class="d-flex">
-                                    <button class="btn btn-outline-dark" id="DelBtn">
-                <i class="fa fa-trash"></i></button>
+                                    <button class="btn btn-outline-dark" data-toggle="modal" data-target="#DelModal<%=abc._id%>">
+                                        <i class="fa fa-trash"></i></button>
                                 </div>
                             </div>
                         </td>
@@ -38,7 +41,7 @@
                     </tbody>
                     <% include lotModalupdate.ejs %>
                     <% include lotDel.ejs %>
-                    <% }) %>
+                    <% })}) %>
             </table>
 
                     <button type="button" class="buttonAdd button5 addMenu" id="AddBtn">
@@ -47,3 +50,4 @@
 
                     <script src="/javascripts/modal.js"></script>
                     <% include footer.ejs %>
+

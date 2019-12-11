@@ -1,13 +1,15 @@
-var express = require('express');
-var router = express.Router();
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017/";
+const mongoose = require('mongoose');
+
 const Stocks = require('../models/Stocks');
+var express = require('express');
+var router = express.Router();
 
 router.get('/', function(req, res, next) {
-    Stocks.find({}).populate('stock').exec().then((data, err) => {
+    Stocks.find({}).populate('product').exec().then((data, err) => {
       if (err) res.send(err)
-          // console.log(data)
+        console.log(data[0].product.productName) // 
       res.render('lot', { user: req.user, stocks: data, title: "Stock" })
     })
   });
@@ -24,10 +26,10 @@ router.get('/', function(req, res, next) {
   {
       Stocks.updateOne({_id: req.params.id},
           {
-        date: req.body.date,
-        product: {
-            productID: req.body.productid,
-            qutity: req.body.qty
+        recordDate: req.body.date,
+        products: {
+            _id: req.body.productid,
+            amount: req.body.qty
           }
         }, function(err, ree) {
           res.redirect("/stock");
@@ -39,9 +41,9 @@ router.get('/', function(req, res, next) {
     let abc = new Stocks({  
           _id: req.body.id,      
           date: req.body.date,
-          product: {
-            productID: req.body.productid,
-            qutity: req.body.qty
+          products: {
+            _id: req.body.productid,
+            amount: req.body.qty
           }
           })
           abc.save(function (err) {
