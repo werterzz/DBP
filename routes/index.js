@@ -32,6 +32,20 @@ router.get('/', function(req, res, next) {
     res.render('Gindex', { title: "Home", user: req.user });
 });
 
+
+
+
+router.get('/customer', (req, res, next) => {
+    Customer.find().then((customer) => {
+        res.render('customer', { customers: customer, title: "Customer" });
+    });
+});
+
+
+// router.get('/order', function(req, res, next) {
+//     res.render('order', { title: "Order", user: req.user });
+// });
+
 router.get('/employeeInformation', function(req, res, next) {
     if (req.user == null) res.send('please login')
     if(req.user.jobTitle === 'VP Sales') {
@@ -221,15 +235,15 @@ router.get('/employeeInformation/demote/:id', (req, res) => {
 });
 
 router.get('/testme', (req, res) => {
-    Employees.find({}).populate('office').exec().then((data,err) => {
-        if (err) res.send(err)
-        console.log(data)
-        res.send(data[0])
-    })
-    // Employees.findOne({employeeNumber:"1165"}).then((emp) => {
-    //     res.send(emp)
-    // })
-    
+    Employees.find({}).populate('office').exec().then((data, err) => {
+            if (err) res.send(err)
+            console.log(data)
+            res.send(data[0].office.addressLine1)
+        })
+        // Employees.findOne({employeeNumber:"1165"}).then((emp) => {
+        //     res.send(emp)
+        // })
+
 })
 
 router.get('/promotions', (req, res) => {

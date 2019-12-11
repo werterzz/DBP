@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const ProductsSchema = require('./Products');
 
 const customerSchema = new mongoose.Schema({
   addressLine1: {
@@ -27,7 +28,7 @@ const customerSchema = new mongoose.Schema({
       type: String,
       required: true
   },
-  customerNumber: {
+  _id: {
       type: String
   },
   phone: {
@@ -45,51 +46,14 @@ const customerSchema = new mongoose.Schema({
   }
 });
 
-const ProductsSchema = new mongoose.Schema({
-  ProductCode: {
-    type: String,
-    required: true
-  },
-  productName: {
-    type: String,
-    required: true
-  },
-  productLine: {
-    type: String,
-    required: true
-  },
-  productScale: {
-    type: String,
-    required: true
-  },
-  productVendor: {
-    type: String,
-    required: true
-  },
-  productDescription: {
-    type: String,
-    required: true
-  },
-  quantityInStock: {
-    type: String,
-    required: true
-  },
-  buyPrice: {
-    type: String,
-    required: true
-  },
-  MSRP: {
-    type: String,
-    required: true
-  }
-});
+
 
 const OrdersSchema = new mongoose.Schema({
   _id: {
-    type: String
+    type: Number
   },
   orderNumber: {
-    type: String
+    type: Array
   },
   orderDate: {
     type: String
@@ -125,6 +89,6 @@ OrdersSchema.virtual('Customers', {
 
 const Orders = mongoose.model('Orders', OrdersSchema);
 const customers = mongoose.model('customers', customerSchema);
-const Product = mongoose.model('Products', ProductsSchema);
+// const Product = mongoose.model('Products', ProductsSchema);
 
 module.exports = Orders;

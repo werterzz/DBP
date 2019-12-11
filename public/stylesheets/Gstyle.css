@@ -2,6 +2,14 @@ h1 {
     color: pink;
 }
 
+h5.headerModal {
+    color: rgb(33, 37, 41);
+    font-family: inherit;
+    font-size: 2rem;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
 .Lmenu {
     width: 25%;
     height: 980px;

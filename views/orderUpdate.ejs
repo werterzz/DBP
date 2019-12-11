@@ -2,9 +2,9 @@
 <!-- <button type="button" class="buttonAdd button5" data-toggle="modal" data-target="#myModal">
         Add
       </button> -->
-<button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#orderUpdateModal<%= or.orderNumber %>"><i class="fa fa-pen"></i></button>
+<button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#orderUpdateModal<%= or._id %>"><i class="fa fa-pen"></i></button>
 <!-- The Modal -->
-<div class="modal" id="orderUpdateModal<%= or.orderNumber %>" data-backdrop="false">
+<div class="modal" id="orderUpdateModal<%= or._id %>" data-backdrop="false">
         <div class="modal-dialog modal-xl modal-dialog-scrollable">
             <div class="modal-content">
     
@@ -16,16 +16,16 @@
     
                 <!-- Modal body -->
                 <div class="modal-body">
-                    <form action="/order/update/<%= or.orderNumber %>" method="POST">
+                    <form action="/order/update/<%= or._id %>" method="POST">
                     <div class="row my-2">
                         <label for="orderNumber" class="col-12 col-sm-3 text-sm-right my-auto">Order Number :</label>
                         <input id="orderNumber" name="orderNumber" type="text"
-                        class="form-control col-12 col-sm-6 col-md-6" value="<%= or.orderNumber %>" disabled>
+                        class="form-control col-12 col-sm-6 col-md-6" value="<%= or._id %>" disabled>
                     </div>
                     <div class="row my-2">
                         <label for="customerNumber" class="col-12 col-sm-3 text-sm-right my-auto">Customer Number :</label>
                         <input id="customerNumber" name="customerNumber" type="text"
-                        class="form-control col-12 col-sm-6 col-md-6" value="<%= or.customerNumber %>" disabled>
+                        class="form-control col-12 col-sm-6 col-md-6" value="<%= or._id %>" disabled>
                     </div>
                     <div class="row my-2">
                         <div class="input-group">

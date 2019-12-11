@@ -1,46 +1,57 @@
 body {
-
-  margin: 0;
-
+    margin: 0;
 }
-i{
-  columns: #000000;;
+
+i {
+    columns: #000000;
 }
+
 table {
-  background-color: white;
-  color:black;
+    background-color: white;
+    color: white;
 }
+
 th {
-  background-color: #757574;
-  color:white;
+    background-color: #757574;
+    color: white;
 }
+
 td {
-  background-color: #CCCCC8;
-  color:black;
-}
-a {
-  color: #00B7FF;
+    background-color: #CCCCC8;
+    color: white;
 }
 
 .buttonAdd {
-  background-color: #ADC5D3;
-  border: none;
-  color: white;
-  padding: 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
+    background-color: #ADC5D3;
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    display: inline-block;
+    width: 80px;
+    height: 75px;
 }
 
-.button1 {border-radius: 2px;}
-.button2 {border-radius: 4px;}
-.button3 {border-radius: 8px;}
-.button4 {border-radius: 12px;}
-.button5 {border-radius: 50%;}
+.button1 {
+    border-radius: 2px;
+}
 
+.button2 {
+    border-radius: 4px;
+}
+
+.button3 {
+    border-radius: 8px;
+}
+
+.button4 {
+    border-radius: 12px;
+}
+
+.button5 {
+    border-radius: 50%;
+}
 
 .blackFont {
-  color: #000000;
+    color: #000000;
 }

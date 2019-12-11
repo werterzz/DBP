@@ -1,71 +1,68 @@
 <% include header.ejs %>
-    <div class="container mt-5">
-        <div class="row">
-            <% employees.forEach(function(emp){ %>
-                <div class="col-sm-4">
-                    <div class="mainCard">
-                        <img src="/images/empIcon.png" alt="" class="avatar" />
-                        <div class="empDetail">
-                            <h6>
-                                <%= emp.employeeNumber %>
-                            </h6>
-                            <h6>
-                                <%= emp.firstName %>
-                                    <%= emp.lastName %>
-                            </h6>
-                            <h6>
-                                <%= emp.email %>
-                            </h6>
-                            <h6>
-                                <%= emp.jobTitle %>
-                            </h6>
-                            <h6>
-                                <%= emp.office.addressLine1 %> <%= emp.office.addressLine2 %>
-                            </h6>
-                        </div>
-                        <div class="empButton mb-4">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-sm">
-                                        <button type="button" class="btn btn-success" id="updateEmp">
+    <% include EmployeeModal.ejs %>
+        <div class="container mt-5">
+            <div class="row">
+                <% employees.forEach(function(emp){ %>
+                    <div class="col-sm-4">
+                        <div class="mainCard">
+                            <img src="/images/empIcon.png" alt="" class="avatar" />
+                            <div class="empDetail">
+                                <h6>
+                                    <%= emp.employeeNumber %>
+                                </h6>
+                                <h6>
+                                    <%= emp.firstName %>
+                                        <%= emp.lastName %>
+                                </h6>
+                                <h6>
+                                    <%= emp.email %>
+                                </h6>
+                                <h6>
+                                    <%= emp.jobTitle %>
+                                </h6>
+                                <h6>
+                                    <%= emp.office.addressLine1 %>
+                                        <%= emp.office.addressLine2 %>
+                                </h6>
+                            </div>
+                            <div class="empButton mb-4">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-sm">
+                                            <button type="button" class="btn btn-success" id="UpdateBtn">
                   Update
                 </button>
-                                    </div>
-                                    <div class="col-sm">
-                                        <button type="button" id="delEmpBtn" class="btn btn-danger">
+                                        </div>
+                                        <div class="col-sm">
+                                            <button type="button" class="btn btn-danger" id="DelBtn">
                   Delete
                 </button>
-                                    </div>
-                                    <div class="col-sm">
-                                        <button type="button" id="ProEmpBtn" class="btn btn-warning">
+                                        </div>
+                                        <div class="col-sm">
+                                            <button type="button" id="ProEmpBtn" class="btn btn-warning">
                   <a href='/employeeInformation/promote/<%= emp.employeeNumber %>'>Promote</a>
                 </button>
-                                    </div>
-                                    <div class="col-sm">
-                                        <button type="button" id="DemEmpBtn" class="btn btn-secondary">
+                                        </div>
+                                        <div class="col-sm">
+                                            <button type="button" id="DemEmpBtn" class="btn btn-secondary">
                   <a href='/employeeInformation/demote/<%= emp.employeeNumber %>'>Demote</a>
                 </button>
 
-              </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <img src="/images/card.svg" alt="" class="card" />
+                        </div>
+                    </div>
+                    <% include EmployeeModalupdate.ejs %>
+                        <% include EmployeeDeleteModal.ejs %>
+                            <% }) %>
             </div>
-          </div>
         </div>
-        <img src="/images/card.svg" alt="" class="card" />
-      </div>
-    </div>
-    <% include EmployeeModalupdate.ejs %>
-    <% include EmployeeDeleteModal.ejs %>
-    <% }) %>
+        <button type="button" class="buttonAdd button5 addMenu" id="AddBtn">
+                        Add
+                    </button>
 
-
-
-
-
-<h1 style="margin-top: 5000px;">helllo</h1>
-
-<% include EmployeeModal.ejs %> 
-
-
-
-            <script src="/javascripts/modal.js"></script>
-            <% include footer.ejs %>
+        <script src="/javascripts/modal.js"></script>
+        <% include footer.ejs %>
