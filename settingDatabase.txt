@@ -208,3 +208,10 @@ db.orders.find().forEach(function(data){
 })
 
 
+//add point to customers
+db.customers.update(
+    {},
+    {$set: {"point": 0}},
+    false, 
+    true
+)
