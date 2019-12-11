@@ -57,8 +57,21 @@ div.listPD {
 }
 
 .margin-pd {
-    margin: 0% 0.5% 1% 0.5%;
     width: 18.5%;
+}
+
+.containerX {
+    display: inline-block;
+    position: relative;
+}
+
+.text-block {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    color: black;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .cardInform {

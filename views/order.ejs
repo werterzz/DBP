@@ -1,38 +1,60 @@
 <% include header.ejs %>
-    <% include orderAdd.ejs %>
-        <div class="p-4 col-12">
-            <h4 class=" font-weight-bold page-header">Order Detail</h4>
-            <hr>
-            <table class="table color" style="width:100%">
-                <tr>
-                    <th scope="col">Order Number</th>
-                    <th scope="col">Product Code</th>
-                    <th scope="col">Custumer ID</th>
-                    <th scope="col">QTY</th>
-                    <th scope="col">Pitce</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Required</th>
-                    <th scope="col">Data</th>
-                    <th scope="col"></th>
-                </tr>
-                <tr>
-                    <td>Jill</td>
-                    <td>Smith</td>
-                    <td>50</td>
-                    <td>Jill</td>
-                    <td>Smith</td>
-                    <td>50</td>
-                    <td>Jill</td>
-                    <td>Smith</td>
-                    <td>
-                        <% include orderUpdate.ejs %>
-                            <% include orderDel.ejs %>
-                                <% include orderPayment.ejs %>
-                    </td>
-                </tr>
-            </table>
-        </div>
+<p></p>
+<script src ="http://kit.fontawesome.com/a076d05399.js"></script>
+<script src="order.js"></script>
 
-        <script src="/javascripts/modal.js"></script>
-        <script src="/javascripts/payment.js"></script>
-        <% include footer.ejs %>
+<head> 
+    <title><%= title %></title>
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/order.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<div class="p-4 col-12">
+  <h4 class=" font-weight-bold page-header">Order</h4>
+  <hr>
+  <table class="table table-bordered table-sm">
+    <thead style="background-color: #757574 ; color : white">
+      <tr>
+        <th style="width: 10%">Order Number</th>
+        <th style="width: 10%">Custumer ID</th>
+        <th style="width: 10%">Status</th>
+        <th style="width: 10%">Required</th>
+        <th style="width: 49%">Comments</th>
+        <th style="width: 3%"></th>
+        <th style="width: 8%"></th>
+      </tr>
+    </thead>
+    <tbody style="background-color: #ccccc8 ; color : black">
+      <% orders.forEach(function(or){ %>
+        <tr>
+          <td><%= or._id %></td>
+          <td><%= or.customerNumber %></td>
+          <td><%= or.status %></td>
+          <td><%= or.requiredDate %></td>
+          <td><%= or.comments %></td>
+          <td>
+            <form action="/orderDetails" method = "get">
+              <button class="btn btn-outline-dark"><i class="fa fa-file"></i></button>
+            </form>
+          </td>
+          <td>
+            <% include orderUpdate.ejs %>
+            <% include orderPayment.ejs %>
+            <% include deleteOrder.ejs %>
+          </td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>
+<% include orderAdd.ejs %>
+<% include footer.ejs %>

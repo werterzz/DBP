@@ -1,5 +1,5 @@
-<div id="AddModal" class="modal" tabindex="-1" role="dialog">
-    <div class="" role="document">
+<div id="AddModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="false">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title headerModal">Insert</h5>
@@ -8,44 +8,42 @@
             </button>
             </div>
             <div class="modal-body">
-            
-
-                            <form action="/customer/add" id="usrform" method="POST">
-                                ID:
-                                <input type="number" name="id" value="" />
-                                <br /> Name:
-                                <input type="text" name="name" value="" />
-                                <!-- <br /> CustomerNumber:
+                <form action="/customer/add" id="usrform" method="POST">
+                    ID:
+                    <input type="text" name="id" value="" />
+                    <br /> Name:
+                    <input type="text" name="name" value="" />
+                    <!-- <br /> CustomerNumber:
                                 <input type="text" name="cusnum" value="" /> -->
-                                <br /> Contact first name:
-                                <input type="text" name="conFname" value="" />
-                                <br /> Contact last name:
-                                <input type="text" name="conLname" value="" />
-                                <br /> Phone number:
-                                <input type="text" name="phone" value="" />
-                                <br /> Address Line 1:
-                                <textarea rows="4" cols="50" name="addr1" form="usrform"></textarea>
-                                <br /> Address Line 2:
-                                <textarea rows="4" cols="50" name="addr2" form="usrform"></textarea>
-                                <br /> City:
-                                <input type="text" name="city" value="" />
-                                <br /> State:
-                                <input type="text" name="state" value="" />
-                                <br /> Postal code:
-                                <input type="number" name="postal" value="" />
-                                <br /> Country:
-                                <input type="text" name="country" value="" />
-                                <br /> Employee Number:
-                                <input type="number" name="EmpNum" value="" />
-                                <br /> Credit limit:
-                                <input type="number" name="creditLim" value="" />
-                                <br />
-                                <br />
-                                
-                            
+                    <br /> Contact first name:
+                    <input type="text" name="conFname" value="" />
+                    <br /> Contact last name:
+                    <input type="text" name="conLname" value="" />
+                    <br /> Phone number:
+                    <input type="text" name="phone" value="" />
+                    <br /> Address Line 1:
+                    <textarea rows="4" cols="50" name="addr1" form="usrform"></textarea>
+                    <br /> Address Line 2:
+                    <textarea rows="4" cols="50" name="addr2" form="usrform"></textarea>
+                    <br /> City:
+                    <input type="text" name="city" value="" />
+                    <br /> State:
+                    <input type="text" name="state" value="" />
+                    <br /> Postal code:
+                    <input type="text" name="postal" value="" />
+                    <br /> Country:
+                    <input type="text" name="country" value="" />
+                    <br /> Employee Number:
+                    <input type="text" name="EmpNum" value="" />
+                    <br /> Credit limit:
+                    <input type="text" name="creditLim" value="" />
+                    <br />
+                    <br />
+
+
             </div>
             <div class="modal-footer">
-                    <input type="submit" class="btn btn-success"value="Submit" /></form>
+                <input type="submit" class="btn btn-success" value="Submit" /></form>
             </div>
         </div>
     </div>

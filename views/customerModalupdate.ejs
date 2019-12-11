@@ -1,5 +1,5 @@
-<div id="UpdateModal" class="modal" tabindex="-1" role="dialog">
-    <div class="" role="document">
+<div id="UpdateModal<%= cus._id %>" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="false">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title headerModal">Update</h5>
@@ -18,11 +18,11 @@
                     <br /> Contact last name:
                     <input type="text" name="contactLastName" value="Mouse" />
                     <br /> Phone number:
-                    <input type="text" name="phoneNumber" value="Mickey" />
+                    <input type="text" name="phone" value="Mickey" />
                     <br /> Address Line1:
-                    <input type="textarea" name="addressLine1" value="Mickey" />
+                    <textarea rows="4" cols="50" name="addressLine1" form="usrform">Mickey</textarea>
                     <br /> Address Line2:
-                    <input type="textarea" name="addressLine2" value="Mickey" />
+                    <textarea rows="4" cols="50" name="addressLine2" form="usrform">Mickey</textarea>
                     <br /> City:
                     <input type="text" name="city" value="Mickey" />
                     <br /> State:
@@ -37,11 +37,11 @@
                     <input type="text" name="creditLimit" value="Mickey" />
                     <br />
                     <br />
-                    
-                
+
+
             </div>
             <div class="modal-footer">
-                <input type="submit" class="btn btn-success"value="Submit" /></form>
+                <input type="submit" class="btn btn-success" value="Submit" /></form>
             </div>
         </div>
     </div>

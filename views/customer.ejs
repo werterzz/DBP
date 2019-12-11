@@ -29,14 +29,10 @@
                                 <div class="container">
                                     <div class="row">
                                         <div class="col-sm">
-                                            <button type="button" class="btn btn-success" id="UpdateBtn">
-                                        Update
-                                        </button>
+                                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#UpdateModal<%= cus._id %>">Update</button>
                                         </div>
                                         <div class="col-sm">
-                                            <button type="button" class="btn btn-danger" id="DelBtn">
-                                        Delete
-                                        </button>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#DelModal<%= cus._id %>">Delete</button>
                                         </div>
                                     </div>
                                 </div>
@@ -49,9 +45,5 @@
                             <% }) %>
             </div>
         </div>
-        <button type="button" class="buttonAdd button5 addMenu" id="AddBtn">
-                        Add
-                    </button>
-
-        <script src="/javascripts/modal.js"></script>
+        <button type="button" class="buttonAdd button5 addMenu" data-toggle="modal" data-target="#AddModal">Add</button>
         <% include footer.ejs %>

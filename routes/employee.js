@@ -18,50 +18,52 @@ router.get('/employee', function(req, res, next) {
 });
 
 
-  // router.post('/del', function (req, res, next) {
-  //   console.log("lol document deleted");
-  //   Employees.find({employeeNumber: req.params.id}).then((emp) =>
-  //   MongoClient.connect(url, function(err, db) {
-  //     if (err) throw err;
-  //     var dbo = db.db("classicModels");
-  //     var myquery = { _id:req.params.id };
-  //     dbo.collection("employees").deleteOne(myquery, function(err, obj) {
-  //       if (err) throw err;
-  //       console.log("1 document deleted");
-  //       res.redirect("/employeeInformation");
-  //       db.close();
-  //     }); 
-  //   }));
-  // });
-  router.post('/del/:id', (req, res) => {
-        Employees.deleteOne({ employeeNumber: req.params.id }, function (err) {
+// router.post('/del', function (req, res, next) {
+//   console.log("lol document deleted");
+//   Employees.find({employeeNumber: req.params.id}).then((emp) =>
+//   MongoClient.connect(url, function(err, db) {
+//     if (err) throw err;
+//     var dbo = db.db("classicModels");
+//     var myquery = { _id:req.params.id };
+//     dbo.collection("employees").deleteOne(myquery, function(err, obj) {
+//       if (err) throw err;
+//       console.log("1 document deleted");
+//       res.redirect("/employeeInformation");
+//       db.close();
+//     }); 
+//   }));
+// });
+router.post('/del/:id', (req, res) => {
+    Employees.deleteOne({ _id: req.params.id }, function(err) {
         if (err) console.log(err)
-        // deleted at most one tank document
+            // deleted at most one tank document
         res.redirect("/employeeInformation");
-      });
     });
-    
-  
+});
 
 
-  router.post('/update/:id', function (req, res, next) {
-    Employees.updateOne({email: req.body.email,
-      employeeNumber: req.body.employeenumber,
-      extension: req.body.Extension,
-      firstName: req.body.firstname,
-      lastName: req.body.lastname,
-      jobTitle: req.body.job,
-      officeCode: req.body.Officecode,
-      password: req.body.password,
-      reportsTo: req.body.Report}, function(err, ree) {
-        
+
+
+router.post('/update/:id', function(req, res, next) {
+    Employees.updateOne({ _id: req.params.id }, {
+        email: req.body.email,
+        employeeNumber: req.body.employeenumber,
+        extension: req.body.Extension,
+        firstName: req.body.firstname,
+        lastName: req.body.lastname,
+        jobTitle: req.body.job,
+        officeCode: req.body.Officecode,
+        password: req.body.password,
+        reportsTo: req.body.Report
+    }, function(err, ree) {
+
         res.redirect("/employeeInformation");
-      // Updated at most one doc, `res.modifiedCount` contains the number
-      // of docs that MongoDB updated
+        // Updated at most one doc, `res.modifiedCount` contains the number
+        // of docs that MongoDB updated
     });
-  });
-  
-  
+});
+
+
 
 
 //   collection.deleteOne({ _id: new mongo.ObjectId(id) }, function (err, results) {
@@ -85,7 +87,7 @@ router.post('/add', function(req, res, next) {
     //     officeCode: req.body.Officecode,
     //     reportsTo: req.body.Report
     //   }
-  
+
     //   dbo.collection("employees").insertOne(myobj, function(err, res2) {
     //     if (err) throw err;
     //     console.log("document inserted");
@@ -94,22 +96,24 @@ router.post('/add', function(req, res, next) {
     //   });
     // });
 
-    let emp = new Employees({email: req.body.email,
-          employeeNumber: req.body.employeenumber,
-          extension: req.body.Extension,
-          firstName: req.body.firstname,
-          lastName: req.body.lastname,
-          jobTitle: req.body.job,
-          officeCode: req.body.Officecode,
-          password: req.body.password,
-          reportsTo: req.body.Report})
-          emp.save(function (err) {
-            if (err) console.log(err);
-            // saved!
-            res.redirect("/employeeInformation");
-          });
+    let emp = new Employees({
+        email: req.body.email,
+        employeeNumber: req.body.employeenumber,
+        extension: req.body.Extension,
+        firstName: req.body.firstname,
+        lastName: req.body.lastname,
+        jobTitle: req.body.job,
+        officeCode: req.body.Officecode,
+        password: req.body.password,
+        reportsTo: req.body.Report
+    })
+    emp.save(function(err) {
+        if (err) console.log(err);
+        // saved!
+        res.redirect("/employeeInformation");
+    });
 
-  });
+});
 
 
 module.exports = router;
