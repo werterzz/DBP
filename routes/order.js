@@ -40,11 +40,11 @@ router.post('/del/:id', (req, res) =>
 
 router.post('/update/:id', function (req, res, next) {
   console.log('success')
-  console.log(req.body.orderNumber)
+  console.log(req.body._id)
   console.log(req.body.status)
   console.log(req.params.id)
   Orders.updateOne(
-    {orderNumber : req.params.id},
+    {_id : req.params.id},
     {
       orderDate: req.body.orderDate,
       requiredDate: req.body.requiredDate,
