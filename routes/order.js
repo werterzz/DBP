@@ -2,9 +2,9 @@ var express = require('express');
 var router = express.Router();
 const { check, validationResult } = require('express-validator');
 
-router.route('/orderDetails')
-    .get(function(req, res) {
-        res.sendFile(path + '/views/orderDetails.ejs');
+router.route('/orderDetails/:id')
+ 	.get(function (req, res) {
+		res.render('orderDetails')
     });
 
 const mongoose = require('mongoose');
