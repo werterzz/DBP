@@ -1,37 +1,23 @@
 const mongoose = require('mongoose');
+// const Stocks = require('../models/Stocks');
 
-const StocksSchema = new mongoose.Schema({
-    date: {
-        type: Date,
-        required: true
-    },
-    product: {
-        type: Object       
-    }
-});
+
 
 const ProductsSchema = new mongoose.Schema({
     MSRP: {
-        type: String,
-        required: true
+        type: Number
     },
     buyPrice: {
-        type: String
+        type: Number
     },
     _id: {
-        type: String
-    },
-    product: {
-        type: String
-    },
-    contactLastName: {
         type: String
     },
     productDescription: {
         type: String
     },
     productLine: {
-        type: Object
+        type: String
     },
     productName: {
         type: String,
@@ -44,7 +30,7 @@ const ProductsSchema = new mongoose.Schema({
         type: String
     },
     quantityInStock: {
-        type: String
+        type: Number
     },
 },{ toJSON: { virtuals: true }, toObject: { virtuals: true }});
 
@@ -59,7 +45,7 @@ ProductsSchema.virtual('stock', {
     // options: { toObject : {virtuals:true},toJSON : {virtuals : true} } // Query options, see http://bit.ly/mongoose-query-options
   });
 
-const Stocks = mongoose.model('Stocks', StocksSchema);
+// const Stocks = mongoose.model('Stocks', StocksSchema);
 const Products = mongoose.model('Products', ProductsSchema);
 
 module.exports = Products;

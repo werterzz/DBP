@@ -13,15 +13,15 @@ router.get('/customer/submit', function(req, res, next) {
 });
 
 router.post('/del/:id', (req, res) => {
-    Customer.deleteOne({ _id: req.params.id }, function (err) {
-    if (err) console.log(err)
-    // deleted at most one tank document
-    res.redirect("/customer");
-  });
+    Customer.deleteOne({ _id: req.params.id }, function(err) {
+        if (err) console.log(err)
+            // deleted at most one tank document
+        res.redirect("/customer");
+    });
 });
 
-router.post('/update/:id', function (req, res, next) {
-    Customer.updateOne({
+router.post('/update/:id', function(req, res, next) {
+    Customer.updateOne({ _id: req.params.id, }, {
         customerName: req.body.customerName,
         // customerNumber: req.body.cusnum,
         contactFirstName: req.body.contactFirstName,
@@ -34,38 +34,42 @@ router.post('/update/:id', function (req, res, next) {
         country: req.body.country,
         postalCode: req.body.postalCode,
         salesRepEmployeeNumber: req.body.salesRepEmployeeNumber,
-        creditLimit: req.body.creditLimit}, function(err, ree) {
-        
+        creditLimit: req.body.creditLimit,
+        point: req.body.point
+    }, function(err, ree) {
+        if (err) console.log(err)
         res.redirect("/customer");
-      // Updated at most one doc, `res.modifiedCount` contains the number
-      // of docs that MongoDB updated
+        // Updated at most one doc, `res.modifiedCount` contains the number
+        // of docs that MongoDB updated
     });
-  });
+});
 
-  router.post('/add', function(req, res, next) {
+router.post('/add', function(req, res, next) {
     console.log("document inserted");
     let cus = new Customer({
-            _id: req.body.id,
-            customerName: req.body.name,
-            // customerNumber: req.body.cusnum,
-            contactFirstName: req.body.conFname,
-            contactLastName: req.body.conLname,
-            phone: req.body.phone,
-            addressLine1: req.body.addr1,
-            addressLine2: req.body.addr2,
-            city: req.body.city,
-            state: req.body.state,
-            country: req.body.country,
-            postalCode: req.body.postal,
-            salesRepEmployeeNumber: req.body.EmpNum,
-            creditLimit: req.body.creditLim})
-          cus.save(function (err) {
-            if (err) console.log(err);
-            // saved!
-            res.redirect("/customer");
-          });
-  
-  });
+        _id: req.body.id,
+        customerName: req.body.name,
+        // customerNumber: req.body.cusnum,
+        contactFirstName: req.body.conFname,
+        contactLastName: req.body.conLname,
+        phone: req.body.phone,
+        addressLine1: req.body.addr1,
+        addressLine2: req.body.addr2,
+        city: req.body.city,
+        state: req.body.state,
+        country: req.body.country,
+        postalCode: req.body.postal,
+        salesRepEmployeeNumber: req.body.EmpNum,
+        creditLimit: req.body.creditLim,
+        point: req.body.point
+    })
+    cus.save(function(err) {
+        if (err) console.log(err);
+        // saved!
+        res.redirect("/customer");
+    });
+
+});
 
 
 

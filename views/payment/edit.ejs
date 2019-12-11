@@ -1,0 +1,37 @@
+<button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#paymentUpdateModal<%= p._id %>"><i class="fa fa-pen"></i></button>
+<div class="modal" id="paymentUpdateModal<%= p._id %>" data-backdrop="false">
+    <div class="modal-dialog modal-xl modal-dialog-scrollable">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="blackFont">Update Payment</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form action="/payment/update/<%= p._id %>" method="POST">
+                    <div class="row my-2">
+                        <label for="chequeNumber" class="col-12 col-sm-3 text-sm-right my-auto">Cheque Number :</label>
+                        <input id="chequeNumber" name="chequeNumber" type="text" value="<%= p._id %>" class="form-control col-12 col-sm-6 col-md-6" readonly>
+                    </div>
+                    <div class="row my-2">
+                        <label for="customerNumber" class="col-12 col-sm-3 text-sm-right my-auto">Customer Number :</label>
+                        <input id="customerNumber" name="customerNumber" type="text" value="<%= pm._id %>" class="form-control col-12 col-sm-6 col-md-6" readonly>
+                    </div>
+                    <div class="row my-2">
+                        <label for="amount" class="col-12 col-sm-3 text-sm-right my-auto">Amount :</label>
+                        <input id="amount" name="amount" type="number" value="<%= p.amount %>" class="form-control col-12 col-sm-6 col-md-6">
+                    </div>
+                    <div class="row my-2">
+                        <label for="paymentDate" class="col-12 col-sm-3 text-sm-right my-auto">Payment Date :</label>
+                        <input id="paymentDate" name="paymentDate" type="date" value="" class="form-control col-12 col-sm-6 col-md-6">
+                    </div>
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-success">Submit</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>

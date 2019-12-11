@@ -1,5 +1,5 @@
-<div id="UpdateModal" class="modal" tabindex="-1" role="dialog">
-    <div class="" role="document">
+<div id="UpdateModal<%=cus._id%>" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="false">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title headerModal">Update</h5>
@@ -8,7 +8,7 @@
             </button>
             </div>
             <div class="modal-body">
-                <form action="/employee/update/<%= emp.employeeNumber %>" method="POST">
+                <form action="/employee/update/<%= emp._id %>" method="POST">
                     firstName:
                     <input type="text" name="firstname" value="Mickey" />
                     <br /> lastName:

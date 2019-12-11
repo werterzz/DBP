@@ -1,4 +1,4 @@
-<% include header.ejs %>
+<% include ../header.ejs %>
 <p></p>
 <script src ="http://kit.fontawesome.com/a076d05399.js"></script>
 <script src="order.js"></script>
@@ -28,9 +28,9 @@
         <th style="width: 10%">Custumer ID</th>
         <th style="width: 10%">Status</th>
         <th style="width: 10%">Required</th>
-        <th style="width: 49%">Comments</th>
-        <th style="width: 3%"></th>
-        <th style="width: 8%"></th>
+        <th style="width: 52%">Comments</th>
+        <th style="width: 2%"></th>
+        <th style="width: 6%"></th>
       </tr>
     </thead>
     <tbody style="background-color: #ccccc8 ; color : black">
@@ -48,7 +48,6 @@
           </td>
           <td>
             <% include orderUpdate.ejs %>
-            <% include orderPayment.ejs %>
             <% include deleteOrder.ejs %>
           </td>
       </tr>
@@ -57,4 +56,4 @@
   </table>
 </div>
 <% include orderAdd.ejs %>
-<% include footer.ejs %>
+<% include ../footer.ejs %>

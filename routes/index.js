@@ -10,6 +10,7 @@ const User = require('../models/User');
 const Offices = require('../models/Offices');
 const Employees = require('../models/Employees');
 const Orders = require('../models/Order');
+const customerPy = require('../models/Customer');
 // const Products = require('../models/Products')
 const OrderDetail = require('../models/OrderDetail');
 const Customer = require('../models/Customer');
@@ -48,24 +49,22 @@ router.get('/customer', (req, res, next) => {
 
 router.get('/employeeInformation', function(req, res, next) {
     if (req.user == null) res.send('please login')
-    if(req.user.jobTitle === 'VP Sales') {
-    Employees.find({jobTitle : { $regex: '.*' + 'Sale Manager' + '.*' }, jobTitle : { $regex: '.*' + 'Sales Manager' + '.*' }}).populate('office').exec().then((data,err) => {
-        if (err) res.send(err)
-        // console.log(data)
-        res.render('employeeInformation', { user: req.user, employees: data, title: "Employee" })
-    })
-    }
-    else if (req.user.jobTitle.includes('Sale Manager') || req.user.jobTitle.includes('Sales Manager')){
-        Employees.find({jobTitle : { $regex: '.*' + 'Sales Rep' + '.*' }}).populate('office').exec().then((data,err) => {
+    if (req.user.jobTitle === 'VP Sales') {
+        Employees.find({ jobTitle: { $regex: '.*' + 'Sale Manager' + '.*' }, jobTitle: { $regex: '.*' + 'Sales Manager' + '.*' } }).populate('office').exec().then((data, err) => {
             if (err) res.send(err)
-            // console.log(data)
+                // console.log(data)
             res.render('employeeInformation', { user: req.user, employees: data, title: "Employee" })
         })
-    }
-    else {
-        Employees.find({}).populate('office').exec().then((data,err) => {
+    } else if (req.user.jobTitle.includes('Sale Manager') || req.user.jobTitle.includes('Sales Manager')) {
+        Employees.find({ jobTitle: { $regex: '.*' + 'Sales Rep' + '.*' } }).populate('office').exec().then((data, err) => {
             if (err) res.send(err)
-            // console.log(data)
+                // console.log(data)
+            res.render('employeeInformation', { user: req.user, employees: data, title: "Employee" })
+        })
+    } else {
+        Employees.find({}).populate('office').exec().then((data, err) => {
+            if (err) res.send(err)
+                // console.log(data)
             res.render('employeeInformation', { user: req.user, employees: data, title: "Employee" })
         })
     }
@@ -77,23 +76,28 @@ router.get('/customer', (req, res, next) => {
     });
 });
 
+router.get('/payment', (req, res, next) => {
+    customerPy.find().then((data) => {
+        res.render('./payment/payment', { payments: data, title: "Payment" });
+    });
+});
 
-router.get('/order', function (req, res, next) {
+router.get('/order', function(req, res, next) {
     Orders.find().populate('customer').exec().then((order) => {
-        Orders.find().populate('product').exec().then((order_product) => {
-        res.render('order', { user: req.user, orders : order, order_p : order_product , title: "Order" })
-    })
-    // Products.find().then((product) => {
-    //     res.render('product' , {products : product})
-    // })
-})
-//   Order.find().then((order) => {
-//     OrderDetail.find().then((orderDetail) => { console.log("bello")
-//       Customer.find().then((customer) => {
-//         res.render('order', { user: req.user , orders : order , orderDetails : orderDetail , customers : customer , title: "hello" });
-//       });
-//     });
-//   });
+            Orders.find().populate('product').exec().then((order_product) => {
+                    res.render('./order/order', { user: req.user, orders: order, order_p: order_product, title: "Order" })
+                })
+                // Products.find().then((product) => {
+                //     res.render('product' , {products : product})
+                // })
+        })
+        //   Order.find().then((order) => {
+        //     OrderDetail.find().then((orderDetail) => { console.log("bello")
+        //       Customer.find().then((customer) => {
+        //         res.render('order', { user: req.user , orders : order , orderDetails : orderDetail , customers : customer , title: "hello" });
+        //       });
+        //     });
+        //   });
 });
 
 router.get('/orderDetails/:id', (req, res) => {
@@ -252,7 +256,7 @@ router.get('/testme', (req, res) => {
 
 router.get('/promotions', (req, res) => {
     Promotions.find().then(data => {
-        res.render('promotions', { title: "Product", user: req.user, promotions : data })
+        res.render('promotions', { title: "Product", user: req.user, promotions: data })
     })
 })
 
