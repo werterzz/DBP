@@ -1,6 +1,6 @@
-<div id="UpdateModal" class="modal" tabindex="-1" role="dialog">
-    <div class="" role="document">
-        <div class="modal-content" style="width: 1000px !important;">
+<div id="UpdateModal<%=emp._id%>" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="false">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title headerModal">Update</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -10,27 +10,27 @@
             <div class="modal-body">
                 <form action="/product/update/<%= emp._id %>" method="POST">
                     <br /> productName:
-                    <input type="text" name="productname" value="Mickey" />
+                    <input type="text" name="productname" value="<%= emp.productName%>" />
                     <br /> productScale:
-                    <input type="text" name="productscale" value="Mickey" />
+                    <input type="text" name="productscale" value="<%= emp.productScale %>" />
                     <br /> productVendor:
-                    <input type="text" name="productvendor" value="Mickey" />
+                    <input type="text" name="productvendor" value="<%= emp.productVendor %>" />
                     <br /> productLine:
-                    <input type="text" name="productline" value="Mickey" />
+                    <input type="text" name="productline" />
                     <br /> htmlDescription:
-                    <input type="text" name="htmlDescription" value="Mickey" />
+                    <input type="text" name="htmlDescription" />
                     <br /> image:
-                    <input type="text" name="image" value="Mickey" />
+                    <input type="text" name="image" />
                     <br /> textDescription:
-                    <input type="text" name="textDescription" value="Mickey" />
+                    <input type="text" name="textDescription" />
                     <br /> quantityInStock:
-                    <input type="text" name="quantityinStock" value="Mickey" />
+                    <input type="text" name="quantityinStock" value="<%= emp.quantityInStock %>" />
                     <br /> MSRP:
-                    <input type="text" name="msrp" value="Mickey" />
+                    <input type="text" name="msrp" value="<%= emp.MSRP %>" />
                     <br /> buyPrice:
-                    <input type="text" name="buyprice" value="Mickey" />
+                    <input type="text" name="buyprice" value="<%= emp.buyPrice %>" />
                     <br /> productDescription:
-                    <input type="text" name="description" value="Mickey" />
+                    <textarea rows="4" cols="50" name="description" form="usrform"><%= emp.productDescription %></textarea>
                     <br />
             </div>
             <div class="modal-footer">

@@ -1,41 +1,37 @@
-<div id="UpdateModal" class="modal" tabindex="-1" role="dialog">
-    <div class="" role="document">
+<div id="DelModal<%=emp._id%>" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="false">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title headerModal">Update</h5>
+                <h5 class="modal-title headerModal">Delete</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
+                  <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             <div class="modal-body">
-                <form action="/employee/update/<%= emp.employeeNumber %>" method="POST">
+                <form action="/employee/update/<%= emp._id %>" method="POST">
                     firstName:
-                    <input type="text" name="firstname" value="Mickey" />
+                    <input type="text" name="firstname" value="<%= emp.firstName %>" />
                     <br /> lastName:
-                    <input type="text" name="lastname" value="Mickey" />
+                    <input type="text" name="lastname" value="<%= emp.lastName %>" />
                     <br /> Extension:
-                    <input type="text" name="Extension" value="Mouse" />
-
+                    <input type="text" name="Extension" value="<%= emp.extension %>" />
                     <br /> Password:
-                    <input type="text" name="password" value="Mickey" />
-                    <br /> employeeNumber:
-                    <input type="text" name="employeenumber" value="Mickey" />
+                    <input type="text" name="password" value="<%= emp.password %>" />
+                    <!-- <br /> employeeNumber:
+                    <input type="text" name="employeenumber" value="" /> -->
                     <br /> Office Code:
-                    <input type="text" name="Officecode" value="Mickey" />
+                    <input type="text" name="Officecode" value="<%= emp.officeCode %>" />
                     <br /> Report:
-                    <input type="text" name="Report" value="Mickey" />
+                    <input type="text" name="Report" value="<%= emp.reportsTo %>" />
                     <br /> Email:
-                    <input type="text" name="email" value="Mickey" />
+                    <input type="text" name="email" value="<%= emp.email %>" />
                     <br /> Job Type:
-                    <input type="text" name="job" value="Mickey" />
+                    <input type="text" name="job" value="<%= emp.jobTitle %>" />
                     <br />
-                    <br />
-                    <input type="submit" value="Submit" />
-                </form>
+
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Save changes</button>
-                <button type="button" class="btn btn-secondary">Close</button>
+                <input type="submit" class="btn btn-success" value="Submit" /></form>
             </div>
         </div>
     </div>
