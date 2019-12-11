@@ -99,7 +99,7 @@ router.get('/order', function (req, res, next) {
 router.get('/orderDetails/:id', (req, res) => {
     Orders.find({"_id": req.params.id}).then((data)=>{
         console.log(data[0].orderdetails)
-        res.render('orderDetails', {title: "Order Details" , orderdetails: data[0].orderdetails});
+            res.render('orderDetails', {title: "Order Details" , orderdetails: data[0].orderdetails});
     })
         
 });
