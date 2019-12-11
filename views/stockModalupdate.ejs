@@ -9,28 +9,24 @@
             </div>
             <div class="modal-body">
                 <form action="/product/update/<%= emp._id %>" method="POST">
+                    Product Code:
+                    <input type="text" name="proCode" value="<%= emp._id %>" disabled/>
                     <br /> productName:
-                    <input type="text" name="productname" value="Mickey" />
+                    <input type="text" name="productname" value="<%= emp.productName %>" />
                     <br /> productScale:
-                    <input type="text" name="productscale" value="Mickey" />
+                    <input type="text" name="productscale" value="<%= emp.productScale %>" />
                     <br /> productVendor:
-                    <input type="text" name="productvendor" value="Mickey" />
+                    <input type="text" name="productvendor" value="<%= emp.productVendor %>" />
                     <br /> productLine:
-                    <input type="text" name="productline" value="Mickey" />
-                    <br /> htmlDescription:
-                    <input type="text" name="htmlDescription" value="Mickey" />
-                    <br /> image:
-                    <input type="text" name="image" value="Mickey" />
-                    <br /> textDescription:
-                    <input type="text" name="textDescription" value="Mickey" />
+                    <input type="text" name="productline" value="<%= emp.productLine %>" />
                     <br /> quantityInStock:
-                    <input type="text" name="quantityinStock" value="Mickey" />
+                    <input type="number" name="quantityinStock" value="<%= emp.quantityInStock %>" />
                     <br /> MSRP:
-                    <input type="text" name="msrp" value="Mickey" />
+                    <input type="text" name="msrp" value="<%= emp.MSRP %>" />
                     <br /> buyPrice:
-                    <input type="text" name="buyprice" value="Mickey" />
+                    <input type="text" name="buyprice" value="<%= emp.buyPrice %>" />
                     <br /> productDescription:
-                    <input type="text" name="description" value="Mickey" />
+                    <textarea rows="4" cols="50" name="description" form="usrform"><%= emp.productDescription %></textarea>
             </div>
             <div class="modal-footer">
                 <button type="submit" class="btn btn-primary" value="Submit">Save changes</button></form>

@@ -9,34 +9,31 @@
             </div>
             <div class="modal-body">
                 <form action="/employee/update/<%= emp._id %>" method="POST">
-                    firstName:
-                    <input type="text" name="firstname" value="Mickey" />
-                    <br /> lastName:
-                    <input type="text" name="lastname" value="Mickey" />
+                    Employee ID:
+                    <input type="number" name="empId" value="<%= emp._id %>" disabled/>
+                    <br /> FirstName:
+                    <input type="text" name="firstname" value="<%= emp.firstName %>" />
+                    <br /> LastName:
+                    <input type="text" name="lastname" value="<%= emp.lastName %>" />
                     <br /> Extension:
-                    <input type="text" name="Extension" value="Mouse" />
-
+                    <input type="text" name="Extension" value="<%= emp.extension %>" />
                     <br /> Password:
-                    <input type="text" name="password" value="Mickey" />
-                    <br /> employeeNumber:
-                    <input type="text" name="employeenumber" value="Mickey" />
+                    <input type="text" name="password" value="<%= emp.password %>" />
                     <br /> Office Code:
-                    <input type="text" name="Officecode" value="Mickey" />
+                    <input type="text" name="Officecode" value="<%= emp.officeCode %>" />
                     <br /> Report:
-                    <input type="text" name="Report" value="Mickey" />
+                    <input type="number" name="Report" value="<%= emp.reportsTo %>" />
                     <br /> Email:
-                    <input type="text" name="email" value="Mickey" />
+                    <input type="text" name="email" value="<%= emp.email %>" />
                     <br /> Job Type:
-                    <input type="text" name="job" value="Mickey" />
+                    <input type="text" name="job" value="<%= emp.jobTitle %>" />
                     <br />
-                    <br />
-                    <input type="submit" value="Submit" />
-                </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Save changes</button>
-                <button type="button" class="btn btn-secondary">Close</button>
+                <button type="submit" class="btn btn-success">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
+            </form>
         </div>
     </div>
 </div>

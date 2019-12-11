@@ -9,34 +9,34 @@
             </div>
             <div class="modal-body">
                 <form action="/customer/update/<%= cus._id %>" method="POST">
-                    customerName:
-                    <input type="text" name="customerName" value="Mickey" />
-                    <!-- <br /> CustomerNumber:
-                    <input type="text" name="cusnum" value="" /> -->
+                    Customer ID:
+                    <input type="text" name="cusId" value="<%= cus._id%>" disabled/>
+                    <br /> CustomerName:
+                    <input type="text" name="customerName" value="<%= cus.customerName%>" />
                     <br /> Contact first name:
-                    <input type="text" name="contactFirstName" value="Mickey" />
+                    <input type="text" name="contactFirstName" value="<%= cus.contactFirstName %>" />
                     <br /> Contact last name:
-                    <input type="text" name="contactLastName" value="Mouse" />
+                    <input type="text" name="contactLastName" value="<%= cus.contactLastName %>" />
                     <br /> Phone number:
-                    <input type="text" name="phone" value="Mickey" />
+                    <input type="text" name="phone" value="<%= cus.phone %>" />
                     <br /> Address Line1:
-                    <textarea rows="4" cols="50" name="addressLine1" form="usrform">Mickey</textarea>
+                    <textarea rows="4" cols="50" name="addressLine1" form="usrform"><%= cus.addressLine1 %></textarea>
                     <br /> Address Line2:
-                    <textarea rows="4" cols="50" name="addressLine2" form="usrform">Mickey</textarea>
+                    <textarea rows="4" cols="50" name="addressLine2" form="usrform"><%= cus.addressLine2 %></textarea>
                     <br /> City:
-                    <input type="text" name="city" value="Mickey" />
+                    <input type="text" name="city" value="<%= cus.city %>" />
                     <br /> State:
-                    <input type="text" name="state" value="Mickey" />
+                    <input type="text" name="state" value="<%= cus.state %>" />
                     <br /> Postal code:
-                    <input type="text" name="postalCode" value="Mickey" />
+                    <input type="text" name="postalCode" value="<%= cus.postalCode %>" />
                     <br /> Country:
-                    <input type="text" name="country" value="Mickey" />
+                    <input type="text" name="country" value="<%= cus.country %>" />
                     <br /> Employee Number:
-                    <input type="text" name="salesRepEmployeeNumber" value="Mickey" />
+                    <input type="number" name="salesRepEmployeeNumber" value="<%= cus.salesRepEmployeeNumber %>" />
                     <br /> Credit limit:
-                    <input type="text" name="creditLimit" value="Mickey" />
+                    <input type="number" name="creditLimit" value="<%= cus.creditLimit %>" />
                     <br /> Point:
-                    <input type="text" name="point" value="" />
+                    <input type="number" name="point" value="<%= cus.point %>" />
                     <br />
                     <br />
 

@@ -10,11 +10,9 @@
             <div class="modal-body">
                 <form action="/customer/add" id="usrform" method="POST">
                     ID:
-                    <input type="text" name="id" value="" />
+                    <input type="number" name="id" value="" />
                     <br /> Name:
                     <input type="text" name="name" value="" />
-                    <!-- <br /> CustomerNumber:
-                                <input type="text" name="cusnum" value="" /> -->
                     <br /> Contact first name:
                     <input type="text" name="conFname" value="" />
                     <br /> Contact last name:
@@ -34,15 +32,12 @@
                     <br /> Country:
                     <input type="text" name="country" value="" />
                     <br /> Employee Number:
-                    <input type="text" name="EmpNum" value="" />
+                    <input type="number" name="EmpNum" value="" />
                     <br /> Credit limit:
-                    <input type="text" name="creditLim" value="" />
+                    <input type="number" name="creditLim" value="" />
                     <br /> Point:
-                    <input type="text" name="point" value="0" disabled/>
+                    <input type="number" name="point" value="0" readonly/>
                     <br />
-                    <br />
-
-
             </div>
             <div class="modal-footer">
                 <input type="submit" class="btn btn-success" value="Submit" /></form>
