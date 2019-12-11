@@ -6,12 +6,12 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var methodOverride = require('method-override')
+var methodOverride = require('method-override');
 
 var customerRouter = require('./routes/customer');
 var employeeRouter = require('./routes/employee');
 var productRouter = require('./routes/product');
-var stockRouter = require('./routes/stock')
+var stockRouter = require('./routes/stock');
 var promotionRouter = require('./routes/promotion');
 var orderRouter = require('./routes/order');
 var paymentRouter = require('./routes/payment');

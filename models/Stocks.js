@@ -11,7 +11,7 @@ const StocksSchema = new mongoose.Schema({
     },
     products: [{
         _id: {type: String},
-        amount: {type: String}
+        amount: {type: Number}
     }]
 },{ toJSON: { virtuals: true }, toObject: { virtuals: true }});
 

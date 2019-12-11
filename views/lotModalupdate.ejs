@@ -1,4 +1,4 @@
-<div id="UpdateModal<%= abc._id %>" class="modal" tabindex="-1" role="dialog" data-backdrop="false">
+<div id="UpdateModal<%= ab._id %>" class="modal" tabindex="-1" role="dialog" data-backdrop="false">
     <div class="" role="document">
         <div class="modal-content" style="width: 1000px !important;">
             <div class="modal-header">
@@ -10,12 +10,12 @@
             <div class="modal-body">
 
                 <form action="/stock/update/<%= abc._id %>" method="POST">
+                    <br /> productID:
+                    <input type="text" name="productid" value="<%= ab._id %>" readonly/>
+                    <br /> amount:
+                    <input type="number" name="qty" value="<%= ab.amount%>" />
                     <br /> Date:
                     <input type="date" name="date" value="" />
-                    <br /> productID:
-                    <input type="text" name="productid" value="Mickey" />
-                    <br /> QTY:
-                    <input type="text" name="qty" value="Mickey" />
                     
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary" value="Submit">Save changes</button>
