@@ -1,33 +1,27 @@
 <% include header.ejs %>
-    <% include stockProductModal.ejs %>
+    <% include lotModal.ejs %>
         <div class="p-4 col-12">
             
-            <h4 class=" font-weight-bold page-header">Stock Product</h4>
+            <h4 class=" font-weight-bold page-header">Stock</h4>
             <hr>
             <table class="table table-bordered table-sm">
                 <thead style="background-color: #757574 ; color : white">
                     <tr>
                         <th>ID</th>
-                        <th>Product Name</th>
-                        <th>Product Line</th>
-                        <th>Scale</th>
-                        <th>Product Vendor</th>
-                        <th>Qty</th>
-                        <th>Price</th>
-                        <th>Option</th>
+                        <th>Date</th>
+                        <th>ProductID</th>
+                        <th>QTY</th>
+                        
                     </tr>
                 </thead>
-                <% products.forEach(function(emp){ %>
+                <% stocks.forEach(function(abc){ %>
                 <tbody style="background-color: #ccccc8">
                 
                     <tr>
-                        <td><%= emp._id %></td>
-                        <td><%= emp.productName %></td>
-                        <td>Doll</td>
-                        <td><%= emp.productScale %></td>
-                        <td><%= emp.productVendor %></td>
-                        <td><%= emp.quantityInStock %></td>
-                        <td><%= emp.buyPrice %></td>
+                        <td><%= abc._id %></td>
+                        <td><%= abc.date %></td>
+                        
+                        
                         <td>
                             <div class="row m-0">
                                 <div class="d-flex">
@@ -42,8 +36,8 @@
                         </td>
                     </tr>                    
                     </tbody>
-                    <% include stockModalupdate.ejs %>
-                    <% include stockDel.ejs %>
+                    <% include lotModalupdate.ejs %>
+                    <% include lotDel.ejs %>
                     <% }) %>
             </table>
 

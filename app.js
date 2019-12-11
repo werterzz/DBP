@@ -11,6 +11,7 @@ var methodOverride = require('method-override')
 var customerRouter = require('./routes/customer');
 var employeeRouter = require('./routes/employee');
 var productRouter = require('./routes/product');
+var stockRouter = require('./routes/stock')
 var promotionRouter = require('./routes/promotion');
 
 
@@ -88,6 +89,7 @@ app.use('/customer', customerRouter);
 app.use('/employee', employeeRouter);
 app.use('/product', productRouter);
 app.use('/promotion', promotionRouter);
+app.use('/stock', stockRouter);
 
 
 
