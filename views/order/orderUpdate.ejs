@@ -15,7 +15,7 @@
                 </div>
     
                 <!-- Modal body -->
-                <div class="modal-body">
+                <div class="modal-body" style="color: black;">
                     <form action="/order/update/<%= or._id %>" method="POST">
                     <div class="row my-2">
                         <label for="orderNumber" class="col-12 col-sm-3 text-sm-right my-auto">Order Number :</label>
@@ -25,7 +25,7 @@
                     <div class="row my-2">
                         <label for="customerNumber" class="col-12 col-sm-3 text-sm-right my-auto">Customer Number :</label>
                         <input id="customerNumber" name="customerNumber" type="text"
-                        class="form-control col-12 col-sm-6 col-md-6" value="<%= or._id %>" disabled>
+                        class="form-control col-12 col-sm-6 col-md-6" value="<%= or.customerNumber %>" disabled>
                     </div>
                     <div class="row my-2">
                         <div class="input-group">
@@ -97,8 +97,8 @@
                     </div>
                     <div class="row my-2">
                         <label for="comments" class="col-12 col-sm-3 text-sm-right my-auto">Comments :</label>
-                        <input id="comments" name="comments" type="text" value="<%= or.comments %>"
-                        class="form-control col-12 col-sm-6 col-md-6">
+                        <textarea id="comments" name="comments" type="text"
+                        class="form-control col-12 col-sm-6 col-md-6" rows="3"><%= or.comments %></textarea>
                     </div>
                     <!-- Modal footer -->
                     <div class="modal-footer">

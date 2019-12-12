@@ -19,34 +19,29 @@
 </head>
 
 <div class="p-4 col-12">
-  <h4 class=" font-weight-bold page-header">Order</h4>
+  <h3 class=" font-weight-bold page-header">Order</h3>
   <hr>
-  <table class="table table-bordered table-sm">
+  <table class="table table-bordered table-responsive-xl table-sm">
     <thead style="background-color: #757574 ; color : white">
       <tr>
-        <th style="width: 10%">Order Number</th>
-        <th style="width: 10%">Custumer ID</th>
-        <th style="width: 10%">Status</th>
-        <th style="width: 10%">Required</th>
-        <th style="width: 52%">Comments</th>
-        <th style="width: 2%"></th>
-        <th style="width: 6%"></th>
-      </tr>
+        <th style="width: 10%"><h3><small>Order Number</small></h3></th>
+        <th style="width: 10%"><h3><small>Custumer ID</small></h3></th>
+        <th style="width: 10%"><h3><small>Status</small></h3></th>
+        <th style="width: 10%"><h3><small>Required</small></h3></th>
+        <th style="width: 52%"><h5><small>Comments</small></h5></th>
+        <th style="width: 8%"></th>
+        </tr>
     </thead>
     <tbody style="background-color: #ccccc8 ; color : black">
       <% orders.forEach(function(or){ %>
         <tr>
-          <td><%= or._id %></td>
-          <td><%= or.customerNumber %></td>
-          <td><%= or.status %></td>
-          <td><%= or.requiredDate %></td>
-          <td><%= or.comments %></td>
+          <td><h5><small><%= or._id %></small></h5></td>
+          <td><h5><small><%= or.customerNumber %></small></h5></td>
+          <td><h5><small><%= or.status %></small></h5></td>
+          <td><h5><small><%= or.requiredDate %></small></h5></td>
+          <td><h5><small><%= or.comments %></small></h5></td>
           <td>
-            <form action="/orderDetails" method = "get">
-              <button class="btn btn-outline-dark"><i class="fa fa-file"></i></button>
-            </form>
-          </td>
-          <td>
+            <button class="btn btn-outline-dark" action="/orderDetails/<%= or._id %>" method="get"><i class="fa fa-file"></i></button>
             <% include orderUpdate.ejs %>
             <% include deleteOrder.ejs %>
           </td>
@@ -54,6 +49,10 @@
       <% }) %>
     </tbody>
   </table>
+  <div class ="form-group col-12 col-md-12 px-0 d-flex">
+    <% include orderAdd.ejs %>
+  </div>
+
 </div>
-<% include orderAdd.ejs %>
+
 <% include ../footer.ejs %>

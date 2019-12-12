@@ -2,27 +2,46 @@ var express = require('express');
 var router = express.Router();
 const { check, validationResult } = require('express-validator');
 
+var orderA
 router.route('/orderDetails')
  	.get(function (req, res) {
+    orderA = req.body.orderNumber;
 		res.sendFile(path + '/views/orderDetails.ejs');
     });
     
 const mongoose = require('mongoose');
 
 const Orders = require('../models/Order');
+const OrderDetails = require('../models/OrderDetail');
 router.post('/add', function(req, res, next) {
-    console.log('in post')
-    let ord = new Orders({
+  console.log('in add')
+      let ors = new OrderDetails({
         _id : req.body.orderNumber,
         orderNumber : req.body.orderNumber,
-        orderDate: req.body.orderDate,
-        requiredDate: req.body.requiredDate,
-        shippedDate: req.body.shippedDate,
-        status: req.body.status,
-        comments: req.body.comments,
-        customerNumber: req.body.customerNumber
+        productCode : req.body.productCode,
+        quantityOrdered : req.body.qty,
+        priceEach : req.body.priceEach,
+        orderLineNumber : req.body.orderLineNumber
         })
-        ord.save(function (err) {
+        ors.save(function (err) {
+          if (err) console.log(err);
+          // saved!
+          console.log('add details finish')
+          
+        });        
+  });
+
+  router.post('/addDetails', function(req, res, next) {
+    console.log('in Details')
+    let ors = new OrderDetails({
+        _id : req.body.orderNumber,
+        orderNumber : req.body.orderNumber,
+        productCode : req.body.productCode,
+        quantityOrdered : req.body.qty,
+        priceEach : req.body.priceEach,
+        orderLineNumber : req.body.orderLineNumber
+        })
+        ors.save(function (err) {
           if (err) console.log(err);
           // saved!
           res.redirect("/order");
@@ -31,7 +50,7 @@ router.post('/add', function(req, res, next) {
 
 router.post('/del/:id', (req, res) => 
   {
-    Orders.deleteOne({ orderNumber : req.params.id }, function (err) {
+    Orders.deleteOne({ _id : req.params.id }, function (err) {
     if (err) console.log(err)
     // deleted at most one tank document
     res.redirect("/order");

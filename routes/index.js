@@ -13,6 +13,7 @@ const Orders = require('../models/Order');
 const Payments = require('../models/Payment');
 // const Products = require('../models/Products')
 const OrderDetail = require('../models/OrderDetail');
+const Products  = require('../models/Products');
 const Customer = require('../models/Customer');
 const Promotions = require('../models/Promotions')
 const { ensureAuthenticated, forwardAuthenticated } = require('../config/auth');
@@ -26,11 +27,25 @@ global.document = document;
 var $ = jQuery = require('jquery')(window);
 
 /* GET home page. */
+var productScale = Products;
+var productVen = Products
 
 router.get('/', function(req, res, next) {
     // console.log(req.user)
-
-    res.render('Gindex', { title: "Home", user: req.user });
+    // Products.find().then((product) => {
+    // res.render('Gindex', { title: "Home", user: req.user , products: product});
+    productScale.find().then((prSA) => {
+        productScale.find().distinct('productScale', function(error, prodS) {
+            productVen.find().then((prVA) => {
+                productVen.find().distinct('productVendor', function(error, prodV) {
+                    productScale.find().then((product) => {
+                            res.render('Gindex', { title: "Home", user: req.user , products: product , prS : prodS , prV : prodV});
+                    })
+                });
+            })
+        });
+        
+    })
 });
 
 
@@ -82,6 +97,10 @@ router.get('/payment', (req, res, next) => {
     Payments.find().then((payment) => {
         res.render('./payment/payment', { payments: payment, title: "Payment" });
     });
+});
+
+router.get('/orderAdd', (req, res, next) => {
+    res.render('addOrder1', {title: "Add Order" });
 });
 
 router.get('/order', function (req, res, next) {

@@ -2,13 +2,19 @@
 
     <!-- Sort menu -->
     <div class="Lmenu">
-        <p class="HLmenu">Product Scale</p>
-        <input class="style_CH" type="checkbox" value="" id="Scale1">
-        <label class="style_CH" for="Scale1">
-        1 : 10
-      </label>
+        <p class="HLmenu"><h4><strong>Product Scale</strong></h4></p>
+        <% prS.forEach(function(prs){ %>
+        
+        <span>
+            <input class="style_CH" type="checkbox" name = "productScale" value="" id="<%= prs %>" action="/home/check/<%= prs %>">
+            <label class="style_CH" for="SproductScale">
+                <h5><%= prs %></h5>
+            </label>
         <br>
-        <input class="style_CH" type="checkbox" value="" id="Scale2">
+        </span>
+        <% }) %>
+        <input type="button" onclick="alert(getCheckedCheckboxesFor('productScale'));" value="Get Values" />
+        <!-- <input class="style_CH" type="checkbox" value="" id="Scale2">
         <label class="style_CH" for="Scale2">
         1 : 12
       </label>
@@ -21,14 +27,16 @@
         <input class="style_CH" type="checkbox" value="" id="Scale4">
         <label class="style_CH" for="Scale4">
         1 : 24
-      </label>
-        <p class="HLmenu">Product Vender</p>
+      </label> -->
+        <p class="HLmenu"><h4><strong>Product Vender</strong></h4></p>
+        <% prV.forEach(function(prv){ %>
         <input class="style_CH" type="checkbox" value="" id="defaultCheck1">
         <label class="style_CH" for="defaultCheck1">
-          A
+            <h5><%= prv %></h5>
         </label>
         <br>
-        <input class="style_CH" type="checkbox" value="" id="defaultCheck2">
+        <% }) %>
+        <!-- <input class="style_CH" type="checkbox" value="" id="defaultCheck2">
         <label class="style_CH" for="defaultCheck2">
           B
         </label>
@@ -41,7 +49,7 @@
         <input class="style_CH" type="checkbox" value="" id="defaultCheck4">
         <label class="style_CH" for="defaultCheck4">
           D
-        </label>
+        </label> -->
     </div>
     <!-- Big Picture -->
     <div class="bd-example shPro">
@@ -53,22 +61,22 @@
             </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="/images/slidpro.png" class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block" style="z-index: 1;">
+                    <img src="/images/gundum1.jpg" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block" style="z-index: 1; color : black">
                         <h5>First slide label</h5>
                         <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="/images/slidpro.png" class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block" style="z-index: 1;">
+                    <img src="/images/gundum1.jpg" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block" style="z-index: 1; color : black">
                         <h5>Second slide label</h5>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="/images/slidpro.png" class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block" style="z-index: 1;">
+                    <img src="/images/gundum1.jpg" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block" style="z-index: 1; color : black">
                         <h5>Third slide label</h5>
                         <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
                     </div>
@@ -85,12 +93,25 @@
         </div>
     </div>
     <!-- List of Product -->
-    <div class="listPD">
-        <% for (var i=0 ; i < 20 ; i++) {%>
+    <div class="listPD text-left">
+            <% products.forEach(function(prd){ %>
             <img src="images/Pcard.png" alt="pic" class="margin-pd">
-
-            <% } %>
+            <div class="carousel-caption d-none d-md-block" style="z-index: 1; color : black">
+                    <h5><%= prd.productScale %></h5>
+                    <p><%= prd.productName %></p>
+                </div>
+            <% }) %>
     </div>
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 
     <% include footer.ejs %>
+
+    <script type="text/javascript">
+function getCheckedCheckboxesFor(checkboxName) {
+    var checkboxes = document.querySelectorAll('input[name="' + checkboxName + '"]:checked'), values = [];
+    Array.prototype.forEach.call(checkboxes, function(el) {
+        values.push(el.value);
+    });
+    return values;
+}
+</script>

@@ -1,4 +1,4 @@
-<button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#orderDelete<%= or.orderNumber %>"><i class="fa fa-trash"></i></button>
+<button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#orderDelete<%= or._id %>"><i class="fa fa-trash"></i></button>
 
 <!-- The Modal -->
 <div class="modal" id="orderDelete<%= or.orderNumber %>" data-backdrop="false">
@@ -8,11 +8,11 @@
                 <h4 class="blackFont">Delete</h4>
             </div>
             <!-- Modal body -->
-            <div class="modal-body">
+            <div class="modal-body" style="color: black;">
                 Do you want to delete this order number?
                 <!-- Modal footer -->
                 <div class="modal-footer">
-                    <form action="/order/del/<%= or.orderNumber %>" method="POST">
+                    <form action="/order/del/<%= or._id %>" method="POST">
                         <button type="button"  class="btn btn-success" id="canDel" data-dismiss="modal">No</button>
                         <button type="submit" class="btn btn-danger">Yes</button>
                     </form>

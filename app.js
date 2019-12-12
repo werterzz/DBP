@@ -14,9 +14,7 @@ var productRouter = require('./routes/product');
 var promotionRouter = require('./routes/promotion');
 var orderRouter = require('./routes/order');
 var paymentRouter = require('./routes/payment');
-
-
-
+var homeRouter = require('./routes/home');
 
 const mongoose = require('mongoose');
 const passport = require('passport');
@@ -92,6 +90,7 @@ app.use('/product', productRouter);
 app.use('/promotion', promotionRouter);
 app.use('/order', orderRouter);
 app.use('/payment', paymentRouter);
+app.use('/home', homeRouter);
 
 
 

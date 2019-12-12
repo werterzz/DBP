@@ -1,6 +1,6 @@
 <!-- Button to Open the Modal -->
 
-<button type="button" class="buttonAdd button5" data-toggle="modal" data-target="#addOrderModal">
+<button type="button" class="buttonAdd button5 ml-auto mr-1 pull-right" data-toggle="modal" data-target="#addOrderModal">
     Add
 </button>
 <!-- The Modal -->
@@ -24,8 +24,8 @@
                 </div>
                 <div class="row my-2">
                     <label for="customerNumber" class="col-12 col-sm-3 text-sm-right my-auto">Customer Number :</label>
-                    <input id="productCode" name="productCode" type="text"
-                    class="form-control col-12 col-sm-6 col-md-6" value="">
+                    <input id="customerNumber" name="customerNumber" type="text"
+                    class="form-control col-12 col-sm-6 col-md-6">
                     <div class="input-group-append">
                         <% include customerNumberModals.ejs %>
                     </div>
@@ -34,7 +34,7 @@
                     <div class="input-group">
                         <label for="productCode" class="col-12 col-sm-3 text-sm-right my-auto">Product Code :</label>
                         <input id="productCode" name="productCode" type="text"
-                        class="form-control col-12 col-sm-6 col-md-6" value="">
+                        class="form-control col-12 col-sm-6 col-md-6">
                         <!-- <div class="input-group-append">
                             <% include productCodeModals.ejs %>
                         </div> -->

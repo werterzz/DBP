@@ -1,0 +1,136 @@
+<% include header.ejs %>
+<p></p>
+<script src ="http://kit.fontawesome.com/a076d05399.js"></script>
+
+<head> 
+    <title><%= title %></title>
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/orders.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<div class="text-color p-4 col-12">
+    <h4 class=" font-weight-bold page-header d-none d-sm-block">Order Details</h4>
+    <h6 class=" font-weight-bold page-header d-sm-none">Order Details</h6>
+    <hr>
+
+      <div class="form-group">
+        <div class="row my-2">
+          <label for="orderNumber" class="col-12 col-sm-3 text-sm-right my-auto">Order Number :</label>
+          <input id="orderNumber" name="orderNumber" type="text"
+          class="form-control col-12 col-sm-6 col-md-5">
+        </div>
+      </div>
+    
+      <div class="form-group">
+        <div class="row my-2">
+          <label for="customerId" class="col-12 col-sm-3 text-sm-right my-auto">Customer Number :</label>
+          <input id="customerId" name="customerId" type="text"
+          class="form-control col-12 col-sm-6 col-md-5">
+        </div>
+      </div>
+    
+      <div class="form-group">
+        <div class="row my-2">
+          <label for="status" class="col-12 col-sm-3 text-sm-right my-auto">Status :</label>
+          <select id="status" name="status" type="date"
+                class="form-control col-12 col-sm-6 col-md-5">
+                <option>Choose 1 status</option>
+                <option>Cancelled</option>
+                <option>Disputed</option>
+                <option>In Process</option>
+                <option>On Hold</option>
+                <option>Resloved</option>
+                <option>Shipped</option>
+            </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="row my-2">
+          <label for="requiredDate" class="col-12 col-sm-3 text-sm-right my-auto">Required Date :</label>
+          <input id="requiredDate" name="requiredDate" type="date"
+          class="form-control col-12 col-sm-6 col-md-5">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="row my-2">
+          <label for="shippedDate" class="col-12 col-sm-3 text-sm-right my-auto">Shipped Date :</label>
+          <input id="shippedDate" name="shippedDate" type="date"
+          class="form-control col-12 col-sm-6 col-md-5">
+        </div>
+      </div>
+    
+      <div class="form-group">
+        <div class="row my-2">
+          <label for="comments" class="col-12 col-sm-3 text-sm-right my-auto">Comments :</label>
+          <textarea id="comments" name="comments" type="text"
+          class="form-control col-12 col-sm-6 col-md-5" rows="3"></textarea>
+        </div>
+      </div>
+
+     
+</div>
+ <form action="form_sent.php" method="POST">
+          <input type="hidden" name="contacts" id="contacts" value="1">
+          <div class="form-contacts-container">
+              <div class="form-contact" id="form-contact-1">
+                  <!-- <input type="text" name="name-1" id="name-1" placeholder="Name"> -->
+                <div class="row my-2">
+                  <label for="productCode" class="col-12 col-sm-3 text-sm-right my-auto">Product Code :</label>
+                  <input id="productCode-1" name="productCode-1" type="text"
+                  class="form-control col-12 col-sm-6 col-md-5">
+                </div>
+                <div class="row my-2">
+                  <label for="qty" class="col-12 col-sm-3 text-sm-right my-auto">Quantity Order :</label>
+                  <input id="qty-1" name="qty-1" type="number"
+                  class="form-control col-12 col-sm-6 col-md-5">
+                </div>
+                <div class="row my-2">
+                  <label for="priceEach" class="col-12 col-sm-3 text-sm-right my-auto">Price Each :</label>
+                  <input id="priceEach-1" name="priceEach-1" type="text"
+                  class="form-control col-12 col-sm-6 col-md-5">
+                </div>
+                <div class="row my-2">
+                  <label for="orderLineNumber" class="col-12 col-sm-3 text-sm-right my-auto">Order Line Number :</label>
+                  <input id="orderLineNumber-1" name="orderLineNumber-1" type="text"
+                  class="form-control col-12 col-sm-6 col-md-5"><div class="form-contacts-add">
+                      <input type="button" class="btn btn-outline-dark" value="Add More Fields" id="add-fields" onclick="funcCreate()">
+                  </div>
+                </div>
+              </div>
+            <!-- <div class="form-group">
+                
+              </div>
+              <div class="form-group">
+                
+              </div>
+              <div class="form-group">
+                
+              </div>
+              <div class="form-group">
+                
+              </div> -->
+
+              <!-- add code here -->
+            </div>
+      </div>
+
+      
+
+      <div class="form-contacts-primary col-8 col-md-8 px-0 d-flex">
+          <input type="submit" class="btn btn-outline-dark ml-auto mr-1" name="submit" id="submit" value="Submit">
+      </div>
+      
+  </form>
+  <script src="/javascripts/addForm.js"></script>
+<% include footer.ejs %>

@@ -19,29 +19,28 @@
 </head>
 
 <div class="p-4 col-12">
-  <h4 class=" font-weight-bold page-header">Payment</h4>
-  <hr>
   <div class ="form-group col-12 col-md-12 px-0 d-flex">
+    <h3 class=" font-weight-bold page-header">Payment</h3>
     <% include add.ejs %>   
   </div>
  
   <table class="table table-bordered table-sm">
     <thead style="background-color: #757574 ; color : white">
       <tr>
-        <th>Customer Number</th>
-        <th>Cheque Number</th>
-        <th>Payment Date</th>
-        <th>Amount</th>
+        <th><h3><small>Customer Number</small></h3></th>
+        <th><h3><small>Cheque Number</small></h3></th>
+        <th><h3><small>Payment Date</small></h3></th>
+        <th><h3><small>Amount</small></h3></th>
         <th style="width: 6%"></th>
       </tr>
     </thead>
     <tbody style="background-color: #ccccc8 ; color : black">
         <% payments.forEach(function(pm){ %>
         <tr>
-          <td><%= pm.customerNumber %></td>
-          <td><%= pm.checkNumber %></td>
-          <td><%= pm.paymentDate %></td>
-          <td><%= pm.amount %></td>
+          <td><h5><small><%= pm.customerNumber %></small></h5></td>
+          <td><h5><small><%= pm.checkNumber %></small></h5></td>
+          <td><h5><small><%= pm.paymentDate %></small></h5></td>
+          <td><h5><small><%= pm.amount %></small></h5></td>
           <td>
             <% include edit.ejs %>
             <% include delete.ejs %>

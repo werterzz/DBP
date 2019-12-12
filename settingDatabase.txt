@@ -245,4 +245,11 @@ db.orders.find().forEach(function(data){
     db.orders.save(data)
 })
 
+Convert string to double in orders._id
 
+db.orders.find().forEach(function(doc){
+    old_id = doc._id 
+    doc._id = parseFloat(doc.orderNumber)
+    db.orders.insert(doc)
+    db.orders.remove({_id: old_id})
+});
